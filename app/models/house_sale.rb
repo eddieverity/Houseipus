@@ -1,0 +1,2 @@
+class HouseSale < ApplicationRecord
+end

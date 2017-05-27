@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  context: MyString
+  house_rent: one
+  house_sale: one
+
+two:
+  context: MyString
+  house_rent: two
+  house_sale: two
