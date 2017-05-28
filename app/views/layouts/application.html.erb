@@ -13,11 +13,19 @@
 
   <body>
       <div class="links">
+        <div class="logo">
+        </div>
         <ul>
           <li>Buy</li>
           <li>Rent</li>
           <li>Sell</li>
-          <li>Sign In</li>
+          <li>
+            <% if !session[:user_id]%>
+              <a href="/users/signin">Sign In</a>
+            <% else %>
+              <a href="/users/logout">Log Out</a>
+            <% end %>
+          </li>
         </ul>
       </div>
       <%= yield %>

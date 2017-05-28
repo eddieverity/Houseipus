@@ -1,0 +1,9 @@
+.signins{
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin-right: 3em;
+}
+.signins input{
+    margin-bottom: .5em;
+}
