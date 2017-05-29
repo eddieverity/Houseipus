@@ -30,6 +30,10 @@ Rails.application.routes.draw do
 
   get 'houses/house_sell/:location' => 'houses#house_sell'
 
+  get 'houses/house_buy/:location' => 'houses#house_buy'
+
+  get 'houses/house_rent/:location' => 'houses#house_rent'
+
 
   
 
