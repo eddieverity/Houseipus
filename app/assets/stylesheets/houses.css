@@ -74,3 +74,12 @@
     list-style-type: none;
     margin-left: -2.7em;
 }
+
+.sellform{
+    float:right;
+    margin-right: 3em;
+}
+
+.sellform label, input{
+    display: block;
+}

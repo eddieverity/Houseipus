@@ -1,4 +1,25 @@
-   <div id="floating-panel">
+<div class="sellform">
+  <form action="/houses/sell" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="listing[user_id]" value="<%=session[:user_id]%>">
+      <input type="hidden" name="listing[latitude]" value="<%=@lat%>">
+      <input type="hidden" name="listing[longitude]" value="<%=@lng%>">
+      <label>Address Number</label>
+      <input type="text" name="listing[address]" value="<%=@addressform[0]['long_name']%>" class="form-control">
+      <label>Street Name</label>
+      <input type="text" name="listing[street]" value="<%=@addressform[1]['long_name']%>" class="form-control">
+      <label>Unit</label>
+      <input type="text" name="listing[street]" placeholder="Optional Unit Number" class="form-control">
+      <label>City</label>
+      <input type="text" name="listing[street]" value="<%=@addressform[3]['long_name']%>" class="form-control">
+      <label>State</label>
+      <input type="text" name="listing[street]" value="<%=@addressform[5]['short_name']%>" class="form-control">
+      <label>Zip Code</label>
+      <input type="text" name="listing[street]" value="<%=@addressform[7]['short_name']%>" class="form-control">
+      <input type="submit" value="Add Listing" class="btn btn-primary">
+    </form> 
+</div>
+<div id="floating-panel">
       <input id="address" type="textbox" value="Sydney, NSW">
       <input id="submit" type="button" value="Geocode">
     </div>
@@ -44,4 +65,4 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY&callback=initMap">
     </script>
 
-
+   
