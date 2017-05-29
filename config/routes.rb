@@ -34,7 +34,4 @@ Rails.application.routes.draw do
 
   get 'houses/house_rent/:location' => 'houses#house_rent'
 
-
-  
-
 end
