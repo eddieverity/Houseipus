@@ -1,4 +1,4 @@
-house_sell.html.erb
+<%= @listing %>
    <div id="floating-panel">
       <input id="address" type="textbox" value="Sydney, NSW">
       <input id="submit" type="button" value="Geocode">
@@ -34,6 +34,7 @@ house_sell.html.erb
           }
         });
       }
+      
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY&callback=initMap">
