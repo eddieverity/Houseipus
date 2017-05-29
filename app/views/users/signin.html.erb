@@ -1,3 +1,13 @@
+<script type="text/javascript" language="JavaScript">
+function HidePart(d) { document.getElementById(d).style.display = "none";  }
+function ShowPart(d) { document.getElementById(d).style.display = "block"; }
+function CheckboxChecked(b,d)
+{
+   if(b) { ShowPart(d); }
+   else  { HidePart(d); }
+}
+</script>
+
 <div class="container">
     <div class="signins">
     <h3>Login</h3>
@@ -20,8 +30,54 @@
             <input type="text" name="user[email]" placeholder="Email Address" class="form-control">
             <input type="password" name="user[password]" class="form-control" placeholder="Password">
             <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password">
-            <input type="submit" value="Register" class="btn btn-primary">
-        </form>
+       
+<script type="text/javascript" language="JavaScript">
+function HidePart(d) { document.getElementById(d).style.display = "none";  }
+function ShowPart(d) { document.getElementById(d).style.display = "block"; }
+function CheckboxChecked(b,d)
+{
+   if(b) { ShowPart(d); }
+   else  { HidePart(d); }
+}
+</script>
+
+<p>
+<input 
+   type="checkbox" 
+   name="mycheckbox" 
+   value="yes" 
+   onclick="CheckboxChecked(this.checked,'checkboxdiv')">
+Check this box if you are a seller
+</p>
+
+<div id="checkboxdiv" style="display:none">
+<select name="user[type]">
+    <option selected disabled>Choose Agent Type</option
+    <option value="agent_broker">Agent/Broker</option>
+    <option value="mortgage_lender">Mortgage Lender</option>
+    <option value="home_improvement_services">Home Improvement Services</option>
+    <option value="property_management">Property Management</option>
+    <option value="landlord">Landlord</option>
+</select>
+<input type="text" name="user[first_name]" placeholder="First Name" class="form-control">
+<input type="text" name="user[last_name]" placeholder="Last Name" class="form-control">
+<input type="text" name="user[addr]" placeholder="Zipcode" class="form-control">
+<input type="text" name="user[phone]" placeholder="Phone Number" class="form-control">
+</div>
+
+        <input type="submit" value="Register" class="btn btn-primary">
+</form>
+
+
+<script type="text/javascript">
+CheckboxChecked(document.myform.mycheckbox.checked,'checkboxdiv');
+</script>
+
+
+
+
+
+
         <% if flash[:register] %>
             <% flash[:register].each do |error| %>
                 <p><%= error %></p>
