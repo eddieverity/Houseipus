@@ -1,4 +1,5 @@
 <div class="sellform">
+  <%=@addressform.inspect%>
   <form action="/houses/sell" method="POST">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input type="hidden" name="listing[user_id]" value="<%=session[:user_id]%>">
@@ -9,19 +10,19 @@
       <label>Street Name</label>
       <input type="text" name="listing[street]" value="<%=@addressform[1]['long_name']%>" class="form-control">
       <label>Unit</label>
-      <input type="text" name="listing[street]" placeholder="Optional Unit Number" class="form-control">
+      <input type="text" name="listing[unit]" placeholder="Optional Unit Number" class="form-control">
       <label>City</label>
-      <input type="text" name="listing[street]" value="<%=@addressform[3]['long_name']%>" class="form-control">
+      <input type="text" name="listing[city]" value="<%=@addressform[3]['long_name']%>" class="form-control">
       <label>State</label>
-      <input type="text" name="listing[street]" value="<%=@addressform[5]['short_name']%>" class="form-control">
+      <input type="text" name="listing[state]" value="<%=@addressform[5]['short_name']%>" class="form-control">
       <label>Zip Code</label>
-      <input type="text" name="listing[street]" value="<%=@addressform[7]['short_name']%>" class="form-control">
+      <input type="text" name="listing[zip]" value="<%=@addressform[7]['short_name']%>" class="form-control">
       <input type="submit" value="Add Listing" class="btn btn-primary">
     </form> 
 </div>
 <div id="floating-panel">
-      <input id="address" type="textbox" value="Sydney, NSW">
-      <input id="submit" type="button" value="Geocode">
+      <%-# <input id="address" type="textbox" value="Sydney, NSW">-%>
+      <%-# <input id="submit" type="button" value="Geocode">-%>
     </div>
     <div id="map"></div>
     <script>
