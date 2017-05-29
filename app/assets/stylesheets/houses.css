@@ -1,25 +1,3 @@
-.logo{
-    width: 80px;
-    height: 80px;
-    display: inline-block;
-    vertical-align: top;
-    background-color: blue;
-    margin-left: 1em;
-}
-.links ul{
-    display: inline-block;
-    vertical-align: top;
-}
-.links li{
-    display: inline-block;
-    font-size: 1.25em;
-    padding-top: .6em;
-    margin-right: 1em;
-}
-
-.links{
-    height: 50px;
-}
 
 .hero{
     width:100%;
@@ -39,7 +17,60 @@
 .hero-search{
     width: 600px;
     margin: 0 auto;
-    padding-top: 150px;
+    padding-top: 130px;
+}
+
+.hero-search label {
+    float:left;
+    color: white;
+    width:170px;
+    margin-right: 7px;
+    background: rgb(1, 1, 1);                   
+    background: rgba(1, 1, 1, .5);
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;       
+}
+
+.hero-search label span {
+    text-align:center;
+    font-size: 32px;
+    padding: 3px 0px;
+    display:block;
+}
+
+.hero-search label input {
+    position:absolute;
+    top:-20px;
+}
+
+.hero-search input:checked + span {
+    background-color:#0074E4;
+    color:#F7F7F7;
+}
+
+
+/*.hero-search input[type="radio"] {
+    opacity:0.111;
+    z-index:100;
+}
+
+.hero-search input:checked + label {
+    background:#0074E4;
+}
+
+.hero-search label {
+    width: 147px;
+     padding:5px;
+     border:1px solid #CCC; 
+     cursor:pointer;
+    z-index:90;
+    color: white;
+}
+*/
+.hero-search label:hover {
+     background:#DDD;
+     color: #0074E4
 }
 
 .hero-label{
@@ -59,14 +90,4 @@
 .shgroup li{
     list-style-type: none;
     margin-left: -2.7em;
-}
-.footer{
-    background-color: black;
-    color: gray;
-    height: 100px;
-}
-
-.footercontents{
-    padding-top: 2em;
-    margin-left: 400px;
 }

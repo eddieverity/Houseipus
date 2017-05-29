@@ -13,8 +13,8 @@ function CheckboxChecked(b,d)
     <h3>Login</h3>
         <form action="/users/login" method="POST">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="text" name="user[email]" placeholder="Email Address" class="form-control">
-            <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            <input type="email" name="user[email]" placeholder="Email Address" class="form-control">
+            <input type="password" name="user[password]" class="form-control" placeholder="Password" minlength="6">
             <input type="submit" value="Login" class="btn btn-primary">
         </form>
         <% if flash[:login] %>
@@ -27,6 +27,7 @@ function CheckboxChecked(b,d)
     <h3>Register</h3>
         <form action="/users/create" method="POST">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<<<<<<< HEAD
             <input type="text" name="user[email]" placeholder="Email Address" class="form-control">
             <input type="password" name="user[password]" class="form-control" placeholder="Password">
             <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password">
@@ -78,10 +79,18 @@ CheckboxChecked(document.myform.mycheckbox.checked,'checkboxdiv');
 
 
 
+=======
+            <input type="email" name="user[email]" placeholder="Email Address" class="form-control">
+            <input type="password" name="user[password]" class="form-control" placeholder="Password" minlength="6">
+            <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password" minlength="6">
+            <input type="submit" value="Register" class="btn btn-primary">
+        </form>
+>>>>>>> a8acb0994447cdbd12f4a9c92faea62749ae82ce
         <% if flash[:register] %>
             <% flash[:register].each do |error| %>
                 <p><%= error %></p>
             <% end %>
         <% end %>
     </div>
+    <div class="signinimage"></div>
 </div>
