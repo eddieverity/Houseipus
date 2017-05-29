@@ -64,9 +64,11 @@
     background-color: black;
     color: gray;
     height: 100px;
+    width: 100%;
 }
 
 .footercontents{
+    width: 600px;
     padding-top: 2em;
-    margin-left: 400px;
+    margin: 0 auto;
 }
