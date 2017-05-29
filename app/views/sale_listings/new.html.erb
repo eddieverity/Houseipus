@@ -1,0 +1,12 @@
+<h3>Add Listing</h3>
+<form action="/sale_listings/create" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" value="<%= session[:user_id]%>">
+    <input type="text" name="listing[address]" placeholder="Street Number" class="form-control">
+    <input type="text" name="listing[street]" placeholder="Street Name" class="form-control">
+    <input type="text" name="listing[unit]" placeholder="Unit" class="form-control">
+    <input type="text" name="listing[city]" placeholder="City" class="form-control">
+    <input type="text" name="listing[state]" placeholder="State" class="form-control">
+    <input type="text" name="listing[zip]" placeholder="Zip Code" class="form-control">
+    <input type="submit" value="Add Listing" class="btn btn-primary">
+</form>
