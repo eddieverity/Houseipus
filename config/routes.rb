@@ -22,5 +22,14 @@ Rails.application.routes.draw do
 
   post 'sale_listings/create'
 
+
+  post 'houses/routes' => 'houses#routes'
+
+  get 'houses/house_buy' => 'houses#buy'
+  get 'houses/house_rent' => 'houses#rent'
+  get 'houses/house_sell' => 'houses#sell'
+
+
   
+
 end

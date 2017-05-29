@@ -1,20 +1,21 @@
 <div class="hero">
     <div class="hero-search">
         <h1 class="hero-label">Find your new home</h1>
-        <form action="" method="POST" class="form-inline">
+        <form action="houses/routes" method="POST" class="form-inline">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
             <label for="buy">
-            <input type="radio" name="searchtype" id="buy">
+            <input type="radio" name="searchtype" value="buy" id="buy">
             <span>Buy</span>
             </label>
             <label for="rent">
-            <input type="radio" name="searchtype" id="rent">
+            <input type="radio" name="searchtype" value="rent" id="rent">
             <span>Rent</span>
             </label>
             <label for="sell">
-            <input type="radio" name="searchtype" id="sell">
+            <input type="radio" name="searchtype" value="sell" id="sell">
             <span>Sell</span>
             </label><br>
-            <input class="form-control hero-search-bar" type="text" placeholder="Enter an address, neighborhood, city, or zip code">
+            <input class="form-control hero-search-bar" name="location" type="text" placeholder="Enter an address, neighborhood, city, or zip code">
             <input type="submit" class="btn btn-primary" value="Search">
         </form>
     </div>
