@@ -21,6 +21,11 @@
     background-color: #0074E4;
     margin-left: 1em;
 }
+.logo img{
+    width: 75px;
+    padding: 5px;
+    margin: 0 auto;
+}
 
 .links ul{
     display: inline-block;
