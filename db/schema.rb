@@ -10,62 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527183401) do
+ActiveRecord::Schema.define(version: 20170529172805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "favorites", force: :cascade do |t|
+    t.string "context"
+    t.bigint "sale_listing_id"
+    t.bigint "rental_listing_id"
     t.bigint "user_id"
-    t.bigint "house_rent_id"
-    t.bigint "house_sale_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["house_rent_id"], name: "index_favorites_on_house_rent_id"
-    t.index ["house_sale_id"], name: "index_favorites_on_house_sale_id"
+    t.index ["rental_listing_id"], name: "index_favorites_on_rental_listing_id"
+    t.index ["sale_listing_id"], name: "index_favorites_on_sale_listing_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "house_rents", force: :cascade do |t|
-    t.integer "addr"
-    t.string "street"
-    t.string "unit"
-    t.string "city"
-    t.string "state"
-    t.integer "zip"
-    t.integer "bed"
-    t.integer "bath"
-    t.integer "sq_ft"
-    t.integer "price"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "house_sales", force: :cascade do |t|
-    t.integer "addr"
-    t.string "street"
-    t.string "unit"
-    t.string "city"
-    t.string "state"
-    t.integer "zip"
-    t.integer "bed"
-    t.integer "bath"
-    t.integer "sq_ft"
-    t.integer "price"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "imgs", force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
     t.string "context"
-    t.bigint "house_rent_id"
-    t.bigint "house_sale_id"
+    t.bigint "sale_listing_id"
+    t.bigint "rental_listing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["house_rent_id"], name: "index_imgs_on_house_rent_id"
-    t.index ["house_sale_id"], name: "index_imgs_on_house_sale_id"
+    t.index ["rental_listing_id"], name: "index_images_on_rental_listing_id"
+    t.index ["sale_listing_id"], name: "index_images_on_sale_listing_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -78,6 +47,44 @@ ActiveRecord::Schema.define(version: 20170527183401) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
+  create_table "rental_listings", force: :cascade do |t|
+    t.integer "address"
+    t.string "street"
+    t.string "unit"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.integer "bed"
+    t.integer "bath"
+    t.integer "footage"
+    t.integer "price"
+    t.string "type"
+    t.text "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sale_listings", force: :cascade do |t|
+    t.integer "address"
+    t.string "street"
+    t.string "unit"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.integer "bed"
+    t.integer "bath"
+    t.integer "footage"
+    t.integer "price"
+    t.string "type"
+    t.text "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "saved_searches", force: :cascade do |t|
     t.bigint "user_id"
     t.string "url"
@@ -87,13 +94,13 @@ ActiveRecord::Schema.define(version: 20170527183401) do
   end
 
   create_table "tags", force: :cascade do |t|
+    t.bigint "sale_listing_id"
+    t.bigint "rental_listing_id"
     t.string "context"
-    t.bigint "house_sale_id"
-    t.bigint "house_rent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["house_rent_id"], name: "index_tags_on_house_rent_id"
-    t.index ["house_sale_id"], name: "index_tags_on_house_sale_id"
+    t.index ["rental_listing_id"], name: "index_tags_on_rental_listing_id"
+    t.index ["sale_listing_id"], name: "index_tags_on_sale_listing_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,14 +115,14 @@ ActiveRecord::Schema.define(version: 20170527183401) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "favorites", "house_rents"
-  add_foreign_key "favorites", "house_sales"
+  add_foreign_key "favorites", "rental_listings"
+  add_foreign_key "favorites", "sale_listings"
   add_foreign_key "favorites", "users"
-  add_foreign_key "imgs", "house_rents"
-  add_foreign_key "imgs", "house_sales"
+  add_foreign_key "images", "rental_listings"
+  add_foreign_key "images", "sale_listings"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "saved_searches", "users"
-  add_foreign_key "tags", "house_rents"
-  add_foreign_key "tags", "house_sales"
+  add_foreign_key "tags", "rental_listings"
+  add_foreign_key "tags", "sale_listings"
 end

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'users/logout'
 
   get 'houses/maptest'
+
+  
 end
