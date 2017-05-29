@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   get 'users/logout'
 
   get 'houses/maptest'
+
+  post 'houses/routes' => 'houses#routes'
+
+  get 'houses/house_buy' => 'houses#buy'
+  get 'houses/house_rent' => 'houses#rent'
+  get 'houses/house_sell' => 'houses#sell'
 end
