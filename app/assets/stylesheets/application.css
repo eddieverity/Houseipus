@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+.logo{
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #0074E4;
+    margin-left: 1em;
+}
+
+.links ul{
+    display: inline-block;
+    vertical-align: top;
+}
+.links li{
+    display: inline-block;
+    font-size: 1.25em;
+    padding-top: .6em;
+    margin-right: 1em;
+}
+
+.links{
+    height: 50px;
+}
+
+.footer{
+    background-color: black;
+    color: gray;
+    height: 100px;
+    width: 100%;
+}
+
+.footercontents{
+    width: 600px;
+    padding-top: 2em;
+    margin: 0 auto;
+}

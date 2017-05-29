@@ -10,7 +10,7 @@ class UsersController < ApplicationController
             redirect_to '/'
         else
             flash[:register] = @user.errors.full_messages
-            redirect_to 'users/signin'
+            redirect_back(fallback_location: users_signin_path)
         end
     end
     
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
             redirect_to '/'
         else
             flash[:login] = ["Invalid Email or Password"]
-            redirect_to 'users/signin'
+            redirect_back(fallback_location: users_signin_path)
         end
     end
 

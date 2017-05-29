@@ -3,8 +3,8 @@
     <h3>Login</h3>
         <form action="/users/login" method="POST">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="text" name="user[email]" placeholder="Email Address" class="form-control">
-            <input type="password" name="user[password]" class="form-control" placeholder="Password">
+            <input type="email" name="user[email]" placeholder="Email Address" class="form-control">
+            <input type="password" name="user[password]" class="form-control" placeholder="Password" minlength="6">
             <input type="submit" value="Login" class="btn btn-primary">
         </form>
         <% if flash[:login] %>
@@ -17,9 +17,9 @@
     <h3>Register</h3>
         <form action="/users/create" method="POST">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="text" name="user[email]" placeholder="Email Address" class="form-control">
-            <input type="password" name="user[password]" class="form-control" placeholder="Password">
-            <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password">
+            <input type="email" name="user[email]" placeholder="Email Address" class="form-control">
+            <input type="password" name="user[password]" class="form-control" placeholder="Password" minlength="6">
+            <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password" minlength="6">
             <input type="submit" value="Register" class="btn btn-primary">
         </form>
         <% if flash[:register] %>
@@ -28,4 +28,5 @@
             <% end %>
         <% end %>
     </div>
+    <div class="signinimage"></div>
 </div>

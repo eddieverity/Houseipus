@@ -1,7 +1,19 @@
 <div class="hero">
     <div class="hero-search">
+        <h1 class="hero-label">Find your new home</h1>
         <form action="" method="POST" class="form-inline">
-            <label class="hero-label">Find your new home</label>
+            <label for="buy">
+            <input type="radio" name="searchtype" id="buy">
+            <span>Buy</span>
+            </label>
+            <label for="rent">
+            <input type="radio" name="searchtype" id="rent">
+            <span>Rent</span>
+            </label>
+            <label for="sell">
+            <input type="radio" name="searchtype" id="sell">
+            <span>Sell</span>
+            </label><br>
             <input class="form-control hero-search-bar" type="text" placeholder="Enter an address, neighborhood, city, or zip code">
             <input type="submit" class="btn btn-primary" value="Search">
         </form>
@@ -52,10 +64,5 @@
             <li>Lorem</li>
             <li>Ipsum</li>
         </ul>
-    </div>
-</div>
-<div class="footer">
-    <div class="footercontents">
-        <h4>About | Research | Jobs | List A Home | List A Rental</h4>
     </div>
 </div>
