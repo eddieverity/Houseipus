@@ -25,8 +25,6 @@ class HousesController < ApplicationController
         @data = JSON.parse(@response)
 
         @addressform = @data['results'][0]['address_components']
-
-        puts @addressform
     end
 
     def house_buy
