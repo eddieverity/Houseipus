@@ -8,6 +8,7 @@
     ), url('hero.jpg'), no-repeat;
 
     background-size: cover;
+    padding-left: 75px;
 }
 
 .form-inline input[type=text]{
@@ -50,25 +51,6 @@
     color:#F7F7F7;
 }
 
-
-/*.hero-search input[type="radio"] {
-    opacity:0.111;
-    z-index:100;
-}
-
-.hero-search input:checked + label {
-    background:#0074E4;
-}
-
-.hero-search label {
-    width: 147px;
-     padding:5px;
-     border:1px solid #CCC; 
-     cursor:pointer;
-    z-index:90;
-    color: white;
-}
-*/
 .hero-search label:hover {
      background:#DDD;
      color: #0074E4
