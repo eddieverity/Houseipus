@@ -27,7 +27,6 @@ function CheckboxChecked(b,d)
     <h3>Register</h3>
         <form action="/users/create" method="POST">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-<<<<<<< HEAD
             <input type="text" name="user[email]" placeholder="Email Address" class="form-control">
             <input type="password" name="user[password]" class="form-control" placeholder="Password">
             <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password">
@@ -43,12 +42,13 @@ function CheckboxChecked(b,d)
 </script>
 
 <p>
+<label>
 <input 
    type="checkbox" 
    name="mycheckbox" 
    value="yes" 
    onclick="CheckboxChecked(this.checked,'checkboxdiv')">
-Check this box if you are a seller
+Check this box if you are a seller</label>
 </p>
 
 <div id="checkboxdiv" style="display:none">
@@ -75,17 +75,6 @@ CheckboxChecked(document.myform.mycheckbox.checked,'checkboxdiv');
 </script>
 
 
-
-
-
-
-=======
-            <input type="email" name="user[email]" placeholder="Email Address" class="form-control">
-            <input type="password" name="user[password]" class="form-control" placeholder="Password" minlength="6">
-            <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password" minlength="6">
-            <input type="submit" value="Register" class="btn btn-primary">
-        </form>
->>>>>>> a8acb0994447cdbd12f4a9c92faea62749ae82ce
         <% if flash[:register] %>
             <% flash[:register].each do |error| %>
                 <p><%= error %></p>
