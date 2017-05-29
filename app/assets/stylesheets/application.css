@@ -50,3 +50,9 @@
     padding-top: 2em;
     margin: 0 auto;
 }
+#floating-panel{
+    margin-top: 50px;
+}
+#map{
+    height: 80%;
+}
