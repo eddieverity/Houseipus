@@ -1,2 +1,0 @@
-class HouseSale < ApplicationRecord
-end

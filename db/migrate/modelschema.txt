@@ -1,0 +1,10 @@
+User
+-------
+email : string
+password : digest
+addr : integer
+first_name : string
+last_name : string
+phone : string
+type : string
+

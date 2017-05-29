@@ -17,3 +17,6 @@
     background: url('signin.png'), no-repeat;
     background-size: cover;
 }
+#checkboxdiv select{
+    margin-bottom: .5em;
+}

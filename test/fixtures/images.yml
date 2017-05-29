@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  salelisting: one
-  rentallisting: one
   context: MyString
+  sale_listing: one
+  rental_listing: one
 
 two:
-  salelisting: two
-  rentallisting: two
   context: MyString
+  sale_listing: two
+  rental_listing: two
