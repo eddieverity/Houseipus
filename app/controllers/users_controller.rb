@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         puts @user
         if @user.save
             session[:user_id] = @user.id
+            session[:user_email] = @user.email
             redirect_to '/'
         else
             flash[:register] = @user.errors.full_messages
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
 
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
+            session[:user_email] = @user.email
             redirect_to '/'
         else
             flash[:login] = ["Invalid Email or Password"]

@@ -56,6 +56,11 @@
               <a href="/users/logout">Log Out</a>
             <% end %>
           </li>
+          <li>
+            <% if session[:user_email] %>
+              Signed in as <%= session[:user_email] %>
+            <% end %>
+          </li>
         </ul>
       </div>
       <%= yield %>
