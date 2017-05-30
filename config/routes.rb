@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'users/logout'
 
+  get 'users/show/:user_id' => 'users#show'
+
   get 'houses/maptest'
 
   get 'sale_listings/new'
@@ -35,5 +37,7 @@ Rails.application.routes.draw do
   get 'houses/house_rent/:location' => 'houses#house_rent'
 
   post 'houses/sell'
+
+
 
 end

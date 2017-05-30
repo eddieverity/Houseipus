@@ -29,6 +29,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def show
+        @user = User.find_by('id = ?', params[:user_id])
+        
+    end
+
     def logout
         reset_session
         redirect_to '/'
@@ -36,6 +41,6 @@ class UsersController < ApplicationController
 
 private
     def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :addr, :phone)
+        params.require(:user).permit(:email, :agent, :password, :password_confirmation, :first_name, :last_name, :addr, :phone)
     end
 end
