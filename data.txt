@@ -1,0 +1,6 @@
+ # @url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@lat},#{@lng}&key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY"
+        # @uri = URI(@url)
+        # @response = Net::HTTP.get(@uri)
+        # @data = JSON.parse(@response)
+
+        # puts @data.inspect

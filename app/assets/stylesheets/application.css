@@ -21,6 +21,11 @@
     background-color: #0074E4;
     margin-left: 1em;
 }
+.logo img{
+    width: 75px;
+    padding: 5px;
+    margin-left: 4px;
+}
 
 .links ul{
     display: inline-block;
@@ -49,4 +54,11 @@
     width: 600px;
     padding-top: 2em;
     margin: 0 auto;
+}
+#floating-panel{
+    margin-top: 50px;
+}
+#map{
+    height: 80%;
+    width: 75%;
 }

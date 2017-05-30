@@ -1,18 +1,59 @@
+
 <%= @listing.data.geometry.inspect %>
    <div id="floating-panel">
       <input id="address" type="textbox" value="Sydney, NSW">
       <input id="submit" type="button" value="Geocode">
+
+<div class="sellform">
+<% if @listing.data['address_components'][0]['types'][0] == "street_number" %>
+
+  <%-# This form works, but needs to add ability to add sale info (beds, baths, etc) -%>
+  <form action="/houses/sell" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="listing[user_id]" value="<%=session[:user_id]%>">
+      <input type="hidden" name="listing[latitude]" value="<%=@lat%>">
+      <input type="hidden" name="listing[longitude]" value="<%=@lng%>">
+      <label>Address Number</label>
+      <input type="text" name="listing[address]" value="<%=@addressform[0]['long_name']%>" class="form-control">
+      <label>Street Name</label>
+      <input type="text" name="listing[street]" value="<%=@addressform[1]['long_name']%>" class="form-control">
+      <label>Unit</label>
+      <input type="text" name="listing[unit]" placeholder="Optional Unit Number" class="form-control">
+      <label>City</label>
+      <input type="text" name="listing[city]" value="<%=@addressform[3]['long_name']%>" class="form-control">
+      <label>State</label>
+      <input type="text" name="listing[state]" value="<%=@addressform[5]['short_name']%>" class="form-control">
+      <label>Zip Code</label>
+      <input type="text" name="listing[zip]" value="<%=@addressform[7]['short_name']%>" class="form-control">
+      <input type="submit" value="Add Listing" class="btn btn-primary">
+    </form> 
+    <%else %>
+    <p>Select a specific address to add a listing.</p>
+    <% end %>
+</div>
+<div id="floating-panel">
+      <%-# <input id="address" type="textbox" value="Sydney, NSW">-%>
+      <%-# <input id="submit" type="button" value="Geocode">-%>
+
     </div>
     <div id="map"></div>
     <script>
       function initMap() {
-
-        
         
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: -34.397, lng: 150.644}
+          zoom: <%=@zoom%>,
+          center: {lat: <%=@lat%>, lng: <%=@lng%>}
         });
+        <% if @zoom == 16 %>
+        var marker = new google.maps.Marker({
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          position: {lat: <%=@lat%>, lng: <%=@lng%>},
+          map: map,
+          title: 'Add your listing information'
+        });
+        <% end %>
+        
         var geocoder = new google.maps.Geocoder();
 
         document.getElementById('submit').addEventListener('click', function() {
@@ -40,4 +81,4 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY&callback=initMap">
     </script>
 
-
+   
