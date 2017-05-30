@@ -1,0 +1,12 @@
+
+<div class="container">
+  <div class="signins">
+<h3>Post a message to <a href="/users/show/<%= @user.id %>"><%= @user.email %></a></h3>
+<form action="/users/contact/<%= @user.id %>/<%= session[:user_id] %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="text" name="message[title]" placeholder="Message Title" class="form-control">
+  <textarea cols="30" rows="5" name="message[content]" placeholder="Add Message Here" class="form-control"></textarea>
+  <input type="submit" value="Send Message" class="btn btn-primary">
+</form>
+</div>
+</div>

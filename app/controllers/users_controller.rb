@@ -31,7 +31,37 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by('id = ?', params[:user_id])
-        
+        @sale_listings = SaleListing.where('user_id = ?', params[:user_id])
+        @rental_listings = RentalListing.where('user_id = ?', params[:user_id])    
+    end
+
+    def edit
+        @user = User.find_by('id = ?', params[:user_id])
+    end
+
+    def update
+        @user = User.find_by('id = ?', params[:user_id])
+        @user.update(user_params)
+        redirect_to '/'
+    end
+
+    def contact
+        @user = User.find_by('id = ?', params[:to_id])
+    end
+
+    def message
+ 
+        @user = User.find_by('id = ?', params[:to_id])
+        @message = Message.new(title: params[:message][:title], content: params[:message][:content], sender_id: params[:from_id], receiver_id: params[:to_id])
+        if @message.save
+            UserMailer.message_email(@user)
+
+            redirect_to "/users/show/#{@user[:id]}"
+            #redirect_to '/'
+        else
+            flash[:message] = @message.errors.full_messages
+            redirect_to '/'
+        end
     end
 
     def logout
@@ -41,6 +71,9 @@ class UsersController < ApplicationController
 
 private
     def user_params
-        params.require(:user).permit(:email, :agent, :password, :password_confirmation, :first_name, :last_name, :addr, :phone)
+        params.require(:user).permit(:email, :agent, :password, :password_confirmation, :first_name, :last_name, :addr, :phone, :opt)
+    end
+    def message_params
+        params.require(:message).permit(:title, :content, :to_id, :from_id)
     end
 end

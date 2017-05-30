@@ -18,6 +18,14 @@ Rails.application.routes.draw do
 
   get 'users/show/:user_id' => 'users#show'
 
+  get 'users/edit/:user_id' => 'users#edit'
+
+  patch 'users/edit/:user_id' => 'users#update'
+
+  get 'message/contact/:to_id/:from_id' => 'message#contact'
+
+  post 'message/contact/:to_id/:from_id' => 'message#message'
+
   get 'houses/maptest'
 
   get 'sale_listings/new'

@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.string :phone
       t.string :agent
+      t.boolean :opt, default: false
 
       t.timestamps
     end
