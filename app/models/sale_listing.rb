@@ -6,6 +6,7 @@ class SaleListing < ApplicationRecord
     end
 
     geocoded_by :full_address
+    acts_as_mappable
 
     after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 

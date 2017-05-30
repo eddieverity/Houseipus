@@ -83,3 +83,7 @@
 .sellform label, input{
     display: block;
 }
+
+.sellform input{
+    margin-bottom: .5em;
+}
