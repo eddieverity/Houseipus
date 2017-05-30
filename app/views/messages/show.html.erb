@@ -1,1 +1,36 @@
-show.html.erb
+    <%= @user.contacts.inspect %>
+    <% if @user.id == session[:user_id] %>
+      <div class="signins">
+        <h3><a href="">Messages</a></h3>
+            <ul>
+              <% if @inbox.length > 0 %>
+                <li>Inbox</li>
+                  <ul>
+                    <% @inbox.each do |i| %>
+                      <li>"<%= i.title %>" sent from <a href="/messages/contact/<%= i.receiver.id %>/<%= session[:user_id] %>"><%= i.receiver.email %></a></li>
+                    <% end %>
+                  </ul>
+              <% end %>
+              <% if @outbox.length > 0 %>
+                <li>Outbox</li>
+                  <ul>
+                    <% @outbox.each do |o| %>
+                      <li>"<%= o.title %>" sent to <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a></li>
+                    <% end %>
+                  </ul>
+              <% end %>
+            </ul>
+      </div>
+
+        <% if @contacts.length > 0 %>
+          <div class="signins">
+            <h3>Contacts</h3>
+              <ul>
+                <% @contacts.each do |c| %>
+                  <li><a href="/messages/contact/<%= c.id %>/<%= session[:user_id] %>"><%= c.email %></a></li>
+                <% end %>
+              </ul>
+          </div>
+        <% end %>
+
+    <% end %>

@@ -17,4 +17,11 @@ class MessagesController < ApplicationController
             redirect_to '/'
         end
     end
+
+    def show
+        @user = User.find_by('id = ?', session[:user_id])
+        @inbox = Message.where('receiver_id = ?', session[:user_id])
+        @outbox = Message.where('sender_id = ?', session[:user_id])
+        @contacts = User.where(id: @user.contacts)
+    end
 end

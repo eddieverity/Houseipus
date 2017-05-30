@@ -17,4 +17,18 @@ class User < ApplicationRecord
     email.downcase!
   end
 
+  def contacts
+    contact_array = []
+    self.senders.each do |s|
+
+      contact_array.push(s.id) unless contact_array.include?(s.id)
+    end
+    self.receivers.each do |r|
+      contact_array.push(r.id) unless contact_array.include?(r.id)
+    end
+
+
+    return contact_array
+  end
+
 end
