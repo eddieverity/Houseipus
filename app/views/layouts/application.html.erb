@@ -30,6 +30,11 @@
               <a href="/users/logout">Log Out</a>
             <% end %>
           </li>
+          <li>
+            <% if session[:user_email] %>
+              Signed in as <a href="/users/show/<%= session[:user_id] %>"><%= session[:user_email] %></a>
+            <% end %>
+          </li>
         </ul>
       </div>
       <%= yield %>

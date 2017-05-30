@@ -1,0 +1,40 @@
+show.html.erb
+<%= @user.inspect %>
+
+<script type="text/javascript" language="JavaScript">
+function HidePart(d) { document.getElementById(d).style.display = "none";  }
+function ShowPart(d) { document.getElementById(d).style.display = "block"; }
+function CheckboxChecked(b,d)
+{
+   if(b) { ShowPart(d); }
+   else  { HidePart(d); }
+}
+</script>
+
+<div class="container">
+
+
+    <div class="signins">
+      <h3>Personal Details</h3>
+      <ul>
+        <li>Email: <%= @user.email %> </li>
+        <% if @user.agent != nil %>
+          <li>Agent Type: <%= @user.agent %></li>
+          <li>Name: <%= @user.first_name.upcase %> <%= @user.last_name.upcase %></li>
+          <li>Zip Code: <%= @user.addr %></li>
+          <li>Phone Number: <%= @user.phone %></li>
+        <% end %>
+      </ul>
+
+      <% if @user.id == session[:user_id] %>
+        <form action="/users/edit/<%= @user.id %>" method="GET">
+          <input type="submit" value="Edit User Details" class="btn btn-primary">
+        </form>
+      <% else %>
+        <form action="" method="GET">
+          <input type="submit" value="Contact This User" class="btn btn-primary">
+        </form>
+      <% end %>
+    </div>
+    <div class="signinimage"></div>
+</div>

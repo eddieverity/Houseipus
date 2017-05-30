@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         puts @user
         if @user.save
             session[:user_id] = @user.id
+            session[:user_email] = @user.email
             redirect_to '/'
         else
             flash[:register] = @user.errors.full_messages
@@ -20,11 +21,17 @@ class UsersController < ApplicationController
 
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
+            session[:user_email] = @user.email
             redirect_to '/'
         else
             flash[:login] = ["Invalid Email or Password"]
             redirect_back(fallback_location: users_signin_path)
         end
+    end
+
+    def show
+        @user = User.find_by('id = ?', params[:user_id])
+        
     end
 
     def logout
@@ -34,6 +41,6 @@ class UsersController < ApplicationController
 
 private
     def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :addr, :phone)
+        params.require(:user).permit(:email, :agent, :password, :password_confirmation, :first_name, :last_name, :addr, :phone)
     end
 end
