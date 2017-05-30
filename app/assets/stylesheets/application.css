@@ -20,6 +20,7 @@
     vertical-align: top;
     background-color: #0074E4;
     margin-left: 1em;
+    z-index: 2;
 }
 .logo img{
     width: 75px;
