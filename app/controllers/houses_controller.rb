@@ -29,6 +29,11 @@ class HousesController < ApplicationController
 
     def house_buy
         locator(params[:location])
+
+        @listings = SaleListing.within(10, :origin => params[:location])
+
+        @alllistings = @listings.to_json
+
     end
     
 
@@ -45,8 +50,10 @@ class HousesController < ApplicationController
             redirect_back(fallback_location: 'houses/house_sell/')
         end
     end
-    
-    
+
+    def show_sl
+        @listing = SaleListing.find(params[:sale_id])
+    end
 
     def maptest
         @url = 'https://maps.googleapis.com/maps/api/geocode/json?address=60640&sensor=false'

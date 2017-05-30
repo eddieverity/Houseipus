@@ -36,4 +36,6 @@ Rails.application.routes.draw do
 
   post 'houses/sell'
 
+  get 'listings/sale/:sale_id' => 'houses#show_sl'
+
 end

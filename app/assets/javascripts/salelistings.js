@@ -1,6 +1,4 @@
-<div id="map"></div>
-    <script>
-      function initMap() {
+ function initMap() {
         var listings =   <%= raw @alllistings %>
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -21,13 +19,8 @@
           })
 
           infowindows[i] = new google.maps.InfoWindow({
-            content: "<div class='infobox'>"
-            + "<img src='<%= asset_path( "templogo.png" ) %>' /><br>" 
-            + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
-            + "<br><a href='/listings/sale/" + listings[i].id + "'> More Info </a>"
-            + " | "
-            + "<form action='' method='POST'><input type='submit' value='Add to Favorites'></form>"
-            + "</div>"
+            content: listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+            + "<img src='<%= asset_path( "templogo.png" ) %>' />"
           });
 
           google.maps.event.addListener(markers[i], 'click', function () {
@@ -37,6 +30,7 @@
           }
 
         // This loops over all the listings from the query and displays markers for each.
+
 
         var geocoder = new google.maps.Geocoder();
 
@@ -59,10 +53,3 @@
           }
         });
       }
-      
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY&callback=initMap">
-    </script>
-
-

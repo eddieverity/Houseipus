@@ -87,3 +87,16 @@
 .sellform input{
     margin-bottom: .5em;
 }
+.infobox form{
+    display: inline-block;
+}
+.infobox input[type=submit]{
+    background:none!important;
+    border:none; 
+    padding:0!important;
+    color: #337AB7;
+    cursor:pointer;
+}
+.infobox input[type=submit]:hover{
+    text-decoration:underline;
+}
