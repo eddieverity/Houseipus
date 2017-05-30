@@ -30,7 +30,8 @@ function CheckboxChecked(b,d)
             <input type="text" name="user[email]" placeholder="Email Address" class="form-control">
             <input type="password" name="user[password]" class="form-control" placeholder="Password">
             <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Password">
-       
+            <input type="checkbox" name="user[opt]" id="opt_in">
+            <label for="opt_in">Receive email updates</label>
 <script type="text/javascript" language="JavaScript">
 function HidePart(d) { document.getElementById(d).style.display = "none";  }
 function ShowPart(d) { document.getElementById(d).style.display = "block"; }
@@ -54,11 +55,11 @@ Check if you are a seller/renter</label>
 <div id="checkboxdiv" style="display:none">
 <select name="user[agent]" class="form-control">
     <option selected disabled>Choose Agent Type</option
-    <option value="agent_broker">Agent/Broker</option>
-    <option value="mortgage_lender">Mortgage Lender</option>
-    <option value="home_improvement_services">Home Improvement Services</option>
-    <option value="property_management">Property Management</option>
-    <option value="landlord">Landlord</option>
+    <option value="Agent Broker">Agent/Broker</option>
+    <option value="Mortgage Lender">Mortgage Lender</option>
+    <option value="Home Improvement Services">Home Improvement Services</option>
+    <option value="Property Management">Property Management</option>
+    <option value="Landlord">Landlord</option>
 </select>
 <input type="text" name="user[first_name]" placeholder="First Name" class="form-control">
 <input type="text" name="user[last_name]" placeholder="Last Name" class="form-control">

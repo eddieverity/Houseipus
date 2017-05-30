@@ -1,5 +1,3 @@
-show.html.erb
-<%= @user.inspect %>
 
 <script type="text/javascript" language="JavaScript">
 function HidePart(d) { document.getElementById(d).style.display = "none";  }
@@ -12,29 +10,87 @@ function CheckboxChecked(b,d)
 </script>
 
 <div class="container">
-
-
     <div class="signins">
       <h3>Personal Details</h3>
       <ul>
         <li>Email: <%= @user.email %> </li>
         <% if @user.agent != nil %>
           <li>Agent Type: <%= @user.agent %></li>
-          <li>Name: <%= @user.first_name.upcase %> <%= @user.last_name.upcase %></li>
+          <li>Name: <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></li>
           <li>Zip Code: <%= @user.addr %></li>
           <li>Phone Number: <%= @user.phone %></li>
         <% end %>
       </ul>
-
       <% if @user.id == session[:user_id] %>
         <form action="/users/edit/<%= @user.id %>" method="GET">
           <input type="submit" value="Edit User Details" class="btn btn-primary">
         </form>
       <% else %>
-        <form action="" method="GET">
+        <form action="/message/contact/<%= @user.id %>/<%= session[:user_id] %>" method="GET">
           <input type="submit" value="Contact This User" class="btn btn-primary">
         </form>
       <% end %>
     </div>
+    <% if @user.agent != nil %> 
+      <div class="signins">
+        <h3>Sale Listings</h3>
+        <ul>
+          <% if @sale_listings.length > 0 %>
+            <% @sale_listings.each do |s| %>
+              <li><a href=""><%= s.title %></a></li>
+            <% end %>
+          <% else %>
+            <li>No current listings</li>
+          <% end %>
+        </ul>
+        <h3>Rental Listings</h3>
+        <ul>
+          <% if @rental_listings.length > 0 %>
+            <% @rental_listings.each do |r| %>
+              <li><a href=""><%= r.title %></a></li>
+            <% end %>
+          <% else %>
+            <li>No current listings</li>
+          <% end %>
+        </ul>
+
+
+      </div>      
+    <% end %>
+
+    <% if @favorite_rentals != nil or @favorite_sales != nil %>
+      <div class="signins">
+        <h3>Favorite Listings</h3>
+          <ul>
+            <li>Rentals</li>
+              <% if @favorite_rental.length > 0 %>
+                <ul>
+                  <% @favorites_rental.each do |f| %>
+                    <li><a href=""><%= f.rental_listing.title %></a></li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <ul>
+                  <li>No Rental Listings favorited</li>
+                </ul>
+              <% end %>
+            <li>For Sale</li>
+              <% if @favorite_sales.length > 0 %>
+                <ul>
+                  <% @favorites_sales.each do |s| %>
+                    <li><a href=""><%= f.sale_listing.title %></a></li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <ul>
+                  <li>No Sale Listings favorited</li>
+                </ul>
+              <% end %>
+          </ul>
+      </div>
+    <% end %>
+
+
+
     <div class="signinimage"></div>
 </div>

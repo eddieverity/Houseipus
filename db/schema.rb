@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170529175429) do
   end
 
   create_table "messages", force: :cascade do |t|
+    t.text "title"
     t.text "content"
     t.bigint "sender_id"
     t.bigint "receiver_id"
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 20170529175429) do
     t.string "last_name"
     t.string "phone"
     t.string "agent"
+    t.boolean "opt", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
