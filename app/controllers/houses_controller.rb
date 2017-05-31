@@ -39,15 +39,35 @@ class HousesController < ApplicationController
 
     def house_rent
         locator(params[:location])
+        @listings = RentalListing.joins(:rental_image).within(10, :origin => params[:location])
+
+        @alllistings = @listings.to_json(:include => :rental_image)
+        render ('houses/house_sell.html.erb')
     end
     
     def sell
-        @newlisting = SaleListing.new(listing_params)
-        if @newlisting.save
-            redirect_to "/listings/sale/#{@newlisting.id}/edit"
+        # puts '######'
+        # puts params[:listing][:rent_sell]
+        # puts '######'
+
+        if params[:formchecker] == 'sale'
+
+            @newlisting = SaleListing.new(listing_params)
+            if @newlisting.save
+                redirect_to "/listings/sale/#{@newlisting.id}/edit"
+            else
+                flash[:errors] = @newlisting.errors.full_messages
+                redirect_back(fallback_location: 'houses/house_sell/')
+            end
         else
-            flash[:errors] = @newlisting.errors.fullmessages
-            redirect_back(fallback_location: 'houses/house_sell/')
+
+            @newlisting = RentalListing.new(listing_params)
+            if @newlisting.save
+                redirect_to "/listings/sale/#{@newlisting.id}/edit"
+            else
+                flash[:errors] = @newlisting.errors.full_messages
+                redirect_back(fallback_location: 'houses/house_sell/')
+            end
         end
     end
 

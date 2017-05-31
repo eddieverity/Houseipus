@@ -19,6 +19,19 @@
       <input type="text" name="listing[state]" value="<%=@addressform[5]['short_name']%>" class="form-control">
       <label>Zip Code</label>
       <input type="text" name="listing[zip]" value="<%=@addressform[7]['short_name']%>" class="form-control">
+
+      <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">
+          <input type="radio" name="formchecker" id="option1" value="sale" autocomplete="off" checked> Sale
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="formchecker" id="option2" value="rental" autocomplete="off"> Rental
+        </label>
+
+      </div><br><br>
+
+
+
       <input type="submit" value="Add Listing" class="btn btn-primary">
     </form> 
     <%else %>
