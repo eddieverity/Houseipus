@@ -93,27 +93,31 @@ class HousesController < ApplicationController
 
         if @images
             if @images.update(image_params)
-                puts @images
                 redirect_to "/listings/sale/#{params[:sale_id]}"
             else
+                puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+                puts @images.inspect
+                puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
                 flash[:errors] = @images.errors.full_messages
-                redirect_to "/listings/sale/#{params[:sale_id]}"
+                redirect_to "/listings/sale/#{params[:sale_id]}/photos"
             end
         else
             @images = Image.new(image_params)
             if @images.save
-                puts @images
                 redirect_to "/listings/sale/#{params[:sale_id]}"
             else
+                puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+                puts @images.inspect
+                puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
                 flash[:errors] = @images.errors.full_messages
-                redirect_to "/listings/sale/#{params[:sale_id]}"
+                redirect_to "/listings/sale/#{params[:sale_id]}/photos"
             end
         end
     end
     
 private
     def image_params
-        params.require('/listings/sale/:sale_id/photos').permit(:id, { gallery: [] })
+        params.require('/listings/sale/:sale_id/photos').permit(:sale_listing_id, { gallery: [] })
     end
     
     def listing_params
