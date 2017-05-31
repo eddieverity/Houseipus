@@ -165,27 +165,42 @@ class HousesController < ApplicationController
         @images = RentalImage.find_by(rental_listing_id: params[:rental_id])
 
         if @images
-            if @images.update(rental_image_params)
-                redirect_to "/listings/rent/#{params[:sale_id]}"
+
+            if @images.update(image_params)
+                redirect_to "/listings/rent/#{params[:rental_id]}"
+
             else
                 flash[:errors] = @images.errors.full_messages
-                redirect_to "/listings/rent/#{params[:sale_id]}/photos"
+                redirect_to "/listings/rent/#{params[:rental_id]}/photos"
             end
         else
             @images = RentalImage.new(rental_image_params)
             if @images.save
-                redirect_to "/listings/rent/#{params[:sale_id]}"
+                redirect_to "/listings/rent/#{params[:rental_id]}"
             else
                 flash[:errors] = @images.errors.full_messages
-                redirect_to "/listings/rent/#{params[:sale_id]}/photos"
+                redirect_to "/listings/rent/#{params[:rental_id]}/photos"
             end
         end
     end
     
-    
 
     def favorite
         @favorite = Favorite.new(sale_listing_id: params[:sale_id], user_id: session[:user_id])
+
+        if @favorite.save
+            puts 'success!'
+            redirect_to '/'
+        else
+            puts 'error'
+            puts @favorite.errors.full_messages
+            flash[:errors] = @favorite.errors.full_messages
+            redirect_to '/'
+        end      
+    end
+
+    def rentalfavorite
+        @favorite = RentalFavorite.new(rental_listing_id: params[:rental_id], user_id: session[:user_id])
 
         if @favorite.save
             puts 'success!'

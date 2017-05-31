@@ -126,3 +126,11 @@
     width: 300px;
     margin-bottom: .5em;
 }
+
+.photoform{
+    width: 400px;
+    margin-top: 3em;
+}
+.photoform input{
+    margin-bottom: .5em;
+}

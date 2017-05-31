@@ -1,12 +1,13 @@
 <div class="container">
-<h3>Add Photos</h3>
-
-<%= form_for '/listings/sale/:sale_id/photos', html: { multipart: true } do |f| %>
-    <%= f.hidden_field :sale_listing_id, :value => @listing.id %>
-    <%= f.label :gallery %>
-    <%= f.file_field :gallery, multiple: true %>
-    <%= f.submit "Upload!"%>
-<% end %>
+    <div class="photoform">
+        <h3>Add Photos</h3>
+        <%= form_for '/listings/sale/:sale_id/photos', html: { multipart: true } do |f| %>
+            <%= f.hidden_field :sale_listing_id, :value => @listing.id %>
+            <%= f.label :gallery %>
+            <%= f.file_field :gallery, multiple: true, class: 'form-control' %>
+            <%= f.submit "Upload!", class: 'btn btn-primary' %>
+        <% end %>
+    </div>
 
 <!--<form action="/listings/sale/<%=@listing.id%>/photos" enctype="multipart/form-data" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

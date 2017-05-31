@@ -4,8 +4,8 @@
 <%= form_for '/listings/rent/:sale_id/photos', html: { multipart: true } do |f| %>
     <%= f.hidden_field :rental_listing_id, :value => @listing.id %>
     <%= f.label :gallery %>
-    <%= f.file_field :gallery, multiple: true %>
-    <%= f.submit "Upload!"%>
+    <%= f.file_field :gallery, multiple: true, class: 'form-control' %>
+    <%= f.submit "Upload" , class: 'btn btn-primary' %>
 <% end %>
 
 

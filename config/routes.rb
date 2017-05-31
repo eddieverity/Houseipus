@@ -70,6 +70,10 @@ Rails.application.routes.draw do
 
   get 'listings/rent/:rental_id/photos' => 'houses#rentalphotos'
 
+
   post 'listings/rent/:rental_id/photos' => 'houses#addrentalphotos'
-  
+
+  post 'listings/rent/:rental_id/favorite' => 'houses#rentalfavorite'
+
+
 end
