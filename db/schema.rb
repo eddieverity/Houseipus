@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529175429) do
+ActiveRecord::Schema.define(version: 20170530214206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,9 @@ ActiveRecord::Schema.define(version: 20170529175429) do
   create_table "images", force: :cascade do |t|
     t.string "context"
     t.bigint "sale_listing_id"
-    t.bigint "rental_listing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rental_listing_id"], name: "index_images_on_rental_listing_id"
+    t.json "gallery"
     t.index ["sale_listing_id"], name: "index_images_on_sale_listing_id"
   end
 
@@ -124,7 +123,6 @@ ActiveRecord::Schema.define(version: 20170529175429) do
   add_foreign_key "favorites", "rental_listings"
   add_foreign_key "favorites", "sale_listings"
   add_foreign_key "favorites", "users"
-  add_foreign_key "images", "rental_listings"
   add_foreign_key "images", "sale_listings"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"

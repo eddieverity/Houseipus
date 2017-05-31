@@ -100,3 +100,9 @@
 .infobox input[type=submit]:hover{
     text-decoration:underline;
 }
+.listingdata{
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    margin-top: 2em;
+}

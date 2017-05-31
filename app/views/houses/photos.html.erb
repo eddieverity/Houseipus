@@ -1,0 +1,23 @@
+<div class="container">
+<h3>Add Photos</h3>
+
+<%= form_for '/listings/sale/:sale_id/photos', html: { multipart: true } do |f| %>
+    <%= f.hidden_field :sale_listing_id, :value => @listing.id %>
+    <%= f.label :gallery %>
+    <%= f.file_field :gallery, multiple: true %>
+    <%= f.submit "Upload!"%>
+<% end %>
+
+<!--<form action="/listings/sale/<%=@listing.id%>/photos" enctype="multipart/form-data" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="listing[id]" value="<%=@listing.id%>">
+        <input type="file" name="listing[gallery]" multiple="true" class="form-control">
+        <input type="submit" value="Add Photos" class="btn btn-primary">
+</form>-->
+
+<% if flash[:errors] %>
+            <% flash[:errors].each do |error| %>
+                <p><%= error %></p>
+            <% end %>
+        <% end %>
+</div>
