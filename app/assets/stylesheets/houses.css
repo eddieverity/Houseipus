@@ -106,3 +106,14 @@
     width: 400px;
     margin-top: 2em;
 }
+
+.gallery{
+    display: inline-block;
+    vertical-align: top;
+    max-width: 300px;
+    margin-top: 2em;
+}
+.infobox img{
+    width: 300px;
+    margin-bottom: .5em;
+}

@@ -1,36 +1,50 @@
 <div class="container">
-    <div class="listingdata">
-        <h3>Address</h3>
-        <div class="address well">
-            <%= @listing.address %> <%= @listing.street %><br>
-            <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %>
+    <div class="row">
+        <div class="listingdata">
+            <h3>Address</h3>
+            <div class="address well">
+                <%= @listing.address %> <%= @listing.street %><br>
+                <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %>
+            </div>
+
+            <h3>Listing Info</h3>
+            <table class="table">
+                <tr>
+                    <th>Price</th>
+                    <th>Beds</th>
+                    <th>Baths</th>
+                    <th>Area</th>
+                </tr>
+                <tr>
+                    <td><%= number_to_currency(@listing.price, precision: 0) %></td>
+                    <td><%= @listing.bed %></td>
+                    <td><%= @listing.bath %></td>
+                    <td><%= @listing.footage %> sq. ft.</td>
+                </tr>
+            </table>
+
+            <hr>
+
+            <% if @listing.user_id == session[:user_id] %>
+            <ul>
+                <li><a href="/listings/sale/<%= @listing.id %>/edit">Edit Listing</a></li>
+                <li><a href="/listings/sale/<%= @listing.id %>/photos">Add Photos</a></li>
+            </ul>
+            <% else %>
+                Contact seller
+            <% end %>
         </div>
-
-        <h3>Listing Info</h3>
-        <table class="table">
-            <tr>
-                <th>Price</th>
-                <th>Beds</th>
-                <th>Baths</th>
-                <th>Area</th>
-            </tr>
-            <tr>
-                <td><%= number_to_currency(@listing.price, precision: 0) %></td>
-                <td><%= @listing.bed %></td>
-                <td><%= @listing.bath %></td>
-                <td><%= @listing.footage %> sq. ft.</td>
-            </tr>
-        </table>
-
-        <hr>
-
-        <% if @listing.user_id == session[:user_id] %>
-        <ul>
-            <li><a href="/listings/sale/<%= @listing.id %>/edit">Edit Listing</a></li>
-            <li><a href="/listings/sale/<%= @listing.id %>/photos">Add Photos</a></li>
-        </ul>
-        <% else %>
-            Contact seller
-        <% end %>
+        <div class="gallery">
+        <h3>Gallery</h3>
+            <div class="col-sm-12">
+            <% if @images %>
+                <% @images.gallery.each do |i| %>
+                    <div class="thumbnail">
+                        <img src="<%=i.url%>">
+                    </div>
+                <% end %>
+                <%end %>
+            </div>
+        </div>
     </div>
 </div>
