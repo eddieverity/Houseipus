@@ -103,12 +103,14 @@ class HousesController < ApplicationController
         end
     end
 
+    # add photos to For Sale listing
+
     def photos
         @listing = SaleListing.find(params[:sale_id])
 
         @images = Image.new
     end
-    
+
     def addphotos
         @images = Image.find_by(sale_listing_id: params[:sale_id])
 
@@ -129,6 +131,51 @@ class HousesController < ApplicationController
             end
         end
     end
+
+    # add photos to Rental Listing
+    def rentalphotos
+        @listing = RentalListing.find(params[:rental_id])
+
+        @images = RentalImage.new
+    end
+    
+    def addrentalphotos
+        @images = RentalImage.find_by(rental_listing_id: params[:rental_id])
+
+        if @images
+            if @images.update(image_params)
+                redirect_to "/listings/rent/#{params[:sale_id]}"
+            else
+                flash[:errors] = @images.errors.full_messages
+                redirect_to "/listings/rent/#{params[:sale_id]}/photos"
+            end
+        else
+            @images = RentalImage.new(image_params)
+            if @images.save
+                redirect_to "/listings/rent/#{params[:sale_id]}"
+            else
+                flash[:errors] = @images.errors.full_messages
+                redirect_to "/listings/rent/#{params[:sale_id]}/photos"
+            end
+        end
+    end
+    
+    
+
+    def favorite
+        @favorite = Favorite.new(sale_listing_id: params[:sale_id], user_id: session[:user_id])
+
+        if @favorite.save
+            puts 'success!'
+            redirect_to '/'
+        else
+            puts 'error'
+            puts @favorite.errors.full_messages
+            flash[:errors] = @favorite.errors.full_messages
+            redirect_to '/'
+        end      
+    end
+    
     
 private
     def image_params
@@ -155,15 +202,10 @@ private
             # puts '####'
             @listing = Geocoder.search(@listing.ip).first
             @testipus = Geocoder.search('216.80.4.142').first
-            puts '@@@@@@'
-            puts @testipus.data.inspect
-            puts '@@@@@@'
             @lat = @listing.data['lat']
             @lng = @listing.data['lng']
             @lattest = @testipus.data['latitude']
             @lngtest = @testipus.data['longitude']
-            puts @lattest
-            puts @lngtest
 
         else
 

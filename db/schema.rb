@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530214206) do
+ActiveRecord::Schema.define(version: 20170531185617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 20170530214206) do
   create_table "favorites", force: :cascade do |t|
     t.string "context"
     t.bigint "sale_listing_id"
-    t.bigint "rental_listing_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["rental_listing_id"], name: "index_favorites_on_rental_listing_id"
     t.index ["sale_listing_id"], name: "index_favorites_on_sale_listing_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
@@ -45,6 +43,23 @@ ActiveRecord::Schema.define(version: 20170530214206) do
     t.datetime "updated_at", null: false
     t.index ["receiver_id"], name: "index_messages_on_receiver_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
+  end
+
+  create_table "rental_favorites", force: :cascade do |t|
+    t.bigint "rental_listing_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rental_listing_id"], name: "index_rental_favorites_on_rental_listing_id"
+    t.index ["user_id"], name: "index_rental_favorites_on_user_id"
+  end
+
+  create_table "rental_images", force: :cascade do |t|
+    t.bigint "rental_listing_id"
+    t.json "gallery"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rental_listing_id"], name: "index_rental_images_on_rental_listing_id"
   end
 
   create_table "rental_listings", force: :cascade do |t|
@@ -120,12 +135,14 @@ ActiveRecord::Schema.define(version: 20170530214206) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "favorites", "rental_listings"
   add_foreign_key "favorites", "sale_listings"
   add_foreign_key "favorites", "users"
   add_foreign_key "images", "sale_listings"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"
+  add_foreign_key "rental_favorites", "rental_listings"
+  add_foreign_key "rental_favorites", "users"
+  add_foreign_key "rental_images", "rental_listings"
   add_foreign_key "rental_listings", "users"
   add_foreign_key "sale_listings", "users"
   add_foreign_key "saved_searches", "users"
