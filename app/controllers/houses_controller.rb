@@ -41,23 +41,14 @@ class HousesController < ApplicationController
 
     def house_rent
         locator(params[:location])
-        @listings = RentalListing.all#.within(10, :origin => params[:location])
-        #
-        #.joins(:rentalimage)
-        puts '########'
-        puts @listings.inspect
-        puts '########'
-        @alllistings = @listings.to_json#(:include => :rental_image)
-        puts '@@@@@@@'
-        puts @alllistings.inspect
-        puts '@@@@@@@'
+        @listings = RentalListing.joins(:rental_image).within(10, :origin => params[:location])
+
+        @alllistings = @listings.to_json(:include => :rental_image)
+  
         render ('houses/house_rent.html.erb')
     end
     
     def sell
-        # puts '######'
-        # puts params[:listing][:rent_sell]
-        # puts '######'
 
         if params[:formchecker] == 'sale'
 
@@ -246,9 +237,6 @@ private
         @listing = Geocoder.search(location).first
         if @listing == nil
             @listing = request.location
-            # puts '####'
-            # puts @listing.ip.inspect
-            # puts '####'
             @listing = Geocoder.search(@listing.ip).first
             @testipus = Geocoder.search('216.80.4.142').first
             @lat = @listing.data['lat']
