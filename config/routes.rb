@@ -56,14 +56,20 @@ Rails.application.routes.draw do
 
   post 'listings/sale/:sale_id' => 'houses#update'
 
+#
+  get 'listings/rent/:rental_id' => 'houses#rentalshow'
+  get 'listings/rent/:rental_id/edit' => 'houses#rentaledit'
+
+  post 'listings/rent/:rental_id' => 'houses#rentalupdate'
+#
   get 'listings/sale/:sale_id/photos' => 'houses#photos'
 
   post 'listings/sale/:sale_id/photos' => 'houses#addphotos'
 
   post 'listings/sale/:sale_id/favorite' => 'houses#favorite'
 
-  get 'listings/rent/:rent_id/photos' => 'houses#rentalphotos'
+  get 'listings/rent/:rental_id/photos' => 'houses#rentalphotos'
 
-  post 'listings/rent/:sale_id/photos' => 'houses#addrentalphotos'
+  post 'listings/rent/:rental_id/photos' => 'houses#addrentalphotos'
   
 end

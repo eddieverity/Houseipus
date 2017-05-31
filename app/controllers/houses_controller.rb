@@ -39,9 +39,10 @@ class HousesController < ApplicationController
 
     def house_rent
         locator(params[:location])
-        @listings = RentalListing.joins(:rental_image).within(10, :origin => params[:location])
+        @listings = RentalListing.within(10, :origin => params[:location])
+        #.joins(:rentalimage)
 
-        @alllistings = @listings.to_json(:include => :rental_image)
+        @alllistings = @listings.to_json#(:include => :rentalimage)
         render ('houses/house_sell.html.erb')
     end
     
@@ -63,7 +64,7 @@ class HousesController < ApplicationController
 
             @newlisting = RentalListing.new(listing_params)
             if @newlisting.save
-                redirect_to "/listings/sale/#{@newlisting.id}/edit"
+                redirect_to "/listings/rent/#{@newlisting.id}/edit"
             else
                 flash[:errors] = @newlisting.errors.full_messages
                 redirect_back(fallback_location: 'houses/house_sell/')
@@ -74,6 +75,11 @@ class HousesController < ApplicationController
     def show_sl
         @listing = SaleListing.find(params[:sale_id])
         @images = Image.find_by(sale_listing_id: params[:sale_id])
+    end
+
+    def rentalshow
+        @listing = RentalListing.find(params[:rental_id])
+        @images = RentalImage.find_by(rental_listing_id: params[:rental_id])
     end
 
     def maptest
@@ -92,6 +98,11 @@ class HousesController < ApplicationController
         @listing = SaleListing.find(params[:sale_id])
     end
 
+    def rentaledit
+        @listing = RentalListing.find(params[:rental_id])
+    end
+
+
     def update
         @listing = SaleListing.find(params[:sale_id])
 
@@ -100,6 +111,17 @@ class HousesController < ApplicationController
         else 
             flash[:errors] = @listing.errors.full_messages
             redirect_to "/listings/sale/#{params[:sale_id]}/edit"
+        end
+    end
+
+    def rentalupdate
+        @listing = RentalListing.find(params[:rental_id])
+
+        if @listing.update(listing_data)
+            redirect_to "/listings/rent/#{params[:rental_id]}"
+        else 
+            flash[:errors] = @listing.errors.full_messages
+            redirect_to "/listings/rent/#{params[:rental_id]}/edit"
         end
     end
 
@@ -143,14 +165,14 @@ class HousesController < ApplicationController
         @images = RentalImage.find_by(rental_listing_id: params[:rental_id])
 
         if @images
-            if @images.update(image_params)
+            if @images.update(rental_image_params)
                 redirect_to "/listings/rent/#{params[:sale_id]}"
             else
                 flash[:errors] = @images.errors.full_messages
                 redirect_to "/listings/rent/#{params[:sale_id]}/photos"
             end
         else
-            @images = RentalImage.new(image_params)
+            @images = RentalImage.new(rental_image_params)
             if @images.save
                 redirect_to "/listings/rent/#{params[:sale_id]}"
             else
@@ -180,6 +202,10 @@ class HousesController < ApplicationController
 private
     def image_params
         params.require('/listings/sale/:sale_id/photos').permit(:sale_listing_id, { gallery: [] })
+    end
+
+    def rental_image_params
+        params.require('/listings/rent/:rental_id/photos').permit(:rental_listing_id, { gallery: [] })
     end
     
     def listing_params
