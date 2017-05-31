@@ -5,7 +5,6 @@ class SaleListingsController < ApplicationController
   def new
   end
 
-
   def create
     @listing = SaleListing.new(listing_params)
     if @listing.save
