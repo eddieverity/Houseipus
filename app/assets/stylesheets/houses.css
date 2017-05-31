@@ -134,3 +134,20 @@
 .photoform input{
     margin-bottom: .5em;
 }
+
+.buyfaves{
+    float:right;
+    margin-right: 3em;
+}
+
+.favebox img{
+    width: 225px;
+    margin-bottom: .5em;
+    display: block;
+}
+
+.favebox{
+    border: 1px solid grey;
+    border-radius: .25em;
+    padding: .5em;
+}

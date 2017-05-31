@@ -1,3 +1,20 @@
+<div class="buyfaves">
+  <% if @favorites %>
+    <h3>Favorites</h3>
+    <div class="favebox">
+      <% @favorites.each do |f| %>
+        <a href="/listings/sale/<%=f.id%>"><img src="<%= f.sale_listing.image.gallery[0].url %>"></a>
+        <%= f.sale_listing.address %> <%= f.sale_listing.street %><br>
+        <%= f.sale_listing.city %> <%= f.sale_listing.state %><br>
+        <%= number_to_currency(f.sale_listing.price, precision: 0) %>
+        <a href="/listings/sale/<%=f.id%>">Listing Info</a>
+      <% end %>
+    </div>
+  <%else%>
+    <h3>Add some favorites</h3>
+  <%end%>  
+</div>
+
 <div id="map"></div>
     <script>
 
