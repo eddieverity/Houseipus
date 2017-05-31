@@ -14,6 +14,7 @@
   
         for (var i = 0; i < listings.length; i++){
 
+
            markers[i] = new google.maps.Marker({
              animation: google.maps.Animation.DROP,
              position: {lat: listings[i].latitude, lng: listings[i].longitude },
@@ -26,6 +27,7 @@
           infowindows[i] = new google.maps.InfoWindow({
             content: "<div class='infobox'>"
             + "<a href='/listings/rent/" + listings[i].id + "'><img src='" + listings[i].rental_image.gallery[0].url + "' /></a><br>" 
+
             + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
             + "<br> Rent: $" + listings[i].price + " per month"
             + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
@@ -52,7 +54,9 @@
           }
 
           google.maps.event.addListener(markers[i], 'click', function () {
-             infowindows[this.id].open(map, markers[this.id]);
+
+            infowindows[this.id].open(map, markers[this.id]);
+
           });
 
         }
@@ -73,13 +77,15 @@
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: resultsMap,
-               position: results[0].geometry.location
-             });
+
+              position: results[0].geometry.location
+            });
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
-           }
-         });
-       }
+          }
+        });
+      }
+
       
     </script>
     <script async defer
