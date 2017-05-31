@@ -1,7 +1,7 @@
 <div class="container">
 <h3>Add Photos</h3>
 
-<%= form_for '/listings/rent/:sale_id/photos', html: { multipart: true } do |f| %>
+<%= form_for '/listings/rent/:rental_id/photos', html: { multipart: true } do |f| %>
     <%= f.hidden_field :rental_listing_id, :value => @listing.id %>
     <%= f.label :gallery %>
     <%= f.file_field :gallery, multiple: true, class: 'form-control' %>
