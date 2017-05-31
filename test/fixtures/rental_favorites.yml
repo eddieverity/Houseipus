@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rental_listing: one
+  user: one
+
+two:
+  rental_listing: two
+  user: two

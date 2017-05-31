@@ -7,7 +7,8 @@ class SaleListing < ApplicationRecord
     geocoded_by :full_address
     reverse_geocoded_by :latitude, :longitude
 
-    has_one :image
+    has_one :image, dependent: :destroy
+    has_many :favorites, dependent: :destroy
 
     after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
