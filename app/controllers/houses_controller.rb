@@ -77,6 +77,9 @@ private
     #searches gmaps based on user input from form on homepage; used in BUY, SELL, and RENT pages
     def locator location
         @listing = Geocoder.search(location).first
+        if @listing == nil
+            @listing = request.location
+        end
         @short_name = @listing.data['address_components'][0]['short_name']
         puts @listing.data['address_components'][0]['types'].inspect
         @states = ["AK", "AL","AR","AS","AZ","CA","CO","CT","DC","DE","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]

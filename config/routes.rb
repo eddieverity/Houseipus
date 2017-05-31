@@ -40,8 +40,10 @@ Rails.application.routes.draw do
 
   get 'houses/house_rent'
 
-  get 'houses/house_sell/:location' => 'houses#house_sell'
-
+  get 'houses/house_sell/(:location)' => 'houses#house_sell'
+  #, 
+   # :constraints => { :location => /[0-9A-Za-z\-\.]+/ }
+# tried trailing slash, constraints, url escape character %2E
   get 'houses/house_buy/:location' => 'houses#house_buy'
 
   get 'houses/house_rent/:location' => 'houses#house_rent'

@@ -5,6 +5,7 @@ class SaleListing < ApplicationRecord
     end
 
     geocoded_by :full_address
+    reverse_geocoded_by :latitude, :longitude
 
     after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 

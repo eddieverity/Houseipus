@@ -37,6 +37,42 @@
           </li>
         </ul>
       </div>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+    xyparams = position.coords.latitude + ", " + position.coords.longitude
+
+    var safevalue=encodeURIComponent(xyparams).replace(/\./g, '%2E');
+    console.log(safevalue)
+    window.location.replace("http://localhost:3000/houses/house_sell/" + safevalue)
+    // $.get("/houses/house_sell/" + xyparams)
+}
+</script>
+
+
+
+
+
+
+
       <%= yield %>
       <div class="footer">
     <div class="footercontents">
