@@ -1,15 +1,19 @@
 <div class="buyfaves">
-  <% if @favorites %>
-    <h3>Favorites</h3>
-    <div class="favebox">
-      <% @favorites.each do |f| %>
-        <a href="/listings/sale/<%=f.id%>"><img src="<%= f.sale_listing.image.gallery[0].url %>"></a>
-        <%= f.sale_listing.address %> <%= f.sale_listing.street %><br>
-        <%= f.sale_listing.city %> <%= f.sale_listing.state %><br>
-        <%= number_to_currency(f.sale_listing.price, precision: 0) %>
+  <% if @listings %>
+    <h3>Listings</h3>
+    
+      <% @listings.each do |f| %>
+        <div class="favebox">
+        <% if f.image %>
+          <img src="<%= f.image.gallery[0].url %>"/>
+        <% end %>
+        <%= f.address %> <%= f.street %><br>
+        <%= f.city %> <%= f.state %><br>
+        <%= number_to_currency(f.price, precision: 0) %>
         <a href="/listings/sale/<%=f.id%>">Listing Info</a>
+         </div>
       <% end %>
-    </div>
+   
   <%else%>
     <h3>Add some favorites</h3>
   <%end%>  
