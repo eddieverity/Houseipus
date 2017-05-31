@@ -30,9 +30,9 @@ class HousesController < ApplicationController
     def house_buy
         locator(params[:location])
 
-        @listings = SaleListing.within(10, :origin => params[:location])
+        @listings = SaleListing.joins(:image).within(10, :origin => params[:location])
 
-        @alllistings = @listings.to_json
+        @alllistings = @listings.to_json(:include => :image)
 
     end
     
@@ -53,6 +53,7 @@ class HousesController < ApplicationController
 
     def show_sl
         @listing = SaleListing.find(params[:sale_id])
+        @images = Image.find_by(sale_listing_id: params[:sale_id])
     end
 
     def maptest
@@ -95,9 +96,6 @@ class HousesController < ApplicationController
             if @images.update(image_params)
                 redirect_to "/listings/sale/#{params[:sale_id]}"
             else
-                puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-                puts @images.inspect
-                puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
                 flash[:errors] = @images.errors.full_messages
                 redirect_to "/listings/sale/#{params[:sale_id]}/photos"
             end
@@ -106,9 +104,6 @@ class HousesController < ApplicationController
             if @images.save
                 redirect_to "/listings/sale/#{params[:sale_id]}"
             else
-                puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-                puts @images.inspect
-                puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
                 flash[:errors] = @images.errors.full_messages
                 redirect_to "/listings/sale/#{params[:sale_id]}/photos"
             end
