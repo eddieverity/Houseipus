@@ -30,11 +30,9 @@ ActiveRecord::Schema.define(version: 20170530214206) do
   create_table "images", force: :cascade do |t|
     t.string "context"
     t.bigint "sale_listing_id"
-    t.bigint "rental_listing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "gallery"
-    t.index ["rental_listing_id"], name: "index_images_on_rental_listing_id"
     t.index ["sale_listing_id"], name: "index_images_on_sale_listing_id"
   end
 
@@ -125,7 +123,6 @@ ActiveRecord::Schema.define(version: 20170530214206) do
   add_foreign_key "favorites", "rental_listings"
   add_foreign_key "favorites", "sale_listings"
   add_foreign_key "favorites", "users"
-  add_foreign_key "images", "rental_listings"
   add_foreign_key "images", "sale_listings"
   add_foreign_key "messages", "users", column: "receiver_id"
   add_foreign_key "messages", "users", column: "sender_id"

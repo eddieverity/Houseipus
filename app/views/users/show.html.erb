@@ -37,7 +37,7 @@ function CheckboxChecked(b,d)
         <ul>
           <% if @sale_listings.length > 0 %>
             <% @sale_listings.each do |s| %>
-              <li><a href=""><%= s.title %></a></li>
+              <li><a href=""><%= s.address %> <%= s.street %> <%= s.city %></a></li>
             <% end %>
           <% else %>
             <li>No current listings</li>
@@ -47,7 +47,7 @@ function CheckboxChecked(b,d)
         <ul>
           <% if @rental_listings.length > 0 %>
             <% @rental_listings.each do |r| %>
-              <li><a href=""><%= r.title %></a></li>
+              <li><a href=""><%= r.address %> <%= r.street %> <%= r.city %></a></li>
             <% end %>
           <% else %>
             <li>No current listings</li>
