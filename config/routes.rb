@@ -22,9 +22,11 @@ Rails.application.routes.draw do
 
   patch 'users/edit/:user_id' => 'users#update'
 
-  get 'message/contact/:to_id/:from_id' => 'message#contact'
+  get 'messages/show/:user_id' => 'messages#show'
 
-  post 'message/contact/:to_id/:from_id' => 'message#message'
+  get 'messages/contact/:to_id/:from_id' => 'messages#contact'
+
+  post 'messages/contact/:to_id/:from_id' => 'messages#message'
 
   get 'houses/maptest'
 
