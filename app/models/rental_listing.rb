@@ -7,7 +7,7 @@ class RentalListing < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  has_one :rentalimage, dependent: :destroy
+  has_one :rental_image, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
   acts_as_mappable :lat_column_name => :latitude, :lng_column_name => :longitude

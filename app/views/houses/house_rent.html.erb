@@ -1,15 +1,56 @@
-   <div id="floating-panel">
-      <input id="address" type="textbox" value="Sydney, NSW">
-      <input id="submit" type="button" value="Geocode">
-    </div>
-    <div id="map"></div>
+<%= @alllistings.inspect %>
+<div id="map"></div>
     <script>
+
       function initMap() {
-        
+        var listings =   <%= raw @alllistings %>
+        //console.log(listings)
+        var asdf = listings[0].latitude
+        var zxcv = listings[0].longitude
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: <%=@zoom%>,
           center: {lat: <%=@lat%>, lng: <%=@lng%>}
         });
+
+        var markers = [];
+        var infowindows = [];
+        markers[0] = new google.maps.Marker({
+          position: {lat: asdf, lng: zxcv },
+          map: map,
+
+        })
+        console.log('#####')
+        console.log(markers)
+        console.log('#####')
+        for (var i = 0; i < listings.length; i++){
+
+          // markers[i] = new google.maps.Marker({
+          //   animation: google.maps.Animation.DROP,
+          //   position: {lat: listings[i].latitude, lng: listings[i].longitude },
+          //   map: map,
+          //   url: "/listings/rent/" + listings[i].id,
+          //   id: i
+          // })
+
+          // infowindows[i] = new google.maps.InfoWindow({
+          //   content: "<div class='infobox'>"
+          //   + "<a href='/listings/rent/" + listings[i].id + "'><img src='" + listings[i].image.gallery[0].url + "' /></a><br>" 
+          //   + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+          //   + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
+          //   + " | "
+          //   + "<form action='/listings/rent/" + listings[i].id + "/favorite' method='POST'>"
+          //   + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
+          //   +"<input type='submit' value='Add to Favorites'></form>"
+          //   + "</div>"
+          // });
+
+          // google.maps.event.addListener(markers[i], 'click', function () {
+          //     infowindows[this.id].open(map, markers[this.id]);
+          // });
+
+        }
+
+        // This loops over all the listings from the query and displays markers for each.
 
         var geocoder = new google.maps.Geocoder();
 
@@ -18,20 +59,20 @@
         });
       }
 
-      function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
+      // function geocodeAddress(geocoder, resultsMap) {
+      //   var address = document.getElementById('address').value;
+      //   geocoder.geocode({'address': address}, function(results, status) {
+      //     if (status === 'OK') {
+      //       resultsMap.setCenter(results[0].geometry.location);
+      //       var marker = new google.maps.Marker({
+      //         map: resultsMap,
+      //         position: results[0].geometry.location
+      //       });
+      //     } else {
+      //       alert('Geocode was not successful for the following reason: ' + status);
+      //     }
+      //   });
+      // }
       
     </script>
     <script async defer

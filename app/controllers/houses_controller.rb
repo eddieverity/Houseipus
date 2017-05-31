@@ -39,11 +39,17 @@ class HousesController < ApplicationController
 
     def house_rent
         locator(params[:location])
-        @listings = RentalListing.within(10, :origin => params[:location])
+        @listings = RentalListing.all#.within(10, :origin => params[:location])
+        #
         #.joins(:rentalimage)
-
-        @alllistings = @listings.to_json#(:include => :rentalimage)
-        render ('houses/house_sell.html.erb')
+        puts '########'
+        puts @listings.inspect
+        puts '########'
+        @alllistings = @listings.to_json#(:include => :rental_image)
+        puts '@@@@@@@'
+        puts @alllistings.inspect
+        puts '@@@@@@@'
+        render ('houses/house_rent.html.erb')
     end
     
     def sell
