@@ -128,20 +128,46 @@ private
     #searches gmaps based on user input from form on homepage; used in BUY, SELL, and RENT pages
     def locator location
         @listing = Geocoder.search(location).first
-        @short_name = @listing.data['address_components'][0]['short_name']
-        puts @listing.data['address_components'][0]['types'].inspect
-        @states = ["AK", "AL","AR","AS","AZ","CA","CO","CT","DC","DE","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
-        if @states.include? @short_name
-            @zoom = 6
-        elsif (@listing.data['address_components'][0]['types'] & ["neighborhood", "postal_code"]).present?
-            @zoom = 13
-        elsif @listing.data['address_components'][0]['types'].include? "street_number"
-            @zoom = 16 
+        if @listing == nil
+            @listing = request.location
+            # puts '####'
+            # puts @listing.ip.inspect
+            # puts '####'
+            @listing = Geocoder.search(@listing.ip).first
+            @testipus = Geocoder.search('216.80.4.142').first
+            puts '@@@@@@'
+            puts @testipus.data.inspect
+            puts '@@@@@@'
+            @lat = @listing.data['lat']
+            @lng = @listing.data['lng']
+            @lattest = @testipus.data['latitude']
+            @lngtest = @testipus.data['longitude']
+            puts @lattest
+            puts @lngtest
+
         else
-            @zoom = 10
+
+
+            if !@listing.data
+                puts 'no .data'
+            end
+            @short_name = @listing.data['address_components'][0]['short_name']
+            puts @listing.data['address_components'][0]['types'].inspect
+            @states = ["AK", "AL","AR","AS","AZ","CA","CO","CT","DC","DE","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
+            if @states.include? @short_name
+                @zoom = 6
+            elsif (@listing.data['address_components'][0]['types'] & ["neighborhood", "postal_code"]).present?
+                @zoom = 13
+            elsif @listing.data['address_components'][0]['types'].include? "street_number"
+                @zoom = 16 
+            else
+                @zoom = 10
+            end
+            @lat = @listing.data['geometry']['location']['lat']
+            @lng = @listing.data['geometry']['location']['lng']
         end
-        @lat = @listing.data['geometry']['location']['lat']
-        @lng = @listing.data['geometry']['location']['lng']
+
+
     end 
     
 end
