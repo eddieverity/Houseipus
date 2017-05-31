@@ -32,7 +32,7 @@ class HousesController < ApplicationController
 
         @favorites = Favorite.where('user_id = ?', session[:user_id])
 
-        @listings = SaleListing.joins(:image).within(10, :origin => params[:location])
+        @listings = SaleListing.includes(:image).within(10, :origin => params[:location])
 
         @alllistings = @listings.to_json(:include => :image)
 
@@ -41,7 +41,8 @@ class HousesController < ApplicationController
 
     def house_rent
         locator(params[:location])
-        @listings = RentalListing.joins(:rental_image).within(10, :origin => params[:location])
+
+        @listings = RentalListing.includes(:rental_image).within(10, :origin => params[:location])
 
         @alllistings = @listings.to_json(:include => :rental_image)
   

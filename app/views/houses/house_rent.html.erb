@@ -21,11 +21,13 @@
              url: "/listings/rent/" + listings[i].id,
              id: i
            })
-
+          
+          if (listings[i].rental_image){
           infowindows[i] = new google.maps.InfoWindow({
             content: "<div class='infobox'>"
             + "<a href='/listings/rent/" + listings[i].id + "'><img src='" + listings[i].rental_image.gallery[0].url + "' /></a><br>" 
             + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+            + "<br> Rent: $" + listings[i].price + " per month"
             + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
             + " | "
             + "<form action='/listings/rent/" + listings[i].id + "/favorite' method='POST'>"
@@ -33,6 +35,21 @@
             +"<input type='submit' value='Add to Favorites'></form>"
             + "</div>"
           });
+          }
+          else {
+            infowindows[i] = new google.maps.InfoWindow({
+            content: "<div class='infobox'>"
+            + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+            + "<br> Rent: $" + listings[i].price + " per month"
+            + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
+            + " | "
+            + "<form action='/listings/rent/" + listings[i].id + "/favorite' method='POST'>"
+            + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
+            +"<input type='submit' value='Add to Favorites'></form>"
+            + "</div>"
+          });
+
+          }
 
           google.maps.event.addListener(markers[i], 'click', function () {
              infowindows[this.id].open(map, markers[this.id]);

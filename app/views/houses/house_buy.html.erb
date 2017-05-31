@@ -39,17 +39,33 @@
             id: i
           })
 
-          infowindows[i] = new google.maps.InfoWindow({
-            content: "<div class='infobox'>"
-            + "<a href='/listings/sale/" + listings[i].id + "'><img src='" + listings[i].image.gallery[0].url + "' /></a><br>" 
-            + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
-            + "<br><a href='/listings/sale/" + listings[i].id + "'> More Info </a>"
-            + " | "
-            + "<form action='/listings/sale/" + listings[i].id + "/favorite' method='POST'>"
-            + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-            +"<input type='submit' value='Add to Favorites'></form>"
-            + "</div>"
-          });
+          if (listings[i].image){
+            infowindows[i] = new google.maps.InfoWindow({
+              content: "<div class='infobox'>"
+              + "<a href='/listings/sale/" + listings[i].id + "'><img src='" + listings[i].image.gallery[0].url + "' /></a><br>" 
+              + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+              + "<br> List Price: $" + listings[i].price
+              + "<br><a href='/listings/sale/" + listings[i].id + "'> More Info </a>"
+              + " | "
+              + "<form action='/listings/sale/" + listings[i].id + "/favorite' method='POST'>"
+              + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
+              +"<input type='submit' value='Add to Favorites'></form>"
+              + "</div>"
+            });
+          }
+          else{
+              infowindows[i] = new google.maps.InfoWindow({
+              content: "<div class='infobox'>"
+              + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+              + "<br> List Price: $" + listings[i].price
+              + "<br><a href='/listings/sale/" + listings[i].id + "'> More Info </a>"
+              + " | "
+              + "<form action='/listings/sale/" + listings[i].id + "/favorite' method='POST'>"
+              + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
+              +"<input type='submit' value='Add to Favorites'></form>"
+              + "</div>"
+            });
+          }
 
           google.maps.event.addListener(markers[i], 'click', function () {
               infowindows[this.id].open(map, markers[this.id]);

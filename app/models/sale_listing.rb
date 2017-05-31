@@ -10,7 +10,7 @@ class SaleListing < ApplicationRecord
     has_one :image, dependent: :destroy
     has_many :favorites, dependent: :destroy
 
-    after_validation :geocode, if: ->(obj){ obj.full_address.present? and obj.full_address_changed? }
+    after_validation :geocode, if: ->(obj){ obj.full_address.present? and obj.address_changed? }
 
     acts_as_mappable :lat_column_name => :latitude, :lng_column_name => :longitude
 
