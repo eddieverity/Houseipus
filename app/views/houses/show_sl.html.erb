@@ -31,7 +31,9 @@
                 <li><a href="/listings/sale/<%= @listing.id %>/photos">Add Photos</a></li>
             </ul>
             <% else %>
-                Contact seller
+                <form action="/messages/contact/<%= @listing.user_id %>/<%= session[:user_id] %>" method="GET">
+                    <input type="submit" value="Contact This User" class="btn btn-primary">
+                </form>
             <% end %>
         </div>
         <div class="gallery">
