@@ -48,5 +48,11 @@ Rails.application.routes.draw do
 
   get 'listings/sale/:sale_id' => 'houses#show_sl'
 
+  get 'listings/sale/:sale_id/edit' => 'houses#edit'
 
+  post 'listings/sale/:sale_id' => 'houses#update'
+
+  get 'listings/sale/:sale_id/photos' => 'houses#photos'
+
+  post 'listings/sale/:sale_id/photos' => 'houses#addphotos'
 end

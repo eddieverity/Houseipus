@@ -1,8 +1,36 @@
-<h3>Address</h3>
-<%= @listing.address %> <%= @listing.street %><br>
-<%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %>
+<div class="container">
+    <div class="listingdata">
+        <h3>Address</h3>
+        <div class="address well">
+            <%= @listing.address %> <%= @listing.street %><br>
+            <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %>
+        </div>
 
-<h3>Listing Info</h3>
-Price: <%= @listing.price %><br>
-Beds: <%= @listing.bed %><br>
-Baths: <%= @listing.bath %>
+        <h3>Listing Info</h3>
+        <table class="table">
+            <tr>
+                <th>Price</th>
+                <th>Beds</th>
+                <th>Baths</th>
+                <th>Area</th>
+            </tr>
+            <tr>
+                <td><%= number_to_currency(@listing.price, precision: 0) %></td>
+                <td><%= @listing.bed %></td>
+                <td><%= @listing.bath %></td>
+                <td><%= @listing.footage %> sq. ft.</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <% if @listing.user_id == session[:user_id] %>
+        <ul>
+            <li><a href="/listings/sale/<%= @listing.id %>/edit">Edit Listing</a></li>
+            <li><a href="/listings/sale/<%= @listing.id %>/photos">Add Photos</a></li>
+        </ul>
+        <% else %>
+            Contact seller
+        <% end %>
+    </div>
+</div>

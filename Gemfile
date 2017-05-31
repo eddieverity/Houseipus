@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'geocoder'
 
 gem 'geokit-rails'
+
+gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

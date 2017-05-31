@@ -44,7 +44,7 @@ class HousesController < ApplicationController
     def sell
         @newlisting = SaleListing.new(listing_params)
         if @newlisting.save
-            redirect_to '/'
+            redirect_to "/listings/sale/#{@newlisting.id}/edit"
         else
             flash[:errors] = @newlisting.errors.fullmessages
             redirect_back(fallback_location: 'houses/house_sell/')
@@ -67,11 +67,63 @@ class HousesController < ApplicationController
         puts @latlong
     end
 
-private
+    def edit
+        @listing = SaleListing.find(params[:sale_id])
+    end
 
+    def update
+        @listing = SaleListing.find(params[:sale_id])
+
+        if @listing.update(listing_data)
+            redirect_to "/listings/sale/#{params[:sale_id]}"
+        else 
+            flash[:errors] = @listing.errors.full_messages
+            redirect_to "/listings/sale/#{params[:sale_id]}/edit"
+        end
+    end
+
+    def photos
+        @listing = SaleListing.find(params[:sale_id])
+
+        @images = Image.new
+    end
+    
+    def addphotos
+        @images = Image.find_by(sale_listing_id: params[:sale_id])
+
+        if @images
+            if @images.update(image_params)
+                puts @images
+                redirect_to "/listings/sale/#{params[:sale_id]}"
+            else
+                flash[:errors] = @images.errors.full_messages
+                redirect_to "/listings/sale/#{params[:sale_id]}"
+            end
+        else
+            @images = Image.new(image_params)
+            if @images.save
+                puts @images
+                redirect_to "/listings/sale/#{params[:sale_id]}"
+            else
+                flash[:errors] = @images.errors.full_messages
+                redirect_to "/listings/sale/#{params[:sale_id]}"
+            end
+        end
+    end
+    
+private
+    def image_params
+        params.require('/listings/sale/:sale_id/photos').permit(:id, { gallery: [] })
+    end
+    
     def listing_params
         params.require(:listing).permit(:address, :street, :unit, :city, :state, :zip, :user_id, :latitude, :longitude)
     end
+
+    def listing_data
+        params.require(:listing).permit(:bed, :bath, :footage, :price)
+    end
+    
     
 
     #searches gmaps based on user input from form on homepage; used in BUY, SELL, and RENT pages
