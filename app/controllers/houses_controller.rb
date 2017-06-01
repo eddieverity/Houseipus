@@ -57,19 +57,11 @@ class HousesController < ApplicationController
     end
 
     def filter_buy
-        locator(params[:location])
-
-        @listings = SaleListing.includes(:image).where('price < ?', params[:filters][:price]).within(10, :origin => params[:location])      
-
-        @alllistings = @listings.to_json(:include => :image)
-  
-        respond_to do |format|
-
-            format.html { redirect_to "/houses/house_buy/#{params[:location]}/filters/#{params[:filters][:price]}" }
-            format.json { render json: @alllistings }
-
+        if params[:filters][:bed] != "0"
+           redirect_to "/houses/house_buy/#{params[:location]}/filters/#{params[:filters][:price]}/#{params[:filters][:bed]}"
+        else
+            redirect_to "/houses/house_buy/#{params[:location]}/filters/#{params[:filters][:price]}"
         end
-
     end
     
     def filtered_buy
@@ -127,20 +119,30 @@ class HousesController < ApplicationController
     end
 
     def filter_rent
-        locator(params[:location])
 
-        @listings = RentalListing.includes(:rental_image).where('price < ?', params[:filters][:price]).within(10, :origin => params[:location])      
-
-        @alllistings = @listings.to_json(:include => :rental_image)
-  
-        respond_to do |format|
-
-            format.html { redirect_to "/houses/house_rent/#{params[:location]}/filters/#{params[:filters][:price]}" }
-            format.json { render json: @alllistings }
-
+        if params[:filters][:bed] != "0"
+           redirect_to "/houses/house_rent/#{params[:location]}/filters/#{params[:filters][:price]}/#{params[:filters][:bed]}"
+        else
+            redirect_to "/houses/house_rent/#{params[:location]}/filters/#{params[:filters][:price]}"
         end
-
     end
+
+    #backup of filter_rent method
+    # def filter_rent
+    #     locator(params[:location])
+
+    #     @listings = RentalListing.includes(:rental_image).where('price < ?', params[:filters][:price]).within(10, :origin => params[:location])      
+
+    #     @alllistings = @listings.to_json(:include => :rental_image)
+  
+    #     respond_to do |format|
+
+    #         format.html { redirect_to "/houses/house_rent/#{params[:location]}/filters/#{params[:filters][:price]}" }
+    #         format.json { render json: @alllistings }
+
+    #     end
+
+    # end
     
     def filtered_rent
 
