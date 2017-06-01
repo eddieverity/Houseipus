@@ -56,6 +56,15 @@ class HousesController < ApplicationController
         end
 
     end
+
+    def filter_buy
+        location(params[:location])
+
+        
+        
+        @listings = SaleListing.includes(:image).within(10, :origin => params[:location])
+    end
+    
     
 
     def house_rent

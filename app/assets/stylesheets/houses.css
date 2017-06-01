@@ -173,7 +173,18 @@
 }
 .updatebuy{
     width: 300px;
+    display: inline-block;
 }
 .updatebuy input[type=text]{
     width: 200px;
+    display: inline-block;
+}
+
+.filterbuy{
+    width: 600px;
+    display: inline-block;
+}
+
+.filterbuy input{
+    display: inline-block;
 }

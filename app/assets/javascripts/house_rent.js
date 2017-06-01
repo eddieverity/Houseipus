@@ -1,3 +1,9 @@
+var url = window.location.pathname
+
+var split = url.split('/')
+
+if (split[2] == "house_rent"){
+
 function initMap() {
 
     var url = window.location.pathname
@@ -93,4 +99,5 @@ var fullquery = function(){
 
 fullquery();
 
+}
 }

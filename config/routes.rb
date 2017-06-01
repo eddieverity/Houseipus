@@ -79,5 +79,9 @@ Rails.application.routes.draw do
 
   post 'messages/viewed/:id' => 'messages#viewed'
 
+  post 'houses/house_buy/:location/filters' => 'houses#filter_buy'
+
+  get 'houses/house_buy/:location/filters/:filterdata' => 'houses#filtered_buy'
+
 
 end
