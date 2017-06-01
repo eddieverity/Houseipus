@@ -25,6 +25,16 @@ class HousesController < ApplicationController
         @data = JSON.parse(@response)
 
         @addressform = @data['results'][0]['address_components']
+
+        # ADD STUFF HERE
+        respond_to do |format|
+
+            format.html 
+            format.json { render json: @data }
+
+        end
+
+
     end
 
     def house_buy
@@ -36,6 +46,15 @@ class HousesController < ApplicationController
 
         @alllistings = @listings.to_json(:include => :image)
 
+        puts @alllistings.inspect
+
+        respond_to do |format|
+
+            format.html 
+            format.json { render json: @alllistings }
+
+        end
+
     end
     
 
@@ -46,7 +65,12 @@ class HousesController < ApplicationController
 
         @alllistings = @listings.to_json(:include => :rental_image)
   
-        render ('houses/house_rent.html.erb')
+        respond_to do |format|
+
+            format.html 
+            format.json { render json: @alllistings }
+
+        end
     end
     
     def sell
