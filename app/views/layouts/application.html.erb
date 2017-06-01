@@ -27,7 +27,7 @@
               <div class="dropdown-menu">
                 <form action="/houses/routes" method="POST">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                  <input type="hidden" name="searchtype" value="buy" id="buy">
+                  <input type="hidden" name="searchtype" value="buy">
                   <input type="text" name="location"   placeholder="Address, zip or city">
                   <input type="submit" value="Search for Sale">
                 </form>
@@ -43,7 +43,7 @@
               <div class="dropdown-menu">
                 <form action="/houses/routes" method="POST">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                  <input type="hidden" name="searchtype" value="rent" id="rent">
+                  <input type="hidden" name="searchtype" value="rent">
                   <input type="text" name="location"   placeholder="Address, zip or city">
                   <input type="submit" value="Rentals">
                 </form>
@@ -59,7 +59,7 @@
               <div class="dropdown-menu">
                 <form action="/houses/routes" method="POST">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                  <input type="hidden" name="searchtype" value="sell" id="sell">
+                  <input type="hidden" name="searchtype" value="sell">
                   <input type="text" name="location"   placeholder="Address, zip or city">
                   <input type="submit" value="List Property">
                 </form>
