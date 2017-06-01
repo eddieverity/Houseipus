@@ -24,14 +24,19 @@ class HousesController < ApplicationController
         @response = Net::HTTP.get(@uri)
         @data = JSON.parse(@response)
 
-        @addressform = @data['results'][0]['address_components']
+        if @data['results'][0]
+            @addressform = @data['results'][0]['address_components']
 
-        # ADD STUFF HERE
-        respond_to do |format|
+            # ADD STUFF HERE
+            respond_to do |format|
 
-            format.html 
-            format.json { render json: @data }
+                format.html 
+                format.json { render json: @data }
 
+            end
+        else
+            #add flash error msg
+            redirect_back(fallback_location: root_path)
         end
 
 
@@ -42,16 +47,21 @@ class HousesController < ApplicationController
 
         @favorites = Favorite.where('user_id = ?', session[:user_id])
 
-        @listings = SaleListing.includes(:image).within(10, :origin => params[:location])
+        begin
+            @listings = SaleListing.includes(:image).within(10, :origin => params[:location])
 
-        @alllistings = @listings.to_json(:include => :image)
+            @alllistings = @listings.to_json(:include => :image)
 
 
-        respond_to do |format|
+            respond_to do |format|
 
-            format.html 
-            format.json { render json: @alllistings }
+                format.html 
+                format.json { render json: @alllistings }
 
+            end
+        rescue Geokit::Geocoders::GeocodeError
+            #add flash error msg
+            redirect_back(fallback_location: root_path)
         end
 
     end
@@ -94,15 +104,21 @@ class HousesController < ApplicationController
     def house_rent
         locator(params[:location])
 
-        @listings = RentalListing.includes(:rental_image).within(10, :origin => params[:location])
 
-        @alllistings = @listings.to_json(:include => :rental_image)
-  
-        respond_to do |format|
+        begin
+            @listings = RentalListing.includes(:rental_image).within(10, :origin => params[:location])
 
-            format.html 
-            format.json { render json: @alllistings }
+            @alllistings = @listings.to_json(:include => :rental_image)
+      
+            respond_to do |format|
 
+                format.html 
+                format.json { render json: @alllistings }
+
+            end
+        rescue Geokit::Geocoders::GeocodeError
+            #add flash error msg
+            redirect_back(fallback_location: root_path)
         end
     end
 
