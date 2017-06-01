@@ -46,7 +46,6 @@ class HousesController < ApplicationController
 
         @alllistings = @listings.to_json(:include => :image)
 
-        puts @alllistings.inspect
 
         respond_to do |format|
 
@@ -183,7 +182,7 @@ class HousesController < ApplicationController
         @lat = @data['results'][0]['geometry']['location']['lat']
         @lng = @data['results'][0]['geometry']['location']['lng']
 
-        puts @latlong
+
     end
 
     def edit
@@ -281,11 +280,10 @@ class HousesController < ApplicationController
         @favorite = Favorite.new(sale_listing_id: params[:sale_id], user_id: session[:user_id])
 
         if @favorite.save
-            puts 'success!'
+
             redirect_to '/'
         else
-            puts 'error'
-            puts @favorite.errors.full_messages
+
             flash[:errors] = @favorite.errors.full_messages
             redirect_to '/'
         end      
@@ -295,11 +293,10 @@ class HousesController < ApplicationController
         @favorite = RentalFavorite.new(rental_listing_id: params[:rental_id], user_id: session[:user_id])
 
         if @favorite.save
-            puts 'success!'
+
             redirect_to '/'
         else
-            puts 'error'
-            puts @favorite.errors.full_messages
+
             flash[:errors] = @favorite.errors.full_messages
             redirect_to '/'
         end      
@@ -344,7 +341,7 @@ private
                 puts 'no .data'
             end
             @short_name = @listing.data['address_components'][0]['short_name']
-            puts @listing.data['address_components'][0]['types'].inspect
+
             @states = ["AK", "AL","AR","AS","AZ","CA","CO","CT","DC","DE","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
             if @states.include? @short_name
                 @zoom = 6

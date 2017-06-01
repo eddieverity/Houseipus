@@ -31,9 +31,7 @@ class MessagesController < ApplicationController
             @message.save
 
         end
-        puts '###############'
-        puts 'hit viewed method in messages'
-        puts '###############'
+
 
     end
     def show

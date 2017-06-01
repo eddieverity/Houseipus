@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   before_action :unread_messages
 
   def require_login
@@ -9,9 +10,6 @@ class ApplicationController < ActionController::Base
 
   def unread_messages
     @messages = Message.all
-    puts '#####'
-    puts @messages.inspect
-    puts '#####'
   end
 
 
