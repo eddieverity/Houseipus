@@ -173,6 +173,7 @@
 }
 .updatebuy{
     width: 300px;
+
     display:inline-block;
     vertical-align:top;
     font-size:.8em;
@@ -180,7 +181,20 @@
 }
 .updatebuy p {
     margin:0;
+
+    display: inline-block;
+
 }
 .updatebuy input[type=text]{
     width: 200px;
+    display: inline-block;
+}
+
+.filterbuy{
+    width: 600px;
+    display: inline-block;
+}
+
+.filterbuy input{
+    display: inline-block;
 }

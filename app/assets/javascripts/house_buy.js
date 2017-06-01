@@ -1,12 +1,18 @@
-function initMap() {
-
 var url = window.location.pathname
 
 var split = url.split('/')
 
-var query = split[split.length-1]
+if (split[2] == "house_buy"){
 
-var listings;
+function initMap() {
+
+    var url = window.location.pathname
+
+    var split = url.split('/')
+
+    var query = split[split.length-1]
+
+    var listings;
 
 var fullquery = function(){
     
@@ -54,7 +60,6 @@ var fullquery = function(){
 
             //2 types of markers for listings that have or do not have images
             if (data[i].image){
-
                 //generates infowindow for listings that have images
                 infowindows[i] = new google.maps.InfoWindow({
                     content: "<div class='infobox'>"
@@ -97,5 +102,7 @@ var fullquery = function(){
 } // end of fullquery function
 
 fullquery();
+
+}
 
 }
