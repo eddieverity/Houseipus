@@ -1,3 +1,14 @@
+<div class="filterbar">
+  <div class="updatebuy">
+  <form action="/houses/routes" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="searchtype" value="sell">
+      <input name="location" class="form-control" type="text" placeholder="Update Search">
+      <input type="submit" class="btn btn-secondary">
+  </form>
+  </div>
+</div>
+
 <div class="sellform">
 <% if @listing.data['address_components'][0]['types'][0] == "street_number" %>
 

@@ -138,18 +138,42 @@
 .buyfaves{
     float:right;
     margin-right: 3em;
-}
-
-.favebox img{
-    width: 225px;
-    margin-bottom: .5em;
-    display: block;
-}
-
-.favebox{
-    border: 1px solid grey;
-    border-radius: .25em;
-    padding: .5em;
-    height: 100%;
+    width: 275px;
     overflow-y: auto;
+}
+.favebox img{
+    width: 100%;
+}
+.favebox p{
+    margin-top: -65px;
+    margin-left: .5em;
+    color:white;
+}
+.favebox a{
+    color: white;
+}
+.favebox a:hover{
+    color:white;
+}
+.fillerimg{
+    height: 185px;
+    background:url('modelhome.png');
+    background-size: 275px 250px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.filterbar{
+    width: 100%;
+    height: 50px;
+    padding-left: 130px;
+    padding-top: 7px;
+}
+.filterbar input{
+    display: inline-block; 
+}
+.updatebuy{
+    width: 300px;
+}
+.updatebuy input[type=text]{
+    width: 200px;
 }

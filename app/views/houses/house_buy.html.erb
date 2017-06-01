@@ -1,19 +1,30 @@
+<div class="filterbar">
+  <div class="updatebuy">
+  <form action="/houses/routes" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="searchtype" value="buy">
+      <input name="location" class="form-control" type="text" placeholder="Update Search">
+      <input type="submit" class="btn btn-secondary">
+  </form>
+  </div>
+</div>
 <div class="buyfaves">
   <% if @listings %>
     <h3>Listings</h3>
     
       <% @listings.each do |f| %>
         <div class="favebox">
-        <% if f.image %>
-          <img src="<%= f.image.gallery[0].url %>"/>
-        <% end %>
-        <%= f.address %> <%= f.street %><br>
-        <%= f.city %> <%= f.state %><br>
-        <%= number_to_currency(f.price, precision: 0) %>
-        <a href="/listings/sale/<%=f.id%>">Listing Info</a>
+          <% if f.image %>
+            <a href="/listings/sale/<%=f.id%>"><img src="<%= f.image.gallery[0].url %>"/></a>
+          <% else%>
+          <a href="/listings/sale/<%=f.id%>"><div class="fillerimg"></div></a>
+          <% end %><p>
+          <%= f.address %> <%= f.street %><br>
+          <%= f.city %> <%= f.state %><br>
+          <%= number_to_currency(f.price, precision: 0) %>
+          <a href="/listings/sale/<%=f.id%>">Listing Info</a></p>
          </div>
       <% end %>
-   
   <%else%>
     <h3>Try searching a different area</h3>
   <%end%>  
