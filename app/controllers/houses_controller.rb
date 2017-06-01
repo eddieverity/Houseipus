@@ -60,13 +60,36 @@ class HousesController < ApplicationController
     def filter_buy
         locator(params[:location])
 
-        puts params[:filters]
-        
-        @listings = SaleListing.includes(:image).within(10, :origin => params[:location])
+        @listings = SaleListing.includes(:image).where('price < ?', params[:filters][:price]).within(10, :origin => params[:location])      
 
-        redirect_to "houses/house_sale/#{params[:location]}"
+        @alllistings = @listings.to_json(:include => :image)
+  
+        respond_to do |format|
+
+            format.html { redirect_to "/houses/house_buy/#{params[:location]}/filters/#{params[:filters][:price]}" }
+            format.json { render json: @alllistings }
+
+        end
+
     end
     
+    def filtered_buy
+
+        @listings = SaleListing.includes(:image).where('price < ?', params[:filterdata]).within(10, :origin => params[:location])
+
+        @alllistings = @listings.to_json(:include => :image)
+
+        puts(@alllistings)
+        
+        respond_to do |format|
+
+            format.html { render 'house_buy' }
+            format.json { render json: @alllistings }
+
+        end
+        
+        
+    end
     
 
     def house_rent
@@ -82,6 +105,40 @@ class HousesController < ApplicationController
             format.json { render json: @alllistings }
 
         end
+    end
+
+    def filter_rent
+        locator(params[:location])
+
+        @listings = RentalListing.includes(:rental_image).where('price < ?', params[:filters][:price]).within(10, :origin => params[:location])      
+
+        @alllistings = @listings.to_json(:include => :rental_image)
+  
+        respond_to do |format|
+
+            format.html { redirect_to "/houses/house_rent/#{params[:location]}/filters/#{params[:filters][:price]}" }
+            format.json { render json: @alllistings }
+
+        end
+
+    end
+    
+    def filtered_rent
+
+        @listings = RentalListing.includes(:rental_image).where('price < ?', params[:filterdata]).within(10, :origin => params[:location])
+
+        @alllistings = @listings.to_json(:include => :rental_image)
+
+        puts(@alllistings)
+        
+        respond_to do |format|
+
+            format.html { render 'house_rent' }
+            format.json { render json: @alllistings }
+
+        end
+        
+        
     end
     
     def sell

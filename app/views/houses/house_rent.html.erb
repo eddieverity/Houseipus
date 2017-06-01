@@ -1,14 +1,22 @@
 <div class="filterbar">
   <div class="updatebuy">
   <form action="/houses/routes" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="searchtype" value="rent">
-      <input name="location" class="form-control" type="text" placeholder="Update Search">
-      <input type="submit" class="btn btn-secondary">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="searchtype" value="buy">
+    <input name="location" class="form-control" type="text" placeholder="Update Search">
+    <input type="submit" class="btn btn-secondary">
   </form>
   </div>
+  <div class="filterbuy">
+    <form action="/houses/house_rent/<%=params[:location]%>/filters/" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="number" min="0" placeholder="Price Max" name="filters[price]" class="form-control">
+      <input type="number" min="0" placeholder="Beds" name="filters[bed]" class="form-control">
+      <input type="number" min="0" placeholder="Baths" name="filters[bath]" class="form-control">
+      <input type="submit" class="btn btn-secondary">   
+    </form>
+  </div>
 </div>
-
 <div class="buyfaves">
   <% if @listings %>
     <h3>Listings</h3>
