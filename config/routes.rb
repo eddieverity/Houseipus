@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   get 'messages/show/:user_id' => 'messages#show'
 
+
+
   get 'messages/contact/:to_id/:from_id' => 'messages#contact'
 
   post 'messages/contact/:to_id/:from_id' => 'messages#message'
@@ -74,6 +76,8 @@ Rails.application.routes.draw do
   post 'listings/rent/:rental_id/photos' => 'houses#addrentalphotos'
 
   post 'listings/rent/:rental_id/favorite' => 'houses#rentalfavorite'
+
+  post 'messages/viewed/:id' => 'messages#viewed'
 
 
 end

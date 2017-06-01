@@ -5,6 +5,7 @@ class CreateMessages < ActiveRecord::Migration[5.1]
       t.text :content
       t.references :sender
       t.references :receiver
+      t.boolean :viewed
 
       t.timestamps
     end

@@ -35,6 +35,23 @@
               Signed in as <a href="/users/show/<%= session[:user_id] %>"><%= session[:user_email] %></a>
             <% end %>
           </li>
+          <li>
+            <% @count = 0 %>
+            
+
+
+            <% if @messages %>
+              <% @messages.each do |m| %>
+                <% if m.receiver_id == session[:user_id] && m.viewed == false %>
+                  <% @count += 1 %>
+                <% end %>
+              <% end %>
+
+              <% if @count > 0 %>
+                <a href="/messages/show/<%=session[:user_id]%>"><%= @count %> unread messages</a>
+              <% end %>
+            <% end %> 
+
         </ul>
       </div>
 
