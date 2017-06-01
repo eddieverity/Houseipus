@@ -58,11 +58,13 @@ class HousesController < ApplicationController
     end
 
     def filter_buy
-        location(params[:location])
+        locator(params[:location])
 
-        
+        puts params[:filters]
         
         @listings = SaleListing.includes(:image).within(10, :origin => params[:location])
+
+        redirect_to "houses/house_sale/#{params[:location]}"
     end
     
     
