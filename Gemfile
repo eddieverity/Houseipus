@@ -37,7 +37,9 @@ gem 'geokit-rails'
 gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+gem "figaro"
+gem 'delayed_job_active_record'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
