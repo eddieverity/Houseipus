@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     def message
  
         @user = User.find_by('id = ?', params[:to_id])
-        @message = Message.new(title: params[:message][:title], content: params[:message][:content], sender_id: params[:from_id], receiver_id: params[:to_id])
+        @message = Message.new(title: params[:message][:title], content: params[:message][:content], sender_id: params[:from_id], receiver_id: params[:to_id], viewed: false)
         if @message.save
 
             # UserMailer.message_email(@user)
@@ -24,6 +24,18 @@ class MessagesController < ApplicationController
         end
     end
 
+    def viewed
+        @message = Message.find(params[:id])
+        if @message.viewed == false
+            @message.viewed = true
+            @message.save
+
+        end
+        puts '###############'
+        puts 'hit viewed method in messages'
+        puts '###############'
+
+    end
     def show
         @user = User.find_by('id = ?', session[:user_id])
         @inbox = Message.where('receiver_id = ?', session[:user_id])
