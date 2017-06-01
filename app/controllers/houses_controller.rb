@@ -87,9 +87,29 @@ class HousesController < ApplicationController
 
         end
         
-        
     end
-    
+
+    def filtered_buy_beds
+     
+        if params[:filterdata] == "0"
+            puts "IT IS ZERO"
+            @listings = SaleListing.includes(:image).where('bed = ?', params[:beds]).within(10, :origin => params[:location])
+        else
+            @listings = SaleListing.includes(:image).where('bed = ? AND price < ?', params[:beds], params[:filterdata]).within(10, :origin => params[:location])
+        end
+
+        @alllistings = @listings.to_json(:include => :image)
+
+        puts(@alllistings)
+
+        respond_to do |format|
+
+            format.html { render 'house_buy' }
+            format.json { render json: @alllistings }
+
+        end       
+
+    end
 
     def house_rent
         locator(params[:location])
@@ -138,6 +158,28 @@ class HousesController < ApplicationController
         end
         
         
+    end
+
+    def filtered_rent_beds
+     
+        if params[:filterdata] == "0"
+            puts "IT IS ZERO"
+            @listings = RentalListing.includes(:rental_image).where('bed = ?', params[:beds]).within(10, :origin => params[:location])
+        else
+            @listings = RentalListing.includes(:rental_image).where('bed = ? AND price < ?', params[:beds], params[:filterdata]).within(10, :origin => params[:location])
+        end
+
+        @alllistings = @listings.to_json(:include => :rental_image)
+
+        puts(@alllistings)
+
+        respond_to do |format|
+
+            format.html { render 'house_rent' }
+            format.json { render json: @alllistings }
+
+        end       
+
     end
     
     def sell

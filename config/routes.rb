@@ -83,9 +83,13 @@ Rails.application.routes.draw do
 
   get 'houses/house_buy/:location/filters/:filterdata' => 'houses#filtered_buy'
 
+  get 'houses/house_buy/:location/filters/:filterdata/:beds' => 'houses#filtered_buy_beds'
+
   post 'houses/house_rent/:location/filters' => 'houses#filter_rent'
 
   get 'houses/house_rent/:location/filters/:filterdata' => 'houses#filtered_rent'
+
+  get 'houses/house_rent/:location/filters/:filterdata/:beds' => 'houses#filtered_rent_beds'
 
 
 end
