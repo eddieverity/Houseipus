@@ -8,11 +8,17 @@ class MessagesController < ApplicationController
         @user = User.find_by('id = ?', params[:to_id])
         @message = Message.new(title: params[:message][:title], content: params[:message][:content], sender_id: params[:from_id], receiver_id: params[:to_id])
         if @message.save
-            UserMailer.message_email(@user)
 
-            redirect_to "/users/show/#{@user[:id]}"
+            # UserMailer.message_email(@user)
+            # if @user.opt == true
+            #     UserMailer.message_email(@user).deliver_now
+
+            # end
+
+            redirect_to "/messages/show/#{session[:user_id]}"
             #redirect_to '/'
         else
+            puts 'hit error'
             flash[:message] = @message.errors.full_messages
             redirect_to '/'
         end

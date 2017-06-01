@@ -60,8 +60,22 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Houseipus_#{Rails.env}"
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.perform_caching = false
 
+  #these are what i added from http://guides.rubyonrails.org/action_mailer_basics.html
+  #6.2
+  config.action_mailer.deliver_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 '587',
+    domain:               'housipus.com',
+    user_name:            'housipus@gmail.com',
+    password:             'TheOwlsAreNotWhatTheySeem',
+    authentication:       'plain',
+    enable_starttls_auto:  true }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
