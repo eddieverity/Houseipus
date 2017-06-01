@@ -1,6 +1,25 @@
+<div class="buyfaves">
+  <% if @listings %>
+    <h3>Listings</h3>
+    
+      <% @listings.each do |f| %>
+        <div class="favebox">
+        <% if f.rental_image %>
+          <img src="<%= f.rental_image.gallery[0].url %>"/>
+        <% end %>
+        <%= f.address %> <%= f.street %><br>
+        <%= f.city %> <%= f.state %><br>
+        <%= number_to_currency(f.price, precision: 0) %>
+        <a href="/listings/sale/<%=f.id%>">Listing Info</a>
+         </div>
+      <% end %>
+  <%else%>
+    <h3>Try searching a different area</h3>
+  <%end%>  
+</div>
+
 <div id="map"></div>
     <script>
-
       function initMap() {
         var listings =   <%= raw @alllistings %>
  
@@ -24,33 +43,32 @@
            })
           
           if (listings[i].rental_image){
-          infowindows[i] = new google.maps.InfoWindow({
-            content: "<div class='infobox'>"
-            + "<a href='/listings/rent/" + listings[i].id + "'><img src='" + listings[i].rental_image.gallery[0].url + "' /></a><br>" 
+            infowindows[i] = new google.maps.InfoWindow({
+              content: "<div class='infobox'>"
+              + "<a href='/listings/rent/" + listings[i].id + "'><img src='" + listings[i].rental_image.gallery[0].url + "' /></a><br>" 
 
-            + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
-            + "<br> Rent: $" + listings[i].price + " per month"
-            + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
-            + " | "
-            + "<form action='/listings/rent/" + listings[i].id + "/favorite' method='POST'>"
-            + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-            +"<input type='submit' value='Add to Favorites'></form>"
-            + "</div>"
-          });
+              + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+              + "<br> Rent: $" + listings[i].price + " per month"
+              + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
+              + " | "
+              + "<form action='/listings/rent/" + listings[i].id + "/favorite' method='POST'>"
+              + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
+              +"<input type='submit' value='Add to Favorites'></form>"
+              + "</div>"
+            });
           }
           else {
             infowindows[i] = new google.maps.InfoWindow({
-            content: "<div class='infobox'>"
-            + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
-            + "<br> Rent: $" + listings[i].price + " per month"
-            + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
-            + " | "
-            + "<form action='/listings/rent/" + listings[i].id + "/favorite' method='POST'>"
-            + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-            +"<input type='submit' value='Add to Favorites'></form>"
-            + "</div>"
-          });
-
+              content: "<div class='infobox'>"
+              + listings[i].address + " " + listings[i].street + " " + listings[i].city + " " + listings[i].state + " " + listings[i].zip 
+              + "<br> Rent: $" + listings[i].price + " per month"
+              + "<br><a href='/listings/rent/" + listings[i].id + "'> More Info </a>"
+              + " | "
+              + "<form action='/listings/rent/" + listings[i].id + "/favorite' method='POST'>"
+              + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
+              +"<input type='submit' value='Add to Favorites'></form>"
+              + "</div>"
+            });
           }
 
           google.maps.event.addListener(markers[i], 'click', function () {
@@ -84,9 +102,7 @@
             alert('Geocode was not successful for the following reason: ' + status);
           }
         });
-      }
-
-      
+      }  
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY&callback=initMap">
