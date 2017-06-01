@@ -10,7 +10,7 @@ function initMap() {
 
     var split = url.split('/')
 
-    var query = split[split.length-1]
+    var query = split[3]
 
     var filter = split[5]
 
@@ -18,7 +18,7 @@ function initMap() {
 var fullquery = function(){
 
      if (filter){ //check if there are filters
-        $.get("/houses/house_buy/" + query + "/filters/" + filter +".json", function(data){
+        $.get("/houses/house_rent/" + query + "/filters/" + filter + ".json", function(data){
 
         if (data.length > 0){ //checks if there are results on the map
         //make the map
@@ -44,10 +44,8 @@ var fullquery = function(){
          //variables to be used in future for loop
         var markers = [];
         var infowindows = [];
-
         //this is the aforementioned for loop that will generate things on map
         for (var i = 0; i < data.length; i++){
-
 
             //this part makes markers for every listing in query results
             markers[i] = new google.maps.Marker({
@@ -101,8 +99,6 @@ var fullquery = function(){
     })
 
     } // end filtered search
-
-
 
 
     else{
