@@ -28,6 +28,7 @@
         <img src="<%=r.image.gallery[0].url%>">
        <%=r.address%> <%=r.street%><br>
        <%= r.city %> <%= r.state %> <%=r.zip%><br>
+       Listed: <%= time_ago_in_words(r.created_at) %> ago
         </div>
     </a>
     <% end %>

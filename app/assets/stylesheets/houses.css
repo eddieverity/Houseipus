@@ -144,6 +144,9 @@
     width: 275px;
     overflow-y: auto;
 }
+.buyfaves h3{
+    margin-top: 0;
+}
 .favebox img{
     width: 100%;
 }

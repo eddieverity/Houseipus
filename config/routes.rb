@@ -43,12 +43,13 @@ Rails.application.routes.draw do
   get 'houses/house_rent'
 
   get 'houses/house_sell/(:location)' => 'houses#house_sell'
-  #, 
-   # :constraints => { :location => /[0-9A-Za-z\-\.]+/ }
-# tried trailing slash, constraints, url escape character %2E
+  get 'houses/house_sell/(:location)/' => 'houses#house_sell'
+
   get 'houses/house_buy/:location' => 'houses#house_buy'
+  get 'houses/house_buy/:location/' => 'houses#house_buy'
 
   get 'houses/house_rent/:location' => 'houses#house_rent'
+  get 'houses/house_rent/:location/' => 'houses#house_rent'
 
   post 'houses/sell'
 
@@ -82,14 +83,18 @@ Rails.application.routes.draw do
   post 'houses/house_buy/:location/filters' => 'houses#filter_buy'
 
   get 'houses/house_buy/:location/filters/:filterdata' => 'houses#filtered_buy'
+  get 'houses/house_buy/:location/filters/:filterdata/' => 'houses#filtered_buy'
 
   get 'houses/house_buy/:location/filters/:filterdata/:beds' => 'houses#filtered_buy_beds'
+  get 'houses/house_buy/:location/filters/:filterdata/:beds/' => 'houses#filtered_buy_beds'
 
   post 'houses/house_rent/:location/filters' => 'houses#filter_rent'
 
   get 'houses/house_rent/:location/filters/:filterdata' => 'houses#filtered_rent'
+  get 'houses/house_rent/:location/filters/:filterdata/' => 'houses#filtered_rent'
 
   get 'houses/house_rent/:location/filters/:filterdata/:beds' => 'houses#filtered_rent_beds'
+  get 'houses/house_rent/:location/filters/:filterdata/:beds/' => 'houses#filtered_rent_beds'
 
 
 end
