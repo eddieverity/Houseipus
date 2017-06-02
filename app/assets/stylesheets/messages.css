@@ -16,3 +16,16 @@
     border-radius:10px;
     border:1px solid grey;
 }
+.contents table {
+    margin-right:2em;
+
+}
+.contents ul {
+    padding-left:0px;
+}
+.message_contents {
+    margin-top:3em;
+}
+.inoutbox {
+    margin-left:6em;
+}

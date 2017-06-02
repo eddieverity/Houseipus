@@ -63,7 +63,7 @@ function CheckboxChecked(b,d)
         <h3>Favorite Listings</h3>
           <ul>
             <li>Rentals</li>
-                <% if @favorite_rentals %>
+                <% if @favorite_rentals.length > 0 %>
                   <ul>
                     <% @favorite_rentals.each do |f| %>
                       <li><a href="/listings/rent/<%=f.rental_listing_id%>">
@@ -81,7 +81,7 @@ function CheckboxChecked(b,d)
 
             <li>For Sale</li>
 
-              <% if @favorite_sales %>
+              <% if @favorite_sales.length > 0 %>
                 <ul>
                   <% @favorite_sales.each do |s| %>
                   
