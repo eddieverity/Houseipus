@@ -67,10 +67,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/rent/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/rent/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -82,10 +78,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/rent/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/rent/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -96,9 +88,9 @@ var fullquery = function(){
                 });
 
         } //close of for loop
-    })
+        })
 
-} // end if filter (just price) search
+    } // end if filter (just price) search
 
     else if(beds){
         $.get("/houses/house_rent/" + query + "/filters/" + filter + "/" + beds + ".json", function(data){
@@ -148,10 +140,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/rent/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/rent/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -163,10 +151,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/rent/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/rent/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -233,10 +217,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> Rent: $" + data[i].price + " per month"
                     + "<br><a href='/listings/rent/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/rent/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                 });
             }
@@ -248,10 +228,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> Rent: $" + data[i].price + " per month"
                     + "<br><a href='/listings/rent/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/rent/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }

@@ -340,10 +340,10 @@ class HousesController < ApplicationController
         @favorite = Favorite.new(sale_listing_id: params[:sale_id], user_id: session[:user_id])
 
         if @favorite.save
-
             redirect_to '/'
         else
-
+            puts @favorite.errors.full_messages
+            puts session[:user_id]
             flash[:errors] = @favorite.errors.full_messages
             redirect_to '/'
         end      

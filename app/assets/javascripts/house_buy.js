@@ -70,10 +70,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/sale/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/sale/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -85,10 +81,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/sale/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/sale/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -156,10 +148,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/sale/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/sale/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -171,10 +159,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/sale/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/sale/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -243,10 +227,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/sale/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/sale/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
@@ -258,10 +238,6 @@ var fullquery = function(){
                     + data[i].address + " " + data[i].street + " " + data[i].city + " " + data[i].state + " " + data[i].zip 
                     + "<br> List Price: $" + data[i].price
                     + "<br><a href='/listings/sale/" + data[i].id + "'> More Info </a>"
-                    + " | "
-                    + "<form action='/listings/sale/" + data[i].id + "/favorite' method='POST'>"
-                    + "<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>"
-                    +"<input type='submit' value='Add to Favorites'></form>"
                     + "</div>"
                     });
                 }
