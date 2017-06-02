@@ -18,14 +18,19 @@
 }
 .contents table {
     margin-right:2em;
-
 }
 .contents ul {
     padding-left:0px;
+}
+.contents h3{
+    margin-top: 0;
 }
 .message_contents {
     margin-top:3em;
 }
 .inoutbox {
     margin-left:6em;
+}
+.message_contents h3{
+    margin-top: 0;
 }

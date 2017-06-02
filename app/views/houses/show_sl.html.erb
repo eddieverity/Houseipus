@@ -58,15 +58,15 @@
         </div>
         <div class="gallery">
         <h3>Gallery</h3>
-            <div class="col-sm-12">
+        
             <% if @images %>
                 <% @images.gallery.each do |i| %>
-                    <div class="thumbnail">
+                    <div class="thumbnail galimg">
                         <img src="<%=i.url%>">
                     </div>
                 <% end %>
                 <%end %>
-            </div>
+        
         </div>
     </div>
 </div>

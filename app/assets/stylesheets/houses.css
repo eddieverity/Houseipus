@@ -122,9 +122,25 @@
 .gallery{
     display: inline-block;
     vertical-align: top;
-    max-width: 300px;
+    width: 600px;
     margin-top: 2em;
+    margin-left: 1em;
 }
+
+.galimg {
+    display: inline-block;
+    vertical-align: top;
+    width: 250px;
+}
+.galimg img{
+    max-height: 250px;
+    display: inline-block;
+}
+.gallery .thumbnail{
+    margin: 0;
+    display: inline-block;
+}
+
 .infobox img{
     width: 300px;
     margin-bottom: .5em;
