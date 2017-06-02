@@ -32,6 +32,8 @@ class HousesController < ApplicationController
         if @data['results'][0]
             @addressform = @data['results'][0]['address_components']
 
+            puts @addressform.inspect
+
             # ADD STUFF HERE
             respond_to do |format|
 

@@ -6,6 +6,8 @@ class RentalListing < ApplicationRecord
   
   geocoded_by :full_address
 
+  validates :user_id, presence: true
+
   after_validation :geocode, if: ->(obj){ obj.full_address.present? and obj.address_changed? } 
 
   has_one :rental_image, dependent: :destroy
