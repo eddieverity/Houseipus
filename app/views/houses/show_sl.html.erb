@@ -7,6 +7,11 @@
                 <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %>
             </div>
 
+            <form action='/listings/sale/<%= @listing.id %>/favorite' method='POST'>
+                <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+                <input type='submit' value='Add to Favorites'>
+            </form>
+
             <h3>Listing Info</h3>
             <table class="table">
                 <tr>
@@ -35,6 +40,7 @@
                     <input type="submit" value="Contact This User" class="btn btn-primary">
                 </form>
             <% end %>
+
         </div>
         <div class="gallery">
         <h3>Gallery</h3>

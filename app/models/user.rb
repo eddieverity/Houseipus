@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :messages_received, class_name: 'Message', foreign_key: :receiver_id
   has_many :senders, -> { select('users.*, messages.content') }, through: :messages_received, source: :sender
 
+  has_many :rental_favorites
+  has_many :favorites
+
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: EMAIL_REGEX }
