@@ -20,3 +20,7 @@
 #checkboxdiv select{
     margin-bottom: .5em;
 }
+.message_contents{
+    vertical-align:top;
+    margin-top:0px;
+}

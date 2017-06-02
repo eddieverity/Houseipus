@@ -57,22 +57,23 @@
 
         </div>
         <div class="gallery">
-        <h3>Gallery</h3>
+            <h3>Gallery</h3>
         
-            <% if @images %>
-                <% @images.gallery.each do |i| %>
-                    <div class="thumbnail galimg">
-                        <img src="<%=i.url%>">
-                    </div>
-                <% end %>
+                <% if @images %>
+                    <% @images.gallery.each do |i| %>
+                        <div class="thumbnail galimg">
+                            <img src="<%=i.url%>">
+                        </div>
+                    <% end %>
                 <%end %>
+                <% if @listing.user_id == session[:user_id] && !@images %>
+                    <form action="/listings/sale/<%= @listing.id %>/photos" method="GET">
+                        <input type="submit" value="Add Photos" class="btn btn-primary">
+                    </form>
+                <% end %>
+        
+        </div>
 
-            </div>
-            <% if @listing.user_id == session[:user_id] %>
-                <form action="/listings/sale/<%= @listing.id %>/photos" method="GET">
-                    <input type="submit" value="Add Photos" class="btn btn-primary">
-                </form>
-            <% end %>
 
         </div>
 
