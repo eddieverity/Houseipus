@@ -66,8 +66,11 @@ function CheckboxChecked(b,d)
                 <% if @favorite_rentals %>
                   <ul>
                     <% @favorite_rentals.each do |f| %>
-                      <%= f.inspect %>
-                      <li><a href="/listings/rent/<%=f.sale_listing_id%>"><%= f.sale_listing_id %></a></li>
+                      <li><a href="/listings/rent/<%=f.rental_listing_id%>">
+                        <%= f.rental_listing.address %>
+                        <%= f.rental_listing.street %>
+                        <%= f.rental_listing.city %>
+                      </a></li>
                     <% end %>
                   </ul>
                 <% else %>
@@ -81,7 +84,12 @@ function CheckboxChecked(b,d)
               <% if @favorite_sales %>
                 <ul>
                   <% @favorite_sales.each do |s| %>
-                    <li><a href=""><%= s.id %></a></li>
+                  
+                    <li><a href="/listings/sale/<%=s.sale_listing_id%>">
+                      <%= s.sale_listing.address %>
+                      <%= s.sale_listing.street %>
+                      <%= s.sale_listing.city %>
+                    </a></li>
                   <% end %>
                 </ul>
               <% else %>
