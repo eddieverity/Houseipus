@@ -67,6 +67,12 @@
                 <% end %>
                 <%end %>
             </div>
+            <form action="/listings/sale/<%= @listing.id %>/photos" method="GET">
+                <input type="submit" value="Add Photos" class="btn btn-primary">
+            </form>
+
+
         </div>
+
     </div>
 </div>
