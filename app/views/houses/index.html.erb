@@ -21,16 +21,17 @@
     </div>
 </div>
 <div class="sub-hero container">
-    <h3>New Listings</h3>
-    <% @recent.each do |r| %>
-    <a href="/listings/sale/<%=r.id%>">
-        <div class="shgroup">
-        <img src="<%=r.image.gallery[0].url%>">
-       <%=r.address%> <%=r.street%><br>
-       <%= r.city %> <%= r.state %> <%=r.zip%><br>
-       Listed: <%= time_ago_in_words(r.created_at) %> ago
-        </div>
-    </a>
-    <% end %>
-   
+    <div class="newlistings">
+        <h3>New Listings</h3>
+        <% @recent.each do |r| %>
+        <a href="/listings/sale/<%=r.id%>">
+            <div class="shgroup">
+            <img src="<%=r.image.gallery[0].url%>">
+        <%=r.address%> <%=r.street%><br>
+        <%= r.city %> <%= r.state %> <%=r.zip%><br>
+        Listed: <%= time_ago_in_words(r.created_at) %> ago
+            </div>
+        </a>
+        <% end %>
+    </div>
 </div>

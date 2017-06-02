@@ -23,7 +23,7 @@
       <% @listings.each do |f| %>
         <div class="favebox">
         <% if f.rental_image %>
-          <img src="<%= f.rental_image.gallery[0].url %>"/>
+          <a href="/listings/rent/<%=f.id%>"><img src="<%= f.rental_image.gallery[0].url %>"/></a>
          <% else%>
           <a href="/listings/rent/<%=f.id%>"><div class="fillerimg"></div></a>
         <% end %><p>

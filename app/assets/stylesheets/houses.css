@@ -4,6 +4,7 @@
     width: 30%;
     margin-right: 3em;
     margin-top: 2em;
+    height: 500px;
 }
 .signins input{
     margin-bottom: .5em;
@@ -172,11 +173,15 @@
     margin-left: .5em;
     color:white;
 }
+.favebox p:hover{
+    text-decoration: none;
+}
 .favebox a{
     color: white;
 }
 .favebox a:hover{
     color:white;
+    text-decoration: none;
 }
 .fillerimg{
     height: 185px;
@@ -221,4 +226,18 @@
 .filterbuy input[type=number]{
     display: inline-block;
     width: 20%;
+}
+.rentalphotos{
+    height: 500px;
+}
+.rentalphotos form{
+    width: 30%;
+}
+
+.rentalphotos form input{
+    margin-bottom: .5em;
+}
+
+.newlistings{
+    margin: 0 auto;
 }
