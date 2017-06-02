@@ -71,17 +71,18 @@
 }
 
 .sub-hero{
-    margin: 1em auto;
+    margin: 0 auto;
 }
 
 .shgroup{
     display: inline-block;
-    margin: 0 4em;
+    margin-right: 1em;
+    margin-bottom: 2em;
 }
 
-.shgroup li{
-    list-style-type: none;
-    margin-left: -2.7em;
+.shgroup img{
+    width: 200px;
+    display: block;
 }
 
 .sellform{
@@ -142,6 +143,9 @@
     margin-right: 3em;
     width: 275px;
     overflow-y: auto;
+}
+.buyfaves h3{
+    margin-top: 0;
 }
 .favebox img{
     width: 100%;

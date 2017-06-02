@@ -11,6 +11,8 @@ if (split[2] == "house_sell"){
 
         var query = split[split.length-1]
 
+        var img = "/assets/octolocator-9a92a78840247e9ba23bab7e112f0df57eb994539283dcf71dc062476748d490.png"
+
         var fullquery = function(){
             $.get(query +'.json', function(data){
 
@@ -41,7 +43,8 @@ if (split[2] == "house_sell"){
                         animation: google.maps.Animation.DROP,
                         position: latlong,
                         map: map,
-                        title: 'Add your listing information'
+                        title: 'Add your listing information',
+                        icon: img
                     });
                 }
             }   

@@ -18,6 +18,8 @@ function initMap() {
 
     var listings;
 
+    var img = "/assets/octolocator-9a92a78840247e9ba23bab7e112f0df57eb994539283dcf71dc062476748d490.png"
+
 var fullquery = function(){
 
     if ((filter && !beds) || (filter && beds == 0)){ //check if there are filters
@@ -58,7 +60,8 @@ var fullquery = function(){
                 position: {lat: data[i].latitude, lng: data[i].longitude },
                 map: map,
                 url: "/listings/sale/" + data[i].id,
-                id: i
+                id: i,
+                icon: img
             }) // close of marker creator
 
             //2 types of markers for listings that have or do not have images
@@ -136,7 +139,8 @@ var fullquery = function(){
                 position: {lat: data[i].latitude, lng: data[i].longitude },
                 map: map,
                 url: "/listings/sale/" + data[i].id,
-                id: i
+                id: i,
+                icon: img
             }) // close of marker creator
 
             //2 types of markers for listings that have or do not have images
@@ -215,7 +219,8 @@ var fullquery = function(){
                 position: {lat: data[i].latitude, lng: data[i].longitude },
                 map: map,
                 url: "/listings/sale/" + data[i].id,
-                id: i
+                id: i, 
+                icon: img
             }) // close of marker creator
 
             //2 types of markers for listings that have or do not have images

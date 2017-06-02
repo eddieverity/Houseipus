@@ -3,8 +3,7 @@
   <head>
     <title>Houseipus</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -28,8 +27,8 @@
                 <form action="/houses/routes" method="POST">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                   <input type="hidden" name="searchtype" value="buy">
-                  <input type="text" name="location"   placeholder="Address, zip or city">
-                  <input type="submit" value="Search for Sale">
+                  <input type="text" name="location"   placeholder="Address, zip, or city" class="form-control placholderedit">
+                  <input type="submit" value="Search for Sale" class="btn">
                 </form>
               </div>
             </div>
@@ -44,8 +43,8 @@
                 <form action="/houses/routes" method="POST">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                   <input type="hidden" name="searchtype" value="rent">
-                  <input type="text" name="location"   placeholder="Address, zip or city">
-                  <input type="submit" value="Rentals">
+                  <input type="text" name="location"   placeholder="Address, zip, or city" class="form-control placholderedit">
+                  <input type="submit" value="Rentals" class="btn">
                 </form>
               </div>
             </div>
@@ -60,8 +59,8 @@
                 <form action="/houses/routes" method="POST">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                   <input type="hidden" name="searchtype" value="sell">
-                  <input type="text" name="location"   placeholder="Address, zip or city">
-                  <input type="submit" value="List Property">
+                  <input type="text" name="location"   placeholder="Address, zip or, city" class="form-control placholderedit">
+                  <input type="submit" value="List Property" class="btn">
                 </form>
               </div>
             </div>

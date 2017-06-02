@@ -21,49 +21,16 @@
     </div>
 </div>
 <div class="sub-hero container">
-    <div class="shgroup">
-        <h5>Heading</h5>
-        <ul>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-        </ul>
-    </div>
-    <div class="shgroup">
-        <h5>Heading</h5>
-        <ul>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-        </ul>
-    </div>
-    <div class="shgroup">
-        <h5>Heading</h5>
-        <ul>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-        </ul>
-    </div>
-    <div class="shgroup">
-        <h5>Heading</h5>
-        <ul>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-        </ul>
-    </div>
-    <div class="shgroup">
-        <h5>Heading</h5>
-        <ul>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-            <li>Lorem</li>
-            <li>Ipsum</li>
-        </ul>
-    </div>
+    <h3>New Listings</h3>
+    <% @recent.each do |r| %>
+    <a href="/listings/sale/<%=r.id%>">
+        <div class="shgroup">
+        <img src="<%=r.image.gallery[0].url%>">
+       <%=r.address%> <%=r.street%><br>
+       <%= r.city %> <%= r.state %> <%=r.zip%><br>
+       Listed: <%= time_ago_in_words(r.created_at) %> ago
+        </div>
+    </a>
+    <% end %>
+   
 </div>
