@@ -36,8 +36,8 @@ class UsersController < ApplicationController
         @inbox = Message.where('receiver_id = ?', session[:user_id])
         @outbox = Message.where('sender_id = ?', session[:user_id])
 
-        @favorite_rentals = Favorite.includes(:sale_listing).where('user_id = ?', session[:user_id])
-        @favorite_sales = RentalFavorite.includes(:rental_listing).where('user_id = ?', session[:user_id])
+        @favorite_sales = Favorite.includes(:sale_listing).where('user_id = ?', session[:user_id])
+        @favorite_rentals = RentalFavorite.includes(:rental_listing).where('user_id = ?', session[:user_id])
         puts '################'
         puts @favorite_sales.inspect
 
