@@ -6,6 +6,10 @@
                 <%= @listing.address %> <%= @listing.street %><br>
                 <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %>
             </div>
+            <h3>Description</h3>
+            <div class="address well">
+                <%= @listing.description %><br>
+            </div>
 
             <form action='/listings/sale/<%= @listing.id %>/favorite' method='POST'>
                 <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>

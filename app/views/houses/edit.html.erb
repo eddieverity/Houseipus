@@ -1,17 +1,24 @@
 
 <div class="container">
     <div class="signins">
-<form action="/listings/sale/<%=@listing.id%>" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <label>Bedrooms</label>
-    <input type="number" name="listing[bed]" value="<%=@listing.bed %>" class="form-control" min="1">
-    <label>Bathrooms</label>
-    <input type="number" name="listing[bath]" value="<%=@listing.bath %>" class="form-control" min="1">
-    <label>Area (square feet)</label>
-    <input type="number" name="listing[footage]" value="<%= @listing.footage %>" class="form-control" min="0">
-    <label>Price</label>
-    <input type="number" name="listing[price]" value="<%= @listing.price %>" class="form-control" min="0">
+<form action="/listings/sale/<%=@listing.id%>" method="POST" id="sale_listing_form">
+    <div class="signins">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <label>Bedrooms</label>
+        <input type="number" name="listing[bed]" value="<%=@listing.bed %>" class="form-control" min="1">
+        <label>Bathrooms</label>
+        <input type="number" name="listing[bath]" value="<%=@listing.bath %>" class="form-control" min="1">
+        <label>Area (square feet)</label>
+        <input type="number" name="listing[footage]" value="<%= @listing.footage %>" class="form-control" min="0">
+        <label>Price</label>
+        <input type="number" name="listing[price]" value="<%= @listing.price %>" class="form-control" min="0">
+    </div>
+    <div class="signins">
+    <label>Description</label>
+    <textarea rows="4" cols="50" name="listing[description]"><%= @listing.description %></textarea>
     <input type="submit" value="Submit" class="btn btn-primary">
+    </div>
 </form>
 </div>
+
 </div>

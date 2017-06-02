@@ -382,7 +382,7 @@ private
     end
 
     def listing_data
-        params.require(:listing).permit(:bed, :bath, :footage, :price)
+        params.require(:listing).permit(:bed, :bath, :footage, :price, :description)
     end
     
     
