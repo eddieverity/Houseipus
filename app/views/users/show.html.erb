@@ -37,7 +37,7 @@ function CheckboxChecked(b,d)
         <ul>
           <% if @sale_listings.length > 0 %>
             <% @sale_listings.each do |s| %>
-              <li><a href=""><%= s.address %> <%= s.street %> <%= s.city %></a></li>
+              <li><a href="/listings/sale/<%= s.id %>"><%= s.address %> <%= s.street %> <%= s.city %></a></li>
             <% end %>
           <% else %>
             <li>No current listings</li>
@@ -47,7 +47,7 @@ function CheckboxChecked(b,d)
         <ul>
           <% if @rental_listings.length > 0 %>
             <% @rental_listings.each do |r| %>
-              <li><a href=""><%= r.address %> <%= r.street %> <%= r.city %></a></li>
+              <li><a href="/listings/rent/<%= r.id %>"><%= r.address %> <%= r.street %> <%= r.city %></a></li>
             <% end %>
           <% else %>
             <li>No current listings</li>
@@ -63,22 +63,25 @@ function CheckboxChecked(b,d)
         <h3>Favorite Listings</h3>
           <ul>
             <li>Rentals</li>
-              <% if @favorite_rental.length > 0 %>
-                <ul>
-                  <% @favorites_rental.each do |f| %>
-                    <li><a href=""><%= f.rental_listing.title %></a></li>
-                  <% end %>
-                </ul>
-              <% else %>
-                <ul>
-                  <li>No Rental Listings favorited</li>
-                </ul>
-              <% end %>
+                <% if @favorite_rentals %>
+                  <ul>
+                    <% @favorite_rentals.each do |f| %>
+                      <%= f.inspect %>
+                      <li><a href="/listings/rent/<%=f.sale_listing_id%>"><%= f.sale_listing_id %></a></li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  <ul>
+                    <li>No Rental Listings favorited</li>
+                  </ul>
+                <% end %>
+
             <li>For Sale</li>
-              <% if @favorite_sales.length > 0 %>
+
+              <% if @favorite_sales %>
                 <ul>
-                  <% @favorites_sales.each do |s| %>
-                    <li><a href=""><%= f.sale_listing.title %></a></li>
+                  <% @favorite_sales.each do |s| %>
+                    <li><a href=""><%= s.id %></a></li>
                   <% end %>
                 </ul>
               <% else %>
