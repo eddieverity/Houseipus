@@ -34,3 +34,10 @@
 .message_contents h3{
     margin-top: 0;
 }
+.trunk{
+    width:100px;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+
+}

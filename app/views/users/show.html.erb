@@ -144,7 +144,7 @@ function CheckboxChecked(b,d)
                       <td>                       
                       <form class="message_buttons" action="/messages/viewed/<%= i.id %>" method="POST">
                           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                          <input type="submit" value="<%= i.title %>" class="btn btn-info btn-sm" 
+                          <input type="submit" value="<%= i.title.truncate(12) %>" class="btn btn-info btn-sm" 
                             <% if i.viewed == false %>
                               style="background-color:red;" 
                             <% end %>
@@ -194,7 +194,7 @@ function CheckboxChecked(b,d)
                         <% if o.viewed == false %>
                           style="background-color:red;" 
                         <% end %>
-                        ><%= o.title %>
+                        ><%= o.title.truncate(12) %>
                       </button>
                       <div class="modal fade" id="myModalo<%= o.id %>" role="dialog">
                         <div class="modal-dialog">

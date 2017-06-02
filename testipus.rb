@@ -1,0 +1,1 @@
+puts 'asd;flkjasdf;lkjasd;flkjas'.truncate(5)
