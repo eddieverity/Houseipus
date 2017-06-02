@@ -161,7 +161,7 @@ var fullquery = function(){
                 });
 
         } //close of for loop
-    })
+        })
 
     }
 
