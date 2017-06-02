@@ -4,6 +4,11 @@ class HousesController < ApplicationController
     require 'json' 
 
 
+    def index
+        @recent = SaleListing.joins(:image).last(5).reverse
+    end
+    
+
     def routes
         @location = params[:location]
         if params[:searchtype] == 'sell'
