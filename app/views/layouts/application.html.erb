@@ -91,7 +91,9 @@
               <% end %>
 
               <% if @count > 0 %>
-                <a href="/messages/show/<%=session[:user_id]%>"><%= @count %> unread messages</a>
+              <div class="msgbadge">
+                <a href="/messages/show/<%=session[:user_id]%>"><%= @count %></a> 
+                </div> unread messages
               <% end %>
             <% end %> 
 

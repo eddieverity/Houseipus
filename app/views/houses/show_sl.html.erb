@@ -58,21 +58,21 @@
         </div>
         <div class="gallery">
         <h3>Gallery</h3>
-            <div class="col-sm-12">
+        
             <% if @images %>
                 <% @images.gallery.each do |i| %>
-                    <div class="thumbnail">
+                    <div class="thumbnail galimg">
                         <img src="<%=i.url%>">
                     </div>
                 <% end %>
                 <%end %>
+
             </div>
             <% if @listing.user_id == session[:user_id] %>
                 <form action="/listings/sale/<%= @listing.id %>/photos" method="GET">
                     <input type="submit" value="Add Photos" class="btn btn-primary">
                 </form>
             <% end %>
-
 
         </div>
 
