@@ -10,17 +10,41 @@ function CheckboxChecked(b,d)
 </script>
 
 <div class="container">
-    <div class="signins">
+    <div class="signins well">
       <h3>Personal Details</h3>
-      <ul>
-        <li>Email: <%= @user.email %> </li>
+      
+
+
+
+
+      <table class="table">
+        <tr>
+          <td>Email:</td>
+          <td><%= @user.email %></td>
+        </tr>
         <% if @user.agent != nil %>
-          <li>Agent Type: <%= @user.agent %></li>
-          <li>Name: <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></li>
-          <li>Zip Code: <%= @user.addr %></li>
-          <li>Phone Number: <%= @user.phone %></li>
+        <tr>
+          <td>Agent Type:</td>
+          <td><%= @user.agent %></td>
+        </tr>
+        <tr>
+          <td>Name:</td>
+          <td><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></td>
+        </tr>
+        <tr>
+          <td>Zip Code:</td>
+          <td><%= @user.addr %></td>
+        </tr>
+        <tr>
+          <td>Phone:</td>
+          <td><%= @user.phone %></td>
+        </tr>
         <% end %>
-      </ul>
+      </table>
+
+
+
+
       <% if @user.id == session[:user_id] %>
         <form action="/users/edit/<%= @user.id %>" method="GET">
           <input type="submit" value="Edit User Details" class="btn btn-primary">
@@ -32,7 +56,7 @@ function CheckboxChecked(b,d)
       <% end %>
     </div>
     <% if @user.agent != nil %> 
-      <div class="signins">
+      <div class="signins well">
         <h3>Sale Listings</h3>
         <ul>
           <% if @sale_listings.length > 0 %>
@@ -59,7 +83,7 @@ function CheckboxChecked(b,d)
     <% end %>
 
     <% if @favorite_rentals != nil or @favorite_sales != nil %>
-      <div class="signins">
+      <div class="signins well">
         <h3>Favorite Listings</h3>
           <ul>
             <li>Rentals</li>
@@ -101,106 +125,109 @@ function CheckboxChecked(b,d)
       </div>
     <% end %>
 
-    <% if @user.id == session[:user_id] %>
-      <div class="signins">
-        <h3><a href="/messages/show/<%= session[:user_id] %>">Messages</a></h3>
-            <ul>
-              <% if @inbox.length > 0 %>
-                <li>Inbox</li>
-                  <ul>
-                    <% @inbox.each do |i| %>
-                      <li>
-
-                       
-                    <form action="/messages/viewed/<%= i.id %>" method="POST">
-                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                        <input type="submit" value="<%= i.title %>" class="btn btn-info btn-sm" 
 
 
-                          <% if i.viewed == false %>
-                            style="background-color:red;" 
-                          <% end %>
-                            data-toggle="modal" data-target="#myModali<%= i.id%>">
-                    </form>
-
-
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModali<%= i.id %>" role="dialog">
-                          <div class="modal-dialog">
-                          
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Title: <%= i.title %></h4>
-                              </div>
-                              <div class="modal-body">
-                                <p>Message: <%= i.content %></p>
-                                <hr>
-                                <p><a href="/messages/contact/<%= i.sender_id%>/<%= i.receiver_id %>">Reply</a></p>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal" onClick="window.location.reload()">Close</button>
-                              </div>
+  <% if @user.id == session[:user_id] %>
+    <div class="signins">
+    <div class="well contents message_contents">
+      <h3><a href="/messages/show/<%= session[:user_id] %>">Messages</a></h3>
+          <ul>
+            <% if @inbox.length > 0 %>
+              <h4 class="inoutbox">Inbox</h4>
+                  <table class="table table-hover">
+                    <tr>
+                      <th>Title</th>
+                      <th>Received from</th>
+                    </tr>
+                  <% @inbox.each do |i| %>
+                    <tr>
+                      <td>                       
+                      <form class="message_buttons" action="/messages/viewed/<%= i.id %>" method="POST">
+                          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                          <input type="submit" value="<%= i.title %>" class="btn btn-info btn-sm" 
+                            <% if i.viewed == false %>
+                              style="background-color:red;" 
+                            <% end %>
+                          data-toggle="modal" data-target="#myModali<%= i.id%>">
+                      </form>
+                      <div class="modal fade" id="myModali<%= i.id %>" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Title: <%= i.title %></h4>
                             </div>
-                            
-                          </div>
-                        </div>
-
-                        sent from <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email %></a></li>
-                    <% end %>
-                  </ul>
-              <% end %>
-              <% if @outbox.length > 0 %>
-                <li>Outbox</li>
-                  <ul>
-                    <% @outbox.each do |o| %>
-                      <li>
-
-
-
- <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalo<%= o.id %>"
-                           <% if o.viewed == false %>
-                            style="background-color:red;" 
-                          <% end %>
-
-  ><%= o.title %> </button>
-
-
-
-
-                        <div class="modal fade" id="myModalo<%= o.id %>" role="dialog">
-                          <div class="modal-dialog">
-                          
-
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Title: <%= o.title %></h4>
-                              </div>
-                              <div class="modal-body">
-                                <p>Message: <%= o.content %></p>
-                                <hr>
-                                <p><a href="/messages/contact/<%= o.receiver_id%>/<%= o.sender_id %>">Reply</a></p>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              </div>
+                            <div class="modal-body">
+                              <p>Message: <%= i.content %></p>
+                              <hr>
+                              <p><a href="/messages/contact/<%= i.sender_id%>/<%= i.receiver_id %>">Reply</a></p>
                             </div>
-                            
-                          </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+                            </div>
+                          </div>     
                         </div>
+                      </div>
+                      </td>
+                      <td>
+                        <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email %></a>
+                      </td>
+                    </tr>
+                  <% end %>
+              </table>
+                
+            <% end %>
 
 
 
-                        sent to <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a></li>
-                    <% end %>
-                  </ul>
-              <% end %>
-            </ul>
-      </div>
-    <% end %>
+            <% if @outbox.length > 0 %>
+              <h4 class="inoutbox">Outbox</h4>
+                <table class="table table-hover">
+                  <tr>
+                    <th>Title</th>
+                    <th>Sent To</th>
+                  </tr>
+                  <% @outbox.each do |o| %>
+                  <tr>
+                    <td>
+                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalo<%= o.id %>"
+                        <% if o.viewed == false %>
+                          style="background-color:red;" 
+                        <% end %>
+                        ><%= o.title %>
+                      </button>
+                      <div class="modal fade" id="myModalo<%= o.id %>" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close"  data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Title: <%= o.title %></h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Message: <%= o.content %></p>
+                              <hr>
+                              <p><a href="/messages/contact/<%= o.receiver_id%>/<%= o.sender_id %>">Reply</a></p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div> 
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a>
+                    </td>
+                  </tr>
+                  <% end %>
+                </table>
+            <% end %>
+          </ul>
+    </div>
+    </div>
+
+  <% end %>
+
 
 
     <div class="signinimage"></div>
