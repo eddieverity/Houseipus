@@ -226,12 +226,53 @@ class HousesController < ApplicationController
     def show_sl
         @listing = SaleListing.find(params[:sale_id])
         @images = Image.find_by(sale_listing_id: params[:sale_id])
+        @myfavs = Favorite.where('user_id = ?', session[:user_id])
+
+        @already_fav = false
+        @myfavs.each do |m| 
+            if m.sale_listing_id == @listing.id
+                @already_fav = true
+            end
+        end
     end
 
     def rentalshow
         @listing = RentalListing.find(params[:rental_id])
         @images = RentalImage.find_by(rental_listing_id: params[:rental_id])
+        @myfavs = RentalFavorite.where('user_id = ?', session[:user_id])
+
+        @already_fav = false
+        @myfavs.each do |m| 
+            if m.rental_listing_id == @listing.id
+                @already_fav = true
+            end
+        end
+
+
     end
+
+    def favorite_delete
+        @delete = Favorite.find_by('sale_listing_id = ?', params[:sale_id])
+
+        Favorite.delete(@delete.id)
+
+        redirect_back(fallback_location: root_path)
+        #Favorite.destroy('sale_listing_id = ?', params[:favorite_id])
+        
+    end
+
+    def favorite_rental_delete
+        @delete = RentalFavorite.find_by('rental_listing_id = ?', params[:rental_id])
+        puts params[:rental_id]
+
+        RentalFavorite.delete(@delete.id)
+
+        redirect_back(fallback_location: root_path)
+
+        
+    end
+
+
 
     def maptest
         @url = 'https://maps.googleapis.com/maps/api/geocode/json?address=60640&sensor=false'
@@ -340,12 +381,11 @@ class HousesController < ApplicationController
         @favorite = Favorite.new(sale_listing_id: params[:sale_id], user_id: session[:user_id])
 
         if @favorite.save
-            redirect_to '/'
+            redirect_back(fallback_location: root_path)
         else
-            puts @favorite.errors.full_messages
-            puts session[:user_id]
+
             flash[:errors] = @favorite.errors.full_messages
-            redirect_to '/'
+            redirect_back(fallback_location: root_path)
         end      
     end
 
@@ -354,11 +394,11 @@ class HousesController < ApplicationController
 
         if @favorite.save
 
-            redirect_to '/'
+            redirect_back(fallback_location: root_path)
         else
 
             flash[:errors] = @favorite.errors.full_messages
-            redirect_to '/'
+            redirect_back(fallback_location: root_path)
         end      
     end
     

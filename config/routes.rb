@@ -70,12 +70,16 @@ Rails.application.routes.draw do
 
   post 'listings/sale/:sale_id/favorite' => 'houses#favorite'
 
+  post 'listings/sale/:sale_id/favorite/delete' => 'houses#favorite_delete'
+
   get 'listings/rent/:rental_id/photos' => 'houses#rentalphotos'
 
 
   post 'listings/rent/:rental_id/photos' => 'houses#addrentalphotos'
 
   post 'listings/rent/:rental_id/favorite' => 'houses#rentalfavorite'
+
+  post 'listings/rent/:rental_id/favorite/delete' => 'houses#favorite_rental_delete'
 
   post 'messages/viewed/:id' => 'messages#viewed'
 

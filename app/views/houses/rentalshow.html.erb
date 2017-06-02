@@ -11,10 +11,17 @@
                 <%= @listing.description %><br>
             </div>
 
-            <form action='/listings/rent/<%= @listing.id %>/favorite' method='POST'>
-                <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-                <input type='submit' value='Add to Favorites' class="btn btn-danger">
-            </form>
+            <% if !@already_fav %>
+                <form action='/listings/rent/<%= @listing.id %>/favorite' method='POST'>
+                    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+                    <input type='submit' value='Add to Favorites' class="btn btn-danger">
+                </form>
+            <% else %>
+                <form action='/listings/rent/<%= @listing.id %>/favorite/delete' method='POST'>
+                    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+                    <input type='submit' value='Remove from Favorites' class="btn btn-danger">
+                </form>
+            <% end %>
 
             <h3>Listing Info</h3>
             <table class="table">
