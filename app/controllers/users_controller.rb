@@ -38,10 +38,7 @@ class UsersController < ApplicationController
 
         @favorite_sales = Favorite.includes(:sale_listing).where('user_id = ?', session[:user_id])
         @favorite_rentals = RentalFavorite.includes(:rental_listing).where('user_id = ?', session[:user_id])
-        puts '################'
-        puts @favorite_sales.inspect
 
-        puts '################'
     end
 
     def edit
