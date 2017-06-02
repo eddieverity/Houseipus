@@ -147,23 +147,6 @@ class HousesController < ApplicationController
             redirect_to "/houses/house_rent/#{params[:location]}/filters/#{params[:filters][:price]}"
         end
     end
-
-    #backup of filter_rent method
-    # def filter_rent
-    #     locator(params[:location])
-
-    #     @listings = RentalListing.includes(:rental_image).where('price < ?', params[:filters][:price]).within(10, :origin => params[:location])      
-
-    #     @alllistings = @listings.to_json(:include => :rental_image)
-  
-    #     respond_to do |format|
-
-    #         format.html { redirect_to "/houses/house_rent/#{params[:location]}/filters/#{params[:filters][:price]}" }
-    #         format.json { render json: @alllistings }
-
-    #     end
-
-    # end
     
     def filtered_rent
 

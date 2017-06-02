@@ -7,6 +7,8 @@ class SaleListing < ApplicationRecord
     geocoded_by :full_address
     reverse_geocoded_by :latitude, :longitude
 
+    validates :user, presence: true
+
     has_one :image, dependent: :destroy
     has_many :favorites, dependent: :destroy
 

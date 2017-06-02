@@ -48,6 +48,11 @@
     <%else %>
     <p>Select a specific address to add a listing.</p>
     <% end %>
+    <% if flash[:errors] %>
+            <% flash[:errors].each do |error| %>
+                <p><%= error %></p>
+            <% end %>
+        <% end %>
 </div>
 <div id="map"></div>
    
