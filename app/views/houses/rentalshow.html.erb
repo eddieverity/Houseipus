@@ -63,6 +63,12 @@
                 <% end %>
                 <%end %>
             </div>
+            <% if @listing.user_id == session[:user_id] %>
+                <form action="/listings/rent/<%= @listing.id %>/photos" method="GET">
+                    <input type="submit" value="Add Photos" class="btn btn-primary">
+                </form>
+            <% end %>
+
         </div>
     </div>
 </div>
