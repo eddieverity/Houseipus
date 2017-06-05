@@ -162,13 +162,16 @@
 
     .buyfaves{
         height:80%;
-        float:right;
         margin-right: 3em;
-        width: 275px;
+        width: 100%;
         overflow-y: auto;
+        padding: .5em;
     }
     .buyfaves h3{
         margin-top: 0;
+    }
+    .favebox{
+        width: 100%;
     }
     .favebox img{
         width: 100%;
@@ -197,12 +200,11 @@
     }
     .filterbar{
         width: 100%;
-        height: 50px;
-        padding-left: 165px;
-        padding-top: 7px;
+        margin: 2em;
     }
-    .filterbar input{
-        display: inline-block; 
+    .filterbar input, label{
+        display: block; 
+        margin-bottom: .5em;
     }
     .updatebuy{
         width: 300px;
