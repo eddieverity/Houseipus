@@ -37,8 +37,8 @@ gem 'geokit-rails'
 gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
-gem "figaro"
+#gem 'mailgun-ruby', '~>1.0.2', require: 'mailgun'
+#gem "figaro"
 gem 'delayed_job_active_record'
 
 gem 'filterrific'

@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
 
+
         if @user.save
+            #UserMailer.welcome_email(@user).deliver_later
             session[:user_id] = @user.id
             session[:user_email] = @user.email
             redirect_to '/'
@@ -20,6 +22,8 @@ class UsersController < ApplicationController
         @user = User.find_by('email = ?', params[:user][:email])
 
         if @user && @user.authenticate(params[:user][:password])
+            ##email tester
+            UserMailer.welcome_email(@user).deliver_later
             session[:user_id] = @user.id
             session[:user_email] = @user.email
             redirect_to '/'
