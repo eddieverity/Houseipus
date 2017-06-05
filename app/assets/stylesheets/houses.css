@@ -1,243 +1,757 @@
-.signins{
-    display: inline-block;
-    vertical-align: top;
-    width: 30%;
-    margin-right: 3em;
-    margin-top: 2em;
-    height: 500px;
-}
-.signins input{
-    margin-bottom: .5em;
-}
-.hero{
-    width:100%;
-    height: 450px;
-    background:  linear-gradient(
-      rgba(0, 0, 0, 0.45), 
-      rgba(0, 0, 0, 0.45)
-    ), url('hero.jpg'), no-repeat;
-    background-position: center;
-    background-size: cover;
-    padding-left: 75px;
+@media only screen and (max-width: 480px) {
+    .signins{
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        margin-right: 3em;
+        margin-top: 2em;
+        height: 500px;
+    }
+    .signins input{
+        margin-bottom: .5em;
+    }
+    .hero{
+        width:100%;
+        height: 450px;
+        background:  linear-gradient(
+        rgba(0, 0, 0, 0.45), 
+        rgba(0, 0, 0, 0.45)
+        ), url('hero.jpg'), no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding-top: 7em;
+    }
+
+    .form-inline input[type=text]{
+        width: 73%;
+        display: inline-block;
+    }
+
+    .hero-search{
+        width: 100%;
+        margin-left: 1.5em;
+    }
+
+    .hero-search h1{
+        font-size: 2.5em;
+    }
+
+    .hero-search label {
+        float:left;
+        color: white;
+        width:28%;
+        margin-right: 7px;
+        margin-bottom: 1em;
+        background: rgb(1, 1, 1);                   
+        background: rgba(1, 1, 1, .5);
+        border-radius:4px;
+        border:1px solid #D0D0D0;
+        overflow:auto;       
+    }
+
+    .hero-search label span {
+        text-align:center;
+        font-size: 32px;
+        padding: 3px 0px;
+        display:block;
+    }
+
+    .hero-search label input {
+        position:absolute;
+        top:-20px;
+    }
+
+    .hero-search input:checked + span {
+        background-color:#0074E4;
+        color:#F7F7F7;
+    }
+
+    .hero-search label:hover {
+        background:#DDD;
+        color: #0074E4
+    }
+
+    .hero-label{
+        font-size: 3em;
+        color: white;
+    }
+
+    .sub-hero{
+        margin: 0 auto;
+    }
+
+    .shgroup{
+        width: 100%;
+        display: inline-block;
+        margin-right: 1em;
+        margin-bottom: 2em;
+    }
+
+    .shgroup img{
+        width: 100%;
+        display: block;
+    }
+
+    .sellform{
+        float:right;
+        margin-right: 3em;
+    }
+
+    .sellform label, input{
+        display: block;
+    }
+
+    .sellform input{
+        margin-bottom: .5em;
+    }
+    .infobox form{
+        display: inline-block;
+    }
+    .infobox input[type=submit]{
+        background:none!important;
+        border:none; 
+        padding:0!important;
+        color: #337AB7;
+        cursor:pointer;
+    }
+    .infobox input[type=submit]:hover{
+        text-decoration:underline;
+    }
+    .listingdata{
+        display: inline-block;
+        vertical-align: top;
+        width: 400px;
+        height: 600px;
+        margin-top: 2em;
+    }
+
+    .gallery{
+        display: inline-block;
+        vertical-align: top;
+        width: 600px;
+        margin-top: 2em;
+        margin-left: 1em;
+    }
+
+    .galimg {
+        display: inline-block;
+        vertical-align: top;
+        width: 250px;
+    }
+    .galimg img{
+        max-height: 250px;
+        display: inline-block;
+    }
+    .gallery .thumbnail{
+        margin: 0;
+        display: inline-block;
+    }
+
+    .infobox img{
+        width: 300px;
+        margin-bottom: .5em;
+    }
+
+    .photoform{
+        width: 400px;
+        margin-top: 3em;
+    }
+    .photoform input{
+        margin-bottom: .5em;
+    }
+
+    .buyfaves{
+        height:80%;
+        float:right;
+        margin-right: 3em;
+        width: 275px;
+        overflow-y: auto;
+    }
+    .buyfaves h3{
+        margin-top: 0;
+    }
+    .favebox img{
+        width: 100%;
+    }
+    .favebox p{
+        margin-top: -65px;
+        margin-left: .5em;
+        color:white;
+    }
+    .favebox p:hover{
+        text-decoration: none;
+    }
+    .favebox a{
+        color: white;
+    }
+    .favebox a:hover{
+        color:white;
+        text-decoration: none;
+    }
+    .fillerimg{
+        height: 185px;
+        background:url('modelhome.png');
+        background-size: 275px 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .filterbar{
+        width: 100%;
+        height: 50px;
+        padding-left: 165px;
+        padding-top: 7px;
+    }
+    .filterbar input{
+        display: inline-block; 
+    }
+    .updatebuy{
+        width: 300px;
+
+        display:inline-block;
+        vertical-align:top;
+        font-size:.8em;
+        margin-bottom:0;
+    }
+    .updatebuy p {
+        margin:0;
+
+        display: inline-block;
+
+    }
+    .updatebuy input[type=text]{
+        width: 200px;
+        display: inline-block;
+    }
+
+    .filterbuy{
+        width: 600px;
+        display: inline-block;
+    }
+
+    .filterbuy input[type=number]{
+        display: inline-block;
+        width: 20%;
+    }
+    .rentalphotos{
+        height: 500px;
+    }
+    .rentalphotos form{
+        width: 30%;
+    }
+
+    .rentalphotos form input{
+        margin-bottom: .5em;
+    }
+
+    .newlistings{
+        margin: 0 auto;
+    }
 }
 
-.form-inline input[type=text]{
-    width: 450px;
+@media only screen and (min-width: 481px) {
+    .signins{
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        margin-right: 3em;
+        margin-top: 2em;
+        height: 500px;
+    }
+    .signins input{
+        margin-bottom: .5em;
+    }
+   .hero{
+        width:100%;
+        height: 450px;
+        background:  linear-gradient(
+        rgba(0, 0, 0, 0.45), 
+        rgba(0, 0, 0, 0.45)
+        ), url('hero.jpg'), no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding-top: 7em;
+    }
+
+    .form-inline input[type=text]{
+        width: 73%;
+        display: inline-block;
+    }
+
+    .hero-search{
+        width: 100%;
+        margin-left: 1.5em;
+    }
+
+    .hero-search h1{
+        font-size: 2.5em;
+    }
+
+    .hero-search label {
+        float:left;
+        color: white;
+        width:28%;
+        margin-right: 7px;
+        margin-bottom: 1em;
+        background: rgb(1, 1, 1);                   
+        background: rgba(1, 1, 1, .5);
+        border-radius:4px;
+        border:1px solid #D0D0D0;
+        overflow:auto;       
+    }
+
+    .hero-search label span {
+        text-align:center;
+        font-size: 32px;
+        padding: 3px 0px;
+        display:block;
+    }
+
+    .hero-search label input {
+        position:absolute;
+        top:-20px;
+    }
+
+    .hero-search input:checked + span {
+        background-color:#0074E4;
+        color:#F7F7F7;
+    }
+
+    .hero-search label:hover {
+        background:#DDD;
+        color: #0074E4
+    }
+
+    .hero-label{
+        font-size: 3em;
+        color: white;
+    }
+
+    .sub-hero{
+        margin: 0;
+    }
+
+    .shgroup{
+        width: 45%;
+        display: inline-block;
+        margin-right: 1em;
+        margin-bottom: 2em;
+    }
+
+    .shgroup img{
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 125px;
+    }
+
+    .sellform{
+        float:right;
+        margin-right: 3em;
+    }
+
+    .sellform label, input{
+        display: block;
+    }
+
+    .sellform input{
+        margin-bottom: .5em;
+    }
+    .infobox form{
+        display: inline-block;
+    }
+    .infobox input[type=submit]{
+        background:none!important;
+        border:none; 
+        padding:0!important;
+        color: #337AB7;
+        cursor:pointer;
+    }
+    .infobox input[type=submit]:hover{
+        text-decoration:underline;
+    }
+    .listingdata{
+        display: inline-block;
+        vertical-align: top;
+        width: 400px;
+        height: 600px;
+        margin-top: 2em;
+    }
+
+    .gallery{
+        display: inline-block;
+        vertical-align: top;
+        width: 600px;
+        margin-top: 2em;
+        margin-left: 1em;
+    }
+
+    .galimg {
+        display: inline-block;
+        vertical-align: top;
+        width: 250px;
+    }
+    .galimg img{
+        max-height: 250px;
+        display: inline-block;
+    }
+    .gallery .thumbnail{
+        margin: 0;
+        display: inline-block;
+    }
+
+    .infobox img{
+        width: 300px;
+        margin-bottom: .5em;
+    }
+
+    .photoform{
+        width: 400px;
+        margin-top: 3em;
+    }
+    .photoform input{
+        margin-bottom: .5em;
+    }
+
+    .buyfaves{
+        height:80%;
+        float:right;
+        margin-right: 3em;
+        width: 275px;
+        overflow-y: auto;
+    }
+    .buyfaves h3{
+        margin-top: 0;
+    }
+    .favebox img{
+        width: 100%;
+    }
+    .favebox p{
+        margin-top: -65px;
+        margin-left: .5em;
+        color:white;
+    }
+    .favebox p:hover{
+        text-decoration: none;
+    }
+    .favebox a{
+        color: white;
+    }
+    .favebox a:hover{
+        color:white;
+        text-decoration: none;
+    }
+    .fillerimg{
+        height: 185px;
+        background:url('modelhome.png');
+        background-size: 275px 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .filterbar{
+        width: 100%;
+        height: 50px;
+        padding-left: 165px;
+        padding-top: 7px;
+    }
+    .filterbar input{
+        display: inline-block; 
+    }
+    .updatebuy{
+        width: 300px;
+
+        display:inline-block;
+        vertical-align:top;
+        font-size:.8em;
+        margin-bottom:0;
+    }
+    .updatebuy p {
+        margin:0;
+
+        display: inline-block;
+
+    }
+    .updatebuy input[type=text]{
+        width: 200px;
+        display: inline-block;
+    }
+
+    .filterbuy{
+        width: 600px;
+        display: inline-block;
+    }
+
+    .filterbuy input[type=number]{
+        display: inline-block;
+        width: 20%;
+    }
+    .rentalphotos{
+        height: 500px;
+    }
+    .rentalphotos form{
+        width: 30%;
+    }
+
+    .rentalphotos form input{
+        margin-bottom: .5em;
+    }
+
+    .newlistings{
+        margin: 0 auto;
+    }
+
 }
 
-.hero-search{
-    width: 600px;
-    margin: 0 auto;
-    padding-top: 120px;
+@media only screen and (min-width: 770px) {
+    .signins{
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        margin-right: 3em;
+        margin-top: 2em;
+        height: 500px;
+    }
+    .signins input{
+        margin-bottom: .5em;
+    }
+    .hero{
+        width:100%;
+        height: 450px;
+        background:  linear-gradient(
+        rgba(0, 0, 0, 0.45), 
+        rgba(0, 0, 0, 0.45)
+        ), url('hero.jpg'), no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding-left: 75px;
+        padding-top: 7em;
+    }
+
+    .form-inline input[type=text]{
+        width: 450px;
+    }
+
+    .hero-search{
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .hero-search label {
+        float:left;
+        color: white;
+        width:170px;
+        margin-right: 7px;
+        margin-bottom: 1em;
+        background: rgb(1, 1, 1);                   
+        background: rgba(1, 1, 1, .5);
+        border-radius:4px;
+        border:1px solid #D0D0D0;
+        overflow:auto;       
+    }
+
+    .hero-search label span {
+        text-align:center;
+        font-size: 32px;
+        padding: 3px 0px;
+        display:block;
+    }
+
+    .hero-search label input {
+        position:absolute;
+        top:-20px;
+    }
+
+    .hero-search input:checked + span {
+        background-color:#0074E4;
+        color:#F7F7F7;
+    }
+
+    .hero-search label:hover {
+        background:#DDD;
+        color: #0074E4
+    }
+
+    .hero-label{
+        font-size: 3em;
+        color: white;
+    }
+
+    .sub-hero{
+        margin: 0;
+    }
+
+    .shgroup{
+        display: inline-block;
+        vertical-align: top;
+        margin-right: .5em;
+        width: 18%;
+    }
+
+    .shgroup img{
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        height: 125px;
+    }
+
+    .sellform{
+        float:right;
+        margin-right: 3em;
+    }
+
+    .sellform label, input{
+        display: block;
+    }
+
+    .sellform input{
+        margin-bottom: .5em;
+    }
+    .infobox form{
+        display: inline-block;
+    }
+    .infobox input[type=submit]{
+        background:none!important;
+        border:none; 
+        padding:0!important;
+        color: #337AB7;
+        cursor:pointer;
+    }
+    .infobox input[type=submit]:hover{
+        text-decoration:underline;
+    }
+    .listingdata{
+        display: inline-block;
+        vertical-align: top;
+        width: 400px;
+        height: 600px;
+        margin-top: 2em;
+    }
+
+    .gallery{
+        display: inline-block;
+        vertical-align: top;
+        width: 600px;
+        margin-top: 2em;
+        margin-left: 1em;
+    }
+
+    .galimg {
+        display: inline-block;
+        vertical-align: top;
+        width: 250px;
+    }
+    .galimg img{
+        max-height: 250px;
+        display: inline-block;
+    }
+    .gallery .thumbnail{
+        margin: 0;
+        display: inline-block;
+    }
+
+    .infobox img{
+        width: 300px;
+        margin-bottom: .5em;
+    }
+
+    .photoform{
+        width: 400px;
+        margin-top: 3em;
+    }
+    .photoform input{
+        margin-bottom: .5em;
+    }
+
+    .buyfaves{
+        height:80%;
+        float:right;
+        margin-right: 3em;
+        width: 275px;
+        overflow-y: auto;
+    }
+    .buyfaves h3{
+        margin-top: 0;
+    }
+    .favebox img{
+        width: 100%;
+    }
+    .favebox p{
+        margin-top: -65px;
+        margin-left: .5em;
+        color:white;
+    }
+    .favebox p:hover{
+        text-decoration: none;
+    }
+    .favebox a{
+        color: white;
+    }
+    .favebox a:hover{
+        color:white;
+        text-decoration: none;
+    }
+    .fillerimg{
+        height: 185px;
+        background:url('modelhome.png');
+        background-size: 275px 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .filterbar{
+        width: 100%;
+        height: 50px;
+        padding-left: 165px;
+        padding-top: 7px;
+    }
+    .filterbar input{
+        display: inline-block; 
+    }
+    .updatebuy{
+        width: 300px;
+
+        display:inline-block;
+        vertical-align:top;
+        font-size:.8em;
+        margin-bottom:0;
+    }
+    .updatebuy p {
+        margin:0;
+
+        display: inline-block;
+
+    }
+    .updatebuy input[type=text]{
+        width: 200px;
+        display: inline-block;
+    }
+
+    .filterbuy{
+        width: 600px;
+        display: inline-block;
+    }
+
+    .filterbuy input[type=number]{
+        display: inline-block;
+        width: 20%;
+    }
+    .rentalphotos{
+        height: 500px;
+    }
+    .rentalphotos form{
+        width: 30%;
+    }
+
+    .rentalphotos form input{
+        margin-bottom: .5em;
+    }
+
+    .newlistings{
+        margin: 0 auto;
+    }
 }
 
-.hero-search label {
-    float:left;
-    color: white;
-    width:170px;
-    margin-right: 7px;
-    margin-bottom: 1em;
-    background: rgb(1, 1, 1);                   
-    background: rgba(1, 1, 1, .5);
-    border-radius:4px;
-    border:1px solid #D0D0D0;
-    overflow:auto;       
-}
+@media only screen and (min-width: 995px) {
+  .sub-hero{
+        margin: 0 auto;
+    }
 
-.hero-search label span {
-    text-align:center;
-    font-size: 32px;
-    padding: 3px 0px;
-    display:block;
-}
-
-.hero-search label input {
-    position:absolute;
-    top:-20px;
-}
-
-.hero-search input:checked + span {
-    background-color:#0074E4;
-    color:#F7F7F7;
-}
-
-.hero-search label:hover {
-     background:#DDD;
-     color: #0074E4
-}
-
-.hero-label{
-    font-size: 3em;
-    color: white;
-}
-
-.sub-hero{
-    margin: 0 auto;
-}
-
-.shgroup{
-    display: inline-block;
-    margin-right: 1em;
-    margin-bottom: 2em;
-}
-
-.shgroup img{
-    max-width: 200px;
-    display: block;
-    max-height: 115px;
-}
-
-.sellform{
-    float:right;
-    margin-right: 3em;
-}
-
-.sellform label, input{
-    display: block;
-}
-
-.sellform input{
-    margin-bottom: .5em;
-}
-.infobox form{
-    display: inline-block;
-}
-.infobox input[type=submit]{
-    background:none!important;
-    border:none; 
-    padding:0!important;
-    color: #337AB7;
-    cursor:pointer;
-}
-.infobox input[type=submit]:hover{
-    text-decoration:underline;
-}
-.listingdata{
-    display: inline-block;
-    vertical-align: top;
-    width: 400px;
-    height: 600px;
-    margin-top: 2em;
-}
-
-.gallery{
-    display: inline-block;
-    vertical-align: top;
-    width: 600px;
-    margin-top: 2em;
-    margin-left: 1em;
-}
-
-.galimg {
-    display: inline-block;
-    vertical-align: top;
-    width: 250px;
-}
-.galimg img{
-    max-height: 250px;
-    display: inline-block;
-}
-.gallery .thumbnail{
-    margin: 0;
-    display: inline-block;
-}
-
-.infobox img{
-    width: 300px;
-    margin-bottom: .5em;
-}
-
-.photoform{
-    width: 400px;
-    margin-top: 3em;
-}
-.photoform input{
-    margin-bottom: .5em;
-}
-
-.buyfaves{
-    height:80%;
-    float:right;
-    margin-right: 3em;
-    width: 275px;
-    overflow-y: auto;
-}
-.buyfaves h3{
-    margin-top: 0;
-}
-.favebox img{
-    width: 100%;
-}
-.favebox p{
-    margin-top: -65px;
-    margin-left: .5em;
-    color:white;
-}
-.favebox p:hover{
-    text-decoration: none;
-}
-.favebox a{
-    color: white;
-}
-.favebox a:hover{
-    color:white;
-    text-decoration: none;
-}
-.fillerimg{
-    height: 185px;
-    background:url('modelhome.png');
-    background-size: 275px 250px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.filterbar{
-    width: 100%;
-    height: 50px;
-    padding-left: 165px;
-    padding-top: 7px;
-}
-.filterbar input{
-    display: inline-block; 
-}
-.updatebuy{
-    width: 300px;
-
-    display:inline-block;
-    vertical-align:top;
-    font-size:.8em;
-    margin-bottom:0;
-}
-.updatebuy p {
-    margin:0;
-
-    display: inline-block;
-
-}
-.updatebuy input[type=text]{
-    width: 200px;
-    display: inline-block;
-}
-
-.filterbuy{
-    width: 600px;
-    display: inline-block;
-}
-
-.filterbuy input[type=number]{
-    display: inline-block;
-    width: 20%;
-}
-.rentalphotos{
-    height: 500px;
-}
-.rentalphotos form{
-    width: 30%;
-}
-
-.rentalphotos form input{
-    margin-bottom: .5em;
-}
-
-.newlistings{
-    margin: 0 auto;
 }
