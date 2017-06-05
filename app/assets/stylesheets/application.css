@@ -14,8 +14,6 @@
  *= require_self
  */
 
-
- /*smallest screen sizes*/
 @media only screen and (max-width: 480px) {
 
     .logo{
@@ -52,7 +50,7 @@
         font-size: 1em;
     }
      #map{
-        height: 80%;
+        height: 500px;
         width: 100%
     }
 }

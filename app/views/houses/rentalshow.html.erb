@@ -24,7 +24,7 @@
             <% end %>
 
             <h3>Listing Info</h3>
-            <table class="table">
+            <table class="table listingdetails">
                 <tr>
                     <th>Monthly Rent</th>
                     <th>Beds</th>
@@ -38,8 +38,6 @@
                     <td><%= @listing.footage %> sq. ft.</td>
                 </tr>
             </table>
-
-            <hr>
 
             <% if @listing.user_id == session[:user_id] %>
             <ul>
