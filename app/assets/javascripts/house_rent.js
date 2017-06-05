@@ -4,7 +4,7 @@ var split = url.split('/')
 
 if (split[2] == "house_rent"){
 
-function initMap() {
+function initMapRent() {
 
     var url = window.location.pathname
 

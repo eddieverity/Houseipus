@@ -79,7 +79,6 @@ Rails.application.routes.draw do
   post 'listings/rent/:rental_id/photos' => 'houses#addrentalphotos'
 
   post 'listings/rent/:rental_id/favorite' => 'houses#rentalfavorite'
-
   post 'listings/rent/:rental_id/favorite/delete' => 'houses#favorite_rental_delete'
 
   post 'messages/viewed/:id' => 'messages#viewed'

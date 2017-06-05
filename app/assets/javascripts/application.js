@@ -13,3 +13,6 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+if (!window.initMap) {
+    window.initMap = function () {};
+}

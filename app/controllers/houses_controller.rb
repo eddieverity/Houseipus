@@ -380,16 +380,21 @@ class HousesController < ApplicationController
     end
 
     def rentalfavorite
-        @favorite = RentalFavorite.new(rental_listing_id: params[:rental_id], user_id: session[:user_id])
+        if session[:user_id]
+            @favorite = RentalFavorite.new(rental_listing_id: params[:rental_id], user_id: session[:user_id])
 
-        if @favorite.save
+            if @favorite.save
 
-            redirect_back(fallback_location: root_path)
+                redirect_back(fallback_location: root_path)
+            else
+
+                flash[:errors] = @favorite.errors.full_messages
+                redirect_back(fallback_location: root_path)
+            end  
         else
-
-            flash[:errors] = @favorite.errors.full_messages
-            redirect_back(fallback_location: root_path)
-        end      
+            redirect_to '/users/signin'
+        end
+        
     end
     
     

@@ -31,17 +31,20 @@
     }
 
     .form-inline input[type=text]{
-        width: 73%;
+        width: 65%;
         display: inline-block;
     }
 
     .hero-search{
         width: 100%;
-        margin-left: 1.5em;
+        margin: 0;
+        padding-left: 2em;
     }
 
     .hero-search h1{
+        margin: 0;
         font-size: 2.5em;
+        color: white;
     }
 
     .hero-search label {
@@ -50,6 +53,7 @@
         width:28%;
         margin-right: 7px;
         margin-bottom: 1em;
+        margin-top: 1em;
         background: rgb(1, 1, 1);                   
         background: rgba(1, 1, 1, .5);
         border-radius:4px;
@@ -77,11 +81,6 @@
     .hero-search label:hover {
         background:#DDD;
         color: #0074E4
-    }
-
-    .hero-label{
-        font-size: 3em;
-        color: white;
     }
 
     .sub-hero{
@@ -257,6 +256,12 @@
 }
 
 @media only screen and (min-width: 481px) {
+    .listingdata table{
+        width: 80%;
+    }
+    .address {
+        width: 80%;
+    }
     .signins{
         display: inline-block;
         vertical-align: top;
@@ -286,12 +291,13 @@
     }
 
     .hero-search{
-        width: 100%;
+        width: 80%;
         margin-left: 1.5em;
     }
 
     .hero-search h1{
         font-size: 2.5em;
+        margin: 0;
     }
 
     .hero-search label {
@@ -332,6 +338,11 @@
     .hero-label{
         font-size: 3em;
         color: white;
+        margin: 0;
+    }
+
+    .hero-label h1{
+        margin: 0;
     }
 
     .sub-hero{

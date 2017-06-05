@@ -2,9 +2,11 @@ var url = window.location.pathname
 
 var split = url.split('/')
 
+console.log(split[2]);
+
 if (split[2] == "house_buy"){
 
-function initMap() {
+function initMapBuy() {
 
     var url = window.location.pathname
 
