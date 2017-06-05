@@ -3,7 +3,7 @@
   <form action="/houses/routes" method="POST">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="searchtype" value="buy">
-    <input name="location" class="form-control" type="text" placeholder="Update Search">
+    <input name="location" class="form-control" type="text" placeholder="Update Search" required minlength="1">
     <input type="submit" class="btn btn-secondary">
   </form>
   </div>
@@ -23,7 +23,7 @@
       <% @listings.each do |f| %>
         <div class="favebox">
         <% if f.rental_image %>
-          <img src="<%= f.rental_image.gallery[0].url %>"/>
+          <a href="/listings/rent/<%=f.id%>"><img src="<%= f.rental_image.gallery[0].url %>"/></a>
          <% else%>
           <a href="/listings/rent/<%=f.id%>"><div class="fillerimg"></div></a>
         <% end %><p>

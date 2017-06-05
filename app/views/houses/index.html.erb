@@ -15,22 +15,23 @@
             <input type="radio" name="searchtype" value="sell" id="sell">
             <span>Sell</span>
             </label><br>
-            <input class="form-control hero-search-bar" name="location" type="text" placeholder="Enter an address, neighborhood, city, or zip code">
+            <input class="form-control hero-search-bar" name="location" required type="text" minlength="1" placeholder="Enter an address, neighborhood, city, or zip code">
             <input type="submit" class="btn btn-primary" value="Search">
         </form>
     </div>
 </div>
 <div class="sub-hero container">
-    <h3>New Listings</h3>
-    <% @recent.each do |r| %>
-    <a href="/listings/sale/<%=r.id%>">
-        <div class="shgroup">
-        <img src="<%=r.image.gallery[0].url%>">
-       <%=r.address%> <%=r.street%><br>
-       <%= r.city %> <%= r.state %> <%=r.zip%><br>
-       Listed: <%= time_ago_in_words(r.created_at) %> ago
-        </div>
-    </a>
-    <% end %>
-   
+    <div class="newlistings">
+        <h3>New Listings</h3>
+        <% @recent.each do |r| %>
+        <a href="/listings/sale/<%=r.id%>">
+            <div class="shgroup">
+            <img src="<%=r.image.gallery[0].url%>">
+        <%=r.address%> <%=r.street%><br>
+        <%= r.city %> <%= r.state %> <%=r.zip%><br>
+        Listed: <%= time_ago_in_words(r.created_at) %> ago
+            </div>
+        </a>
+        <% end %>
+    </div>
 </div>
