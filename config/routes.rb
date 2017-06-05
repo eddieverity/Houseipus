@@ -100,5 +100,5 @@ Rails.application.routes.draw do
   get 'houses/house_rent/:location/filters/:filterdata/:beds' => 'houses#filtered_rent_beds'
   get 'houses/house_rent/:location/filters/:filterdata/:beds/' => 'houses#filtered_rent_beds'
 
-
+  resources :users
 end
