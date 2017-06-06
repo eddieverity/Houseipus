@@ -1,7 +1,7 @@
 <div class="container allmessages">
   <% if @user.id == session[:user_id] %>
   <h3>Messages</h3>
-    <div class="signins">
+    <div class="theboxes">
     <div class="well contents message_contents">
       
           <ul>
@@ -10,7 +10,8 @@
                   <table class="table table-hover">
                     <tr>
                       <th>Title</th>
-                      <th>Received from</th>
+                      <th class="hideformobile">Sender</th>
+                      <th>Sent</th>
                     </tr>
                   <% @inbox.each do |i| %>
                     <tr>
@@ -42,9 +43,15 @@
                         </div>
                       </div>
                       </td>
-                      <td>
+                      <td class="hideformobile">
                         <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email %></a>
                       </td>
+                      <td class="wireddate">
+                      <%=i.created_at.strftime('%c')%>
+                    </td>
+                    <td class="mobiledate">
+                      <%=i.created_at.strftime('%x')%>
+                    </td>
                     </tr>
                   <% end %>
               </table>
@@ -58,7 +65,7 @@
                 <table class="table table-hover">
                   <tr>
                     <th>Title</th>
-                    <th>Recipient</th>
+                    <th class="hideformobile">Recipient</th>
                     <th>Sent</th>
                   </tr>
                   <% @outbox.each do |o| %>
@@ -91,7 +98,7 @@
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td class="hideformobile">
                       <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a>
                     </td>
                     <td class="wireddate">
@@ -108,7 +115,7 @@
     </div>
     </div>
       <% if @contacts.length > 0 %>
-        <div class="signins">
+        <div class="contacts">
           <div class="well message_contents">
           <h3>Contacts</h3>
             <ul>
