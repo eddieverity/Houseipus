@@ -242,9 +242,9 @@ class HousesController < ApplicationController
     end
 
     def favorite_delete
-        @delete = Favorite.find_by('sale_listing_id = ?', params[:sale_id])
+        @delete = Favorite.find_by('id = ?', params[:favorite_id])
 
-        Favorite.delete(@delete.id)
+        @delete.destroy
 
         redirect_back(fallback_location: root_path)
         #Favorite.destroy('sale_listing_id = ?', params[:favorite_id])
@@ -252,10 +252,9 @@ class HousesController < ApplicationController
     end
 
     def favorite_rental_delete
-        @delete = RentalFavorite.find_by('rental_listing_id = ?', params[:rental_id])
-        puts params[:rental_id]
+        @delete = RentalFavorite.find_by('id = ?', params[:rental_favorite_id])
 
-        RentalFavorite.delete(@delete.id)
+        @delete.destroy
 
         redirect_back(fallback_location: root_path)
 
@@ -378,6 +377,10 @@ class HousesController < ApplicationController
             redirect_back(fallback_location: root_path)
         end      
     end
+
+
+
+
 
     def rentalfavorite
         if session[:user_id]

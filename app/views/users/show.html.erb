@@ -60,12 +60,19 @@ function CheckboxChecked(b,d)
     <% if @user.agent != nil %> 
       <div class="signins well">
         <h3>Sale Listings</h3>
-        <ul>
+        
+        <table class="table">
+          <tr>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+
           <% if @sale_listings.length > 0 %>
             <% @sale_listings.each do |s| %>
-              <li>
-                <a href="/listings/sale/<%= s.id %>"><%= s.address %> <%= s.street %> <%= s.city %></a>
-                  <div>
+              <tr>
+                <td><a href="/listings/sale/<%= s.id %>"><%= s.address %> <%= s.street %> <%= s.city %></a>
+                </td>
+                <td>
                   <form class="garbage_form" action="/listings/sale/<%= s.id %>/delete" method="POST">
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
@@ -74,20 +81,33 @@ function CheckboxChecked(b,d)
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'edit_icon.png' ) %>" alt="Submit Form" />
                   </form>
-                </div>
-              </li>
+                </td>
+              </tr>
             <% end %>
           <% else %>
-            <li>No current listings</li>
+            <tr>
+              <td>No current listings</td>
+              <td></td>
+            </tr>
           <% end %>
-        </ul>
+
+
+        </table>
+        
         <h3>Rental Listings</h3>
-        <ul>
+
+        <table class="table">
+          <tr>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
           <% if @rental_listings.length > 0 %>
             <% @rental_listings.each do |r| %>
-              <li>
-                <a href="/listings/rent/<%= r.id %>"><%= r.address %> <%= r.street %> <%= r.city %></a>
-                  <div>
+              <tr>
+                <td>
+                  <a href="/listings/rent/<%= r.id %>"><%= r.address %> <%= r.street %> <%= r.city %></a>
+                </td>
+                <td>
                   <form class="garbage_form"action="/listings/rent/<%= r.id %>/delete" method="POST">
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
@@ -96,14 +116,18 @@ function CheckboxChecked(b,d)
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'edit_icon.png' ) %>" alt="Submit Form" />
                   </form>
-                  </div>
-              </li>
+                </td>
+              </tr>
+            
             <% end %>
           <% else %>
-            <li>No current listings</li>
+            <tr>
+              <td>No current listings</td>
+              <td></td>
           <% end %>
-        </ul>
+        
 
+        </table>
 
       </div>      
     <% end %>
@@ -111,43 +135,73 @@ function CheckboxChecked(b,d)
     <% if @favorite_rentals != nil or @favorite_sales != nil %>
       <div class="signins well">
         <h3>Favorite Listings</h3>
-          <ul>
-            <li>Rentals</li>
+          <table class="table">
+            <tr>
+              <th>Listings</th>
+              <th>Actions</th>
+            </tr>
                 <% if @favorite_rentals.length > 0 %>
-                  <ul>
+                  <tr>
                     <% @favorite_rentals.each do |f| %>
-                      <li><a href="/listings/rent/<%=f.rental_listing_id%>">
+                      <td><a href="/listings/rent/<%=f.rental_listing_id%>">
                         <%= f.rental_listing.address %>
                         <%= f.rental_listing.street %>
                         <%= f.rental_listing.city %>
-                      </a></li>
+                      </a></td>
+                    
+                    <td>
+
+                      <form class="garbage_form" action="/listings/rent/<%= f.id %>/favorite/delete" method="POST">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
+                      </form>
+                    </td>
                     <% end %>
-                  </ul>
+                  </tr>
                 <% else %>
-                  <ul>
-                    <li>No Rental Listings favorited</li>
-                  </ul>
+                  <tr>
+                    <td>No Rental Listings favorited</td>
+                    <td></td>
+                  </tr>
                 <% end %>
-
-            <li>For Sale</li>
-
+          </table>
+            <h3>For Sale</h3>
+              <table class="table">
+                <tr>
+                  <th>Listings</th>
+                  <th>Actions</th>
+                </tr>
               <% if @favorite_sales.length > 0 %>
-                <ul>
+                
                   <% @favorite_sales.each do |s| %>
-                  
-                    <li><a href="/listings/sale/<%=s.sale_listing_id%>">
+                  <tr>
+                    <td><a href="/listings/sale/<%=s.sale_listing_id%>">
                       <%= s.sale_listing.address %>
                       <%= s.sale_listing.street %>
                       <%= s.sale_listing.city %>
-                    </a></li>
+                    </a></td>
+                    <td>
+
+
+
+
+
+
+                      <form class="garbage_form" action="/listings/sale/<%= s.id %>/favorite/delete" method="POST">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
+                      </form>
+                    </td>
+                  </tr>
                   <% end %>
-                </ul>
+                
               <% else %>
-                <ul>
-                  <li>No Sale Listings favorited</li>
-                </ul>
+                <tr>
+                  <td>No Sale Listings favorited</td>
+                  <td></td>
+                </tr>
               <% end %>
-          </ul>
+          </table>
       </div>
     <% end %>
 
@@ -164,6 +218,7 @@ function CheckboxChecked(b,d)
                     <tr>
                       <th>Title</th>
                       <th>Received from</th>
+                      <th>Actions</th>
                     </tr>
                   <% @inbox.each do |i| %>
                     <tr>
@@ -198,6 +253,12 @@ function CheckboxChecked(b,d)
                       <td>
                         <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email %></a>
                       </td>
+                      <td>
+                        <form class="garbage_form" action="/messages/<%= i.id %>/delete" method="POST">
+                          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                          <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
+                        </form>
+                      </td>
                     </tr>
                   <% end %>
               </table>
@@ -212,6 +273,7 @@ function CheckboxChecked(b,d)
                   <tr>
                     <th>Title</th>
                     <th>Sent To</th>
+                    <th>Actions</th>
                   </tr>
                   <% @outbox.each do |o| %>
                   <tr>
@@ -243,6 +305,14 @@ function CheckboxChecked(b,d)
                     </td>
                     <td>
                       <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a>
+                    </td>
+                    <td>
+             
+                      <form class="garbage_form" action="/messages/<%= o.id %>/delete" method="POST">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
+                      </form>
+                 
                     </td>
                   </tr>
                   <% end %>

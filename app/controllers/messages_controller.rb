@@ -48,4 +48,10 @@ class MessagesController < ApplicationController
         @outbox = Message.where('sender_id = ?', session[:user_id]).reverse
         @contacts = User.where(id: @user.contacts)
     end
+
+    def delete
+        @message = Message.find_by('id = ?', params[:message_id])
+        @message.destroy
+        redirect_back(fallback_location: users_signin_path)
+    end
 end

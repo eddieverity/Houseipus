@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get 'messages/show/:user_id' => 'messages#show'
 
-
+  post 'messages/:message_id/delete' => 'messages#delete'
 
   get 'messages/contact/:to_id/:from_id' => 'messages#contact'
 
@@ -75,7 +75,8 @@ Rails.application.routes.draw do
 
   post 'listings/sale/:sale_id/favorite' => 'houses#favorite'
 
-  post 'listings/sale/:sale_id/favorite/delete' => 'houses#favorite_delete'
+  post 'listings/sale/:favorite_id/favorite/delete' => 'houses#favorite_delete'
+  post 'listings/rent/:rental_favorite_id/favorite/delete' => 'houses#favorite_rental_delete'
 
   get 'listings/rent/:rental_id/photos' => 'houses#rentalphotos'
 
@@ -83,7 +84,7 @@ Rails.application.routes.draw do
   post 'listings/rent/:rental_id/photos' => 'houses#addrentalphotos'
 
   post 'listings/rent/:rental_id/favorite' => 'houses#rentalfavorite'
-  post 'listings/rent/:rental_id/favorite/delete' => 'houses#favorite_rental_delete'
+
 
   post 'messages/viewed/:id' => 'messages#viewed'
 
