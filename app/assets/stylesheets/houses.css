@@ -1,7 +1,7 @@
 @media only screen and (max-width: 480px) {
 
     .address{
-        width: 80%;
+        width: 95%;
     }
     .signins{
         display: inline-block;
@@ -127,7 +127,7 @@
     .listingdata{
         display: inline-block;
         vertical-align: top;
-        width: 100%;
+        width: 90%;
         height: 600px;
         margin-top: 2em;
         margin-left: 2em;
@@ -136,19 +136,17 @@
     .gallery{
         display: inline-block;
         vertical-align: top;
-        width: 600px;
+        width: 80%;
         margin-top: 2em;
         margin-left: 1em;
     }
 
     .galimg {
-        display: inline-block;
-        vertical-align: top;
-        width: 250px;
+        display: block;
+        margin: 1em auto;
     }
     .galimg img{
-        max-height: 250px;
-        display: inline-block;
+        width: 100%;
     }
     .gallery .thumbnail{
         margin: 0;
@@ -251,7 +249,7 @@
         margin: 0 auto;
     }
     .listingdata table{
-        width: 80%;
+        width: 90%;
     }
 }
 

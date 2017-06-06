@@ -42,8 +42,6 @@
                 </tr>
             </table>
 
-            <hr>
-
             <% if @listing.user_id == session[:user_id] %>
             <ul>
                 <li><a href="/listings/sale/<%= @listing.id %>/edit">Edit Listing</a></li>
