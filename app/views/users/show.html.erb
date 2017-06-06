@@ -70,7 +70,7 @@ function CheckboxChecked(b,d)
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
                   </form>
-                  <form class="garbage_form" action="/listings/sale/<%= s.id %>/edit" method="POST">
+                  <form class="garbage_form" action="/listings/sale/<%= s.id %>/edit" method="GET">
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'edit_icon.png' ) %>" alt="Submit Form" />
                   </form>
@@ -92,7 +92,7 @@ function CheckboxChecked(b,d)
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
                   </form>
-                  <form class="garbage_form" action="/listings/sale/<%= s.id %>/edit" method="POST">
+                  <form class="garbage_form" action="/listings/sale/<%= r.id %>/edit" method="GET">
                     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                     <input class="garbage" type="image" src="<%= asset_path( 'edit_icon.png' ) %>" alt="Submit Form" />
                   </form>
