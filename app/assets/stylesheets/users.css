@@ -24,3 +24,10 @@
     vertical-align:top;
     margin-top:0px;
 }
+
+.garbage{
+    width:1em;
+}
+.garbage_form{
+    display:inline-block;
+}

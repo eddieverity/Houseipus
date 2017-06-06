@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    
     def signin
     end
     
@@ -17,13 +17,15 @@ class UsersController < ApplicationController
             redirect_back(fallback_location: users_signin_path)
         end
     end
+
+
     
     def login
         @user = User.find_by('email = ?', params[:user][:email])
 
         if @user && @user.authenticate(params[:user][:password])
             ##email tester
-            UserMailer.welcome_email(@user).deliver_later
+            #UserMailer.welcome_email(@user).deliver_later
             session[:user_id] = @user.id
             session[:user_email] = @user.email
             redirect_to '/'

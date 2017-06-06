@@ -48,6 +48,7 @@
             <ul>
                 <li><a href="/listings/sale/<%= @listing.id %>/edit">Edit Listing</a></li>
                 <li><a href="/listings/sale/<%= @listing.id %>/photos">Add Photos</a></li>
+                <li><a href="/listings/sale/<%= @listing.id %>/delete">Remove Listing</a></li>
             </ul>
             <% else %>
                 <form action="/messages/contact/<%= @listing.user_id %>/<%= session[:user_id] %>" method="GET">

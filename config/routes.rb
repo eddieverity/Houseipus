@@ -69,6 +69,10 @@ Rails.application.routes.draw do
 
   post 'listings/sale/:sale_id/photos' => 'houses#addphotos'
 
+  post 'listings/sale/:sale_id/delete' => 'houses#delete_sale_listing'
+
+  post 'listings/rent/:rental_id/delete' => 'houses#delete_rental_listing'
+
   post 'listings/sale/:sale_id/favorite' => 'houses#favorite'
 
   post 'listings/sale/:sale_id/favorite/delete' => 'houses#favorite_delete'

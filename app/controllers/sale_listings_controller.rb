@@ -18,6 +18,8 @@ class SaleListingsController < ApplicationController
   def show
   end
 
+
+
 private
   def listing_params
     params.require(:listing).permit(:address, :street, :unit, :city, :state, :zip)
