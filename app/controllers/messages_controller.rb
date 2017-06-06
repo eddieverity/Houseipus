@@ -38,15 +38,14 @@ class MessagesController < ApplicationController
         if @message.viewed == false
             @message.viewed = true
             @message.save
-
         end
 
-
     end
+    
     def show
         @user = User.find_by('id = ?', session[:user_id])
-        @inbox = Message.where('receiver_id = ?', session[:user_id])
-        @outbox = Message.where('sender_id = ?', session[:user_id])
+        @inbox = Message.where('receiver_id = ?', session[:user_id]).reverse
+        @outbox = Message.where('sender_id = ?', session[:user_id]).reverse
         @contacts = User.where(id: @user.contacts)
     end
 end

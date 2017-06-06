@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container allmessages">
   <% if @user.id == session[:user_id] %>
+  <h3>Messages</h3>
     <div class="signins">
     <div class="well contents message_contents">
-      <h3>Messages</h3>
+      
           <ul>
             <% if @inbox.length > 0 %>
               <h4 class="inoutbox">Inbox</h4>
@@ -16,7 +17,7 @@
                       <td>                       
                       <form class="message_buttons" action="/messages/viewed/<%= i.id %>" method="POST">
                           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                          <input type="submit" value="<%= i.title.truncate(12) %>" class="btn btn-info btn-sm" 
+                          <input type="submit" value="<%= i.title.truncate(25) %>" class="btn btn-info btn-sm" 
                             <% if i.viewed == false %>
                               style="background-color:red;" 
                             <% end %>
@@ -57,7 +58,8 @@
                 <table class="table table-hover">
                   <tr>
                     <th>Title</th>
-                    <th>Sent To</th>
+                    <th>Recipient</th>
+                    <th>Sent</th>
                   </tr>
                   <% @outbox.each do |o| %>
                   <tr>
@@ -67,7 +69,7 @@
                         <% if o.viewed == false %>
                           style="background-color:red;" 
                         <% end %>
-                        ><%= o.title.truncate(12) %>
+                        ><%= o.title.truncate(25) %>
                       </button>
                       <!-- end of weird button -->
                       <div class="modal fade" id="myModalo<%= o.id %>" role="dialog">
@@ -91,6 +93,12 @@
                     </td>
                     <td>
                       <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a>
+                    </td>
+                    <td class="wireddate">
+                      <%=o.created_at.strftime('%c')%>
+                    </td>
+                    <td class="mobiledate">
+                      <%=o.created_at.strftime('%x')%>
                     </td>
                   </tr>
                   <% end %>

@@ -101,12 +101,31 @@
             <% end %> 
 
         </ul>
+        <div class="mobilesignin">
+           <% if !session[:user_id]%>
+              <a href="/users/signin">Sign In</a>
+            <% else %>
+              <a href="/users/logout">Log Out</a>
+            <% end %>
+          
+            <% if session[:user_email] %>
+              Signed in as <a href="/users/show/<%= session[:user_id] %>"><%= session[:user_email] %></a>
+            <% end %>
+        </div>
       </div>
 
       <%= yield %>
       <div class="footer">
     <div class="footercontents">
-        <h4>About | Research | Jobs | List A Home | List A Rental</h4>
+        <ul>
+          <li>About</li>
+          <li>|</li>
+          <li>Research</li> 
+          <li>|</li>
+          <li>List A Home</li>
+          <li>|</li>
+          <li>List A Rental</li>
+        </ul>
     </div>
     </div>
   </body>
