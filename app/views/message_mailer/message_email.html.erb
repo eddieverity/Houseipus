@@ -5,12 +5,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @user.name %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @user.login %>.<br>
-    </p>
+    <h1>You have received a message on Housipus.com</h1>
 
-    <p>Thanks for joining and have a great day!</p>
+    <p>
+      You have received a message from <%= @user.email %><br>
+    </p><hr>
+
+
+    <p>To login to the site, just follow this link: <%= @url %>.</p>
   </body>
 </html>
