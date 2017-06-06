@@ -71,24 +71,20 @@
               </div>
             </div>
           </li>
+          </ul>
 
-          <li>
-            <% if !session[:user_id]%>
-              <a href="/users/signin">Sign In</a>
-            <% else %>
-              <a href="/users/logout">Log Out</a>
-            <% end %>
-          </li>
-          <li>
+          <!-- List element for profile icon-->
+          
             <% if session[:user_email] %>
-              Signed in as <a href="/users/show/<%= session[:user_id] %>"><%= session[:user_email] %></a>
+            <div class="profileicon">
+              <a href="/users/show/<%= session[:user_id] %>"><img src="<%= asset_path( 'profile.png' ) %>" /></a>
+            </div>
             <% end %>
-          </li>
-          <li>
+          
+
+          <!-- List element for mail icon, if user has unread messages-->
+        
             <% @count = 0 %>
-            
-
-
             <% if @messages %>
               <% @messages.each do |m| %>
                 <% if m.receiver_id == session[:user_id] && m.viewed == false %>
@@ -97,24 +93,27 @@
               <% end %>
 
               <% if @count > 0 %>
-              <div class="msgbadge">
-                <a href="/messages/show/<%=session[:user_id]%>"><%= @count %></a> 
-                </div> unread messages
+                <div class="mailindicator">
+                <a href="/messages/show/<%=session[:user_id]%>"><img src="<%= asset_path( 'mail.png' ) %>" /></a>
+                  <div class="msgbadge">
+                    <a href="/messages/show/<%=session[:user_id]%>"><%= @count %></a> 
+                  </div> 
+                </div>
               <% end %>
-            <% end %> 
 
-        </ul>
-        <div class="mobilesignin">
-           <% if !session[:user_id]%>
-              <a href="/users/signin">Sign In</a>
-            <% else %>
-              <a href="/users/logout">Log Out</a>
-            <% end %>
-          
-            <% if session[:user_email] %>
-              Signed in as <a href="/users/show/<%= session[:user_id] %>"><%= session[:user_email] %></a>
-            <% end %>
-        </div>
+            <% end %> 
+      
+
+
+          <!-- List element for sign in/logout-->
+            <div class="loggerinner">
+              <% if !session[:user_id]%>
+                <a href="/users/signin">Sign In</a>
+              <% else %>
+                <a href="/users/logout">Log Out</a>
+              <% end %>
+            </div>
+         
       </div>
 
       <%= yield %>
