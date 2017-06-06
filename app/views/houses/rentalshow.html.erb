@@ -17,7 +17,7 @@
                     <input type='submit' value='Add to Favorites' class="btn btn-danger">
                 </form>
             <% else %>
-                <form action='/listings/rent/<%= @listing.id %>/favorite/delete' method='POST'>
+                <form action='/listings/rent/<%= @thisfav %>/favorite/delete' method='POST'>
                     <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
                     <input type='submit' value='Remove from Favorites' class="btn btn-danger">
                 </form>

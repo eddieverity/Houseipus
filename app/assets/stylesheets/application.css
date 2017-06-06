@@ -25,9 +25,9 @@
         margin-right: .5em;
     }
     .loggerinner{
-        display: inline-block;
-        vertical-align: top;
-        margin-top: 1em;
+        margin-top: .7em;
+        margin-right: 1em;
+        float:right;
     }
     .profileicon{
         display: inline-block;
@@ -128,13 +128,14 @@
     .profileicon{
         display: inline-block;
         vertical-align: top;
-        margin-top: .5em;
+        margin-top: .7em;
         margin-right: .5em;
     }
     .mailindicator{
         display: inline-block;
         vertical-align: top;
-        margin-top: .5em;
+        margin-top: .7em;
+        margin-right: .5em;
     }
     .profileicon img{
         width:30px;
@@ -170,9 +171,6 @@
         margin-left: 4px;
     }
 
-    .links ul{
-        display: none;
-    }
     .links li{
         display: inline-block;
         font-size: 1.25em;
