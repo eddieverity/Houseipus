@@ -119,15 +119,28 @@
       <%= yield %>
       <div class="footer">
     <div class="footercontents">
+   
         <ul>
-          <li>About</li>
+          <li><a href="">About Peter Herman</a></li>
           <li>|</li>
-          <li>Research</li> 
-          <li>|</li>
-          <li>List A Home</li>
-          <li>|</li>
-          <li>List A Rental</li>
+          <li><a href="">About Edward Verity</a></li>          
         </ul>
+    </div>
+    <div class="footercontents">
+        <ul>
+          <li>
+            <a href="">Follow Peter Herman</a>
+            <a href="https://github.com/peytah"><img src="<%= asset_path( 'github.png' ) %>" /></a>
+            <a href="https://www.linkedin.com/in/peterbherman/"><img src="<%= asset_path( 'linkedin.png' ) %>" /></a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="http://www.eddieverity.com">Follow Edward Verity</a>
+            <a href="https://github.com/eddieverity"><img src="<%= asset_path( 'github.png' ) %>" /></a>
+            <a href="https://www.linkedin.com/in/edward-verity-7398b332/"><img src="<%= asset_path( 'linkedin.png' ) %>" /></a>
+          </li>
+        </ul>
+
     </div>
     </div>
   </body>
