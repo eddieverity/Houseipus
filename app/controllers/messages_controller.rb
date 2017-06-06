@@ -7,24 +7,19 @@ class MessagesController < ApplicationController
  
         @user = User.find_by('id = ?', params[:to_id])
         @message = Message.new(title: params[:message][:title], content: params[:message][:content], sender_id: params[:from_id], receiver_id: params[:to_id], viewed: false)
-        
+        @url = 'http://www.google.com'
 
         if @message.save
-            puts '#####'
-            puts @user.inspect
-            puts '#####'
 
-            #MessageMailer.message_email(@user).deliver_later
+            if @user.opt == true
+                puts '#####'
+                puts @message.content.inspect
+                puts '#######'
+                MessageMailer.message_email(@user).deliver_later
+            end
 
-            #if @user.opt == true
-               #  UserMailer.message_email(@user).deliver_now
-
-
-            #end
-            #else
 
             redirect_to "/messages/show/#{session[:user_id]}"
-            #redirect_to '/'
     
         else
             puts 'hit error'

@@ -68,7 +68,7 @@ Rails.application.configure do
 
   #these are what i added from http://guides.rubyonrails.org/action_mailer_basics.html
   #6.2
-  config.action_mailer.deliver_method = :smtp
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,

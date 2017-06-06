@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
 
         if @user.save
-            #UserMailer.welcome_email(@user).deliver_later
+            if @user.opt == true && @user.email
+                UserMailer.welcome_email(@user).deliver_later
+            end
             session[:user_id] = @user.id
             session[:user_email] = @user.email
             redirect_to '/'
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
         if @user && @user.authenticate(params[:user][:password])
             ##email tester
 
-            # UserMailer.welcome_email(@user).deliver_later
+
 
             session[:user_id] = @user.id
             session[:user_email] = @user.email
