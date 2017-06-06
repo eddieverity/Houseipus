@@ -11,7 +11,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= favicon_link_tag 'favicon.ico' %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY&callback=initMap" async defer></script>
+
+    <% if yield :map_callback %>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY&callback=<%= yield :map_callback %>" async defer></script>
+    <% end %>
 
   </head>
 
@@ -101,13 +104,39 @@
             <% end %> 
 
         </ul>
+        <div class="mobilesignin">
+           <% if !session[:user_id]%>
+              <a href="/users/signin">Sign In</a>
+            <% else %>
+              <a href="/users/logout">Log Out</a>
+            <% end %>
+          
+            <% if session[:user_email] %>
+              Signed in as <a href="/users/show/<%= session[:user_id] %>"><%= session[:user_email] %></a>
+            <% end %>
+        </div>
       </div>
 
       <%= yield %>
       <div class="footer">
+<<<<<<< HEAD
         <div class="footercontents">
           <h4>About | Research | Jobs | List A Home | List A Rental</h4>
         </div>
       </div>
+=======
+    <div class="footercontents">
+        <ul>
+          <li>About</li>
+          <li>|</li>
+          <li>Research</li> 
+          <li>|</li>
+          <li>List A Home</li>
+          <li>|</li>
+          <li>List A Rental</li>
+        </ul>
+    </div>
+    </div>
+>>>>>>> a0a18186f98bb93aa8ee75c1db5399d65e572b28
   </body>
 </html>

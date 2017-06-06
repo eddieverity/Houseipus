@@ -15,7 +15,11 @@
  */
 
 @media only screen and (max-width: 480px) {
-
+    .mobilesignin{
+        float:right;
+        margin-top: .5em;
+        margin-right: .5em;
+    }
     .logo{
         width: 40px;
         height: 40px;
@@ -33,21 +37,20 @@
     .links ul{
         display: none;
     }
-        .footer{
+    .footer{
         background-color: black;
         color: gray;
         height: 100px;
         width: 100%;
-        padding-left: 1.5em;
     }
 
     .footercontents{
         padding-top: 2em;
         margin: 0 auto;
-        padding-left: .5em;
     }
-    .footercontents h4{
-        font-size: 1em;
+    .footercontents ul li{
+        text-decoration: none;
+        display: inline-block;
     }
      #map{
         height: 500px;
@@ -56,6 +59,9 @@
 }
 
 @media only screen and (min-width: 481px) {
+    .mobilesignin{
+        display: none;
+    }
 
     #map{
         height: 80%;
@@ -65,7 +71,6 @@
     .searchwidget{
         display:inline-block;
         width:300px;
-        
     }
 
     .logo{
@@ -110,6 +115,10 @@
         height: 50px;
         padding-top: 2em;
         margin: 0 auto;
+    }
+    .footercontents ul li{
+        text-decoration: none;
+        display: inline-block;
     }
     #floating-panel{
         margin-top: 50px;
@@ -173,12 +182,13 @@
 }
 
 @media only screen and (min-width: 560px) {
+    .mobilesignin{
+        display: none;
+    }
     .searchwidget{
         display:inline-block;
-        width:300px;
-        
+        width:300px;      
     }
-
     .logo{
         width: 80px;
         height: 80px;
@@ -287,10 +297,13 @@
     }
 }
 @media only screen and (min-width: 800px) {
+    .mobilesignin{
+        display: none;
+    }
+
     .searchwidget{
         display:inline-block;
-        width:300px;
-        
+        width:300px;  
     }
 
     .logo{
@@ -403,12 +416,14 @@
 }
 
 @media only screen and (min-width: 1060px) {
-    .searchwidget{
-        display:inline-block;
-        width:300px;
-        
+    .mobilesignin{
+        display: none;
     }
 
+    .searchwidget{
+        display:inline-block;
+        width:300px;  
+    }
     .logo{
         width: 80px;
         height: 80px;

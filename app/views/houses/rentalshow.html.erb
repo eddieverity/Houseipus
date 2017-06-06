@@ -10,7 +10,7 @@
             <div class="address well">
                 <%= @listing.description %><br>
             </div>
-
+            
             <% if !@already_fav %>
                 <form action='/listings/rent/<%= @listing.id %>/favorite' method='POST'>
                     <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>

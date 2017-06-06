@@ -1,33 +1,64 @@
-.signins{
-    display: inline-block;
-    vertical-align: top;
-    width: 30%;
-    margin-right: 3em;
-    margin-top: 2em;
-}
-.signins input{
-    margin-bottom: .5em;
+@media only screen and (max-width: 480px) {
+    .signins{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .signins input{
+         margin-bottom: .5em;
+    }
+    .signins input[type=checkbox]{
+        display: inline-block;
+    }
+    .signinimage{
+        margin-top: 1em;
+        margin-bottom: 2em;
+        width: 100%;
+        height: 300px;
+        background: url('signin.png'), no-repeat;
+        background-size: cover;
+    }
+    #checkboxdiv select{
+        margin-bottom: .5em;
+    }
+    .message_contents{
+        vertical-align:top;
+        margin-top:0px;
+    }
 }
 
-.signinimage{
-    margin-top: 1em;
-    margin-bottom: 2em;
-    width: 100%;
-    height: 300px;
-    background: url('signin.png'), no-repeat;
-    background-size: cover;
-}
-#checkboxdiv select{
-    margin-bottom: .5em;
-}
-.message_contents{
-    vertical-align:top;
-    margin-top:0px;
-}
 
-.garbage{
-    width:1em;
-}
-.garbage_form{
-    display:inline-block;
-}
+@media only screen and (min-width: 481px) {
+    .signins{
+        display: inline-block;
+        vertical-align: top;
+        width: 40%;
+        margin-right: 3em;
+        margin-top: 2em;
+    }
+    .signins input{
+        margin-bottom: .5em;
+    }
+    .signins input[type=checkbox]{
+        display: inline-block;
+    }
+
+    .signinimage{
+        margin-top: 1em;
+        margin-bottom: 2em;
+        width: 100%;
+        height: 300px;
+        background: url('signin.png'), no-repeat;
+        background-size: cover;
+    }
+    #checkboxdiv select{
+        margin-bottom: .5em;
+    }
+    .message_contents{
+        vertical-align:top;
+        margin-top:0px;
+    }
+    .usershow{
+        margin-top: 2em;
+    }
+

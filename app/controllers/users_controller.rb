@@ -25,7 +25,9 @@ class UsersController < ApplicationController
 
         if @user && @user.authenticate(params[:user][:password])
             ##email tester
-            #UserMailer.welcome_email(@user).deliver_later
+
+            # UserMailer.welcome_email(@user).deliver_later
+
             session[:user_id] = @user.id
             session[:user_email] = @user.email
             redirect_to '/'
@@ -39,8 +41,8 @@ class UsersController < ApplicationController
         @user = User.find_by('id = ?', params[:user_id])
         @sale_listings = SaleListing.where('user_id = ?', params[:user_id])
         @rental_listings = RentalListing.where('user_id = ?', params[:user_id])
-        @inbox = Message.where('receiver_id = ?', session[:user_id])
-        @outbox = Message.where('sender_id = ?', session[:user_id])
+        @inbox = Message.where('receiver_id = ?', session[:user_id]).reverse
+        @outbox = Message.where('sender_id = ?', session[:user_id]).reverse
 
         @favorite_sales = Favorite.includes(:sale_listing).where('user_id = ?', session[:user_id])
         @favorite_rentals = RentalFavorite.includes(:rental_listing).where('user_id = ?', session[:user_id])
