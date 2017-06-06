@@ -221,6 +221,7 @@ class HousesController < ApplicationController
         @already_fav = false
         @myfavs.each do |m| 
             if m.sale_listing_id == @listing.id
+                @thisfav = m.id
                 @already_fav = true
             end
         end
@@ -234,6 +235,7 @@ class HousesController < ApplicationController
         @already_fav = false
         @myfavs.each do |m| 
             if m.rental_listing_id == @listing.id
+                @thisfav = m.id
                 @already_fav = true
             end
         end
@@ -241,6 +243,7 @@ class HousesController < ApplicationController
 
     end
 
+    # user show page delete favorites
     def favorite_delete
         @delete = Favorite.find_by('id = ?', params[:favorite_id])
 
@@ -248,7 +251,6 @@ class HousesController < ApplicationController
 
         redirect_back(fallback_location: root_path)
         #Favorite.destroy('sale_listing_id = ?', params[:favorite_id])
-        
     end
 
     def favorite_rental_delete
@@ -403,7 +405,7 @@ class HousesController < ApplicationController
     def delete_sale_listing
         @listing = SaleListing.find_by('id = ?', params[:sale_id])
         if @listing.destroy
-              redirect_back(fallback_location: users_signin_path)
+              redirect_to '/'
         else
               flash[:errors] = ["error deleting listing"]
               redirect_back(fallback_location: users_signin_path)
@@ -413,7 +415,7 @@ class HousesController < ApplicationController
     def delete_rental_listing
         @listing = RentalListing.find_by('id = ?', params[:rental_id])
         if @listing.destroy
-              redirect_back(fallback_location: users_signin_path)
+              redirect_to '/'
         else
               flash[:errors] = ["error deleting listing"]
               redirect_back(fallback_location: users_signin_path)

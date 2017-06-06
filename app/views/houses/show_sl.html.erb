@@ -16,10 +16,10 @@
             <% if !@already_fav %>
                 <form action='/listings/sale/<%= @listing.id %>/favorite' method='POST'>
                     <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-                    <input type='submit' value='Add to Favorites' class="btn btn-danger">
+                    <input type='submit' value='Add to Favorites' class="btn btn-success">
                 </form>
             <% else %>
-                <form action='/listings/sale/<%= @listing.id %>/favorite/delete' method='POST'>
+                <form action='/listings/sale/<%= @thisfav %>/favorite/delete' method='POST'>
                     <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
                     <input type='submit' value='Remove from Favorites' class="btn btn-danger">
                 </form>
@@ -45,11 +45,13 @@
             <% if @listing.user_id == session[:user_id] %>
             <ul>
                 <li><a href="/listings/sale/<%= @listing.id %>/edit">Edit Listing</a></li>
-                <li><a href="/listings/sale/<%= @listing.id %>/photos">Add Photos</a></li>
-                <li><a href="/listings/sale/<%= @listing.id %>/delete">Remove Listing</a></li>
+                <li><a href="/listings/sale/<%= @listing.id %>/photos">Add Photos</a></li>         
             </ul>
+             <form action="/listings/sale/<%= @listing.id %>/delete" method="POST">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
             <% else %>
-                <form action="/messages/contact/<%= @listing.user_id %>/<%= session[:user_id] %>" method="GET">
+                <form action="/messages/contact/<%= @listing.user_id %>/<%= session[:user_id] %>" method="GET" class="deleter">
                     <input type="submit" value="Contact This User" class="btn btn-primary">
                 </form>
             <% end %>
