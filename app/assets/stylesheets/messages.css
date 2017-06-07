@@ -1,4 +1,10 @@
 @media only screen and (max-width: 480px) {
+    .rightrow{
+        text-align: right;
+    }
+    .mobilehide{
+        display: none;
+    }
     .wireddate{
         display: none;
     }
@@ -51,6 +57,9 @@
     }
 }
 @media only screen and (min-width: 481px) {
+    .rightrow{
+        text-align: right;
+    }
     .mobiledate{
         display: none;
     }

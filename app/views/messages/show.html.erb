@@ -11,8 +11,8 @@
                     <tr>
                       <th>Title</th>
                       <th class="hideformobile">Sender</th>
-                      <th>Sent</th>
-                      <th>Actions</th>
+                      <th class="mobilehide">Sent</th>
+                      <th class="rightrow">Actions</th>
                   
                     </tr>
                   <% @inbox.each do |i| %>
@@ -34,6 +34,9 @@
                               <h4 class="modal-title">Title: <%= i.title %></h4>
                             </div>
                             <div class="modal-body">
+                              <p>Sender: <%= i.sender.email %></p>
+                              <p>@ <%= i.created_at.strftime('%c') %> </p>
+                              <hr>
                               <p>Message: <%= i.content %></p>
                               <hr>
                               <p><a href="/messages/contact/<%= i.sender_id%>/<%= i.receiver_id %>">Reply</a></p>
@@ -51,10 +54,10 @@
                       <td class="wireddate">
                       <%=i.created_at.strftime('%c')%>
                     </td>
-                    <td class="mobiledate">
+                    <td class="mobilehide">
                       <%=i.created_at.strftime('%x')%>
                     </td>
-                    <td>
+                    <td class="rightrow">
                       <form class="garbage_form" action="/messages/<%= i.id %>/delete" method="POST">
                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                         <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
@@ -74,8 +77,8 @@
                   <tr>
                     <th>Title</th>
                     <th class="hideformobile">Recipient</th>
-                    <th>Sent</th>
-                    <th>Actions</th>
+                    <th class="mobilehide">Sent</th>
+                    <th class="rightrow">Actions</th>
                   </tr>
                   <% @outbox.each do |o| %>
                   <tr>
@@ -96,6 +99,9 @@
                               <h4 class="modal-title">Title: <%= o.title %></h4>
                             </div>
                             <div class="modal-body">
+                              <p>Sender: <%= o.sender.email %></p>
+                              <p>@ <%= o.created_at.strftime('%c') %> </p>
+                              <hr>
                               <p>Message: <%= o.content %></p>
                               <hr>
                               <p><a href="/messages/contact/<%= o.receiver_id%>/<%= o.sender_id %>">Reply</a></p>
@@ -107,16 +113,16 @@
                         </div>
                       </div>
                     </td>
-                    <td class="hideformobile">
+                    <td class="mobilehide">
                       <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a>
                     </td>
                     <td class="wireddate">
                       <%=o.created_at.strftime('%c')%>
                     </td>
-                    <td class="mobiledate">
+                    <td class="mobilehide">
                       <%=o.created_at.strftime('%x')%>
                     </td>
-                    <td>
+                    <td class="rightrow">
                       <form class="garbage_form" action="/messages/<%= o.id %>/delete" method="POST">
                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                         <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
