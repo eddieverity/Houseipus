@@ -16,8 +16,14 @@
 
 .footercontents img {
     width:1.2em;
+    margin-left:5px;
 }
-
+.footercontents ul {
+    text-align:center;
+}
+.footercontents ul li p {
+    display:inline-block;
+}
 @media only screen and (max-width: 480px) {
     .mobilesignin{
         float:right;
