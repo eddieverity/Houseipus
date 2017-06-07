@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
     def contact
-        @user = User.find_by('id = ?', params[:to_id])
+        if session[:user_id]
+            @user = User.find_by('id = ?', params[:to_id])
+        else
+            redirect_to '/users/signin'
+        end
     end
 
     def message

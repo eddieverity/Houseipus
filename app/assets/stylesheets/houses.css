@@ -256,6 +256,9 @@
         width: 80%;
         margin-bottom: 2em;
     }
+    .listingdata form{
+        margin-bottom: 2em;
+    }
     .address {
         width: 80%;
     }
@@ -265,7 +268,6 @@
         width: 30%;
         margin-right: 3em;
         margin-top: 2em;
-        height: 500px;
     }
     .signins input{
         margin-bottom: .5em;
@@ -525,7 +527,6 @@
         width: 30%;
         margin-right: 3em;
         margin-top: 2em;
-        height: 500px;
     }
     .signins input{
         margin-bottom: .5em;
@@ -768,7 +769,6 @@
         width: 30%;
         margin-right: 3em;
         margin-top: 2em;
-        height: 500px;
     }
     .signins input{
         margin-bottom: .5em;
@@ -1013,7 +1013,6 @@
         width: 30%;
         margin-right: 3em;
         margin-top: 2em;
-        height: 500px;
     }
     .signins input{
         margin-bottom: .5em;

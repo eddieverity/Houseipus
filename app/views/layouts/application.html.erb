@@ -33,7 +33,7 @@
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                   <input type="hidden" name="searchtype" value="buy">
                   <input type="text" name="location"   placeholder="Address, zip, or city" class="form-control placholderedit" required minlength="1">
-                  <input type="submit" value="Search for Sale" class="btn">
+                  <input type="submit" value="Search for Sale" class="btn btn-primary">
                 </form>
               </div>
             </div>
@@ -49,7 +49,7 @@
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                   <input type="hidden" name="searchtype" value="rent">
                   <input type="text" name="location"   placeholder="Address, zip, or city" class="form-control placholderedit" required minlength="1">
-                  <input type="submit" value="Rentals" class="btn">
+                  <input type="submit" value="Rentals" class="btn btn-primary">
                 </form>
               </div>
             </div>
@@ -65,7 +65,7 @@
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                   <input type="hidden" name="searchtype" value="sell">
                   <input type="text" name="location"   placeholder="Address, zip or, city" class="form-control placholderedit" required minlength="1">
-                  <input type="submit" value="List Property" class="btn">
+                  <input type="submit" value="List Property" class="btn btn-primary">
                 </form>
               </div>
             </div>
@@ -101,8 +101,6 @@
               <% end %>
 
             <% end %> 
-      
-
 
           <!-- List element for sign in/logout-->
             <div class="loggerinner">
@@ -128,15 +126,15 @@
     <div class="footercontents">
         <ul>
           <li>
-            <p>Follow Peter Herman <p>
+            <p>Follow Peter Herman </p>
             <a href="https://github.com/peytah"><img src="<%= asset_path( 'github.png' ) %>" /></a>
             <a href="https://www.linkedin.com/in/peterbherman/"><img src="<%= asset_path( 'linkedin.png' ) %>" /></a>
           </li>
           <li>|</li>
           <li>
-            <p>Follow Edward Verity <p>
+            <p>Follow Edward Verity </p>
             <a href="https://github.com/eddieverity"><img src="<%= asset_path( 'github.png' ) %>" /></a>
-            <a href="https://www.linkedin.com/in/edward-verity-7398b332/"><img src="<%= asset_path( 'linkedin.png' ) %>" /></a>
+            <a href="https://www.linkedin.com/in/edward-verity-7398b332/"><img src="<%= asset_path( 'linkedin.png' ) %>"/></a>
           </li>
         </ul>
 

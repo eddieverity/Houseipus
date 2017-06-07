@@ -18,9 +18,18 @@ function CheckboxChecked(b,d)
             <input type="submit" value="Login" class="btn btn-primary">
         </form>
         <% if flash[:login] %>
+        <div class="alert alert-danger">
             <% flash[:login].each do |error| %>
                 <p><%= error %></p>
             <% end %>
+        </div>
+        <% end %>
+        <% if flash[:errors] %>
+        <div class="alert alert-danger">
+            <% flash[:errors].each do |error| %>
+                <p><%= error %></p>
+            <% end %>
+        </div>
         <% end %>
     </div>
     <div class="signins">
@@ -74,12 +83,12 @@ Check if you are a seller/renter</label>
 <script type="text/javascript">
 CheckboxChecked(document.myform.mycheckbox.checked,'checkboxdiv');
 </script>
-
-
         <% if flash[:register] %>
+        <div class="alert alert-danger">
             <% flash[:register].each do |error| %>
                 <p><%= error %></p>
             <% end %>
+        </div>
         <% end %>
     </div>
     <div class="signinimage"></div>

@@ -381,9 +381,8 @@ class HousesController < ApplicationController
         if @favorite.save
             redirect_back(fallback_location: root_path)
         else
-
             flash[:errors] = @favorite.errors.full_messages
-            redirect_back(fallback_location: root_path)
+            redirect_to '/users/signin'
         end      
     end
 

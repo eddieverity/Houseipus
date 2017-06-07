@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   post 'messages/:message_id/delete' => 'messages#delete'
 
+  get 'messages/contact/:to_id/' => 'messages#contact'
   get 'messages/contact/:to_id/:from_id' => 'messages#contact'
 
   post 'messages/contact/:to_id/:from_id' => 'messages#message'
@@ -79,7 +80,6 @@ Rails.application.routes.draw do
   post 'listings/rent/:rental_favorite_id/favorite/delete' => 'houses#favorite_rental_delete'
 
   get 'listings/rent/:rental_id/photos' => 'houses#rentalphotos'
-
 
   post 'listings/rent/:rental_id/photos' => 'houses#addrentalphotos'
 
