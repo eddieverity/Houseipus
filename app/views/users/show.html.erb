@@ -1,18 +1,21 @@
 
 <script type="text/javascript" language="JavaScript">
-function HidePart(d) { document.getElementById(d).style.display = "none";  }
-function ShowPart(d) { document.getElementById(d).style.display = "block"; }
-function CheckboxChecked(b,d)
-{
-   if(b) { ShowPart(d); }
-   else  { HidePart(d); }
-}
+  function HidePart(d) { document.getElementById(d).style.display = "none";  }
+  function ShowPart(d) { document.getElementById(d).style.display = "block"; }
+  function CheckboxChecked(b,d)
+  {
+     if(b) { ShowPart(d); }
+     else  { HidePart(d); }
+  }
 </script>
 
 <div class="container usershow">
     <div class="signins well">
       <h3>Personal Details</h3>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
       <table class="table">
         <tr>
           <td>Email:</td>
@@ -38,9 +41,6 @@ function CheckboxChecked(b,d)
         <% end %>
       </table>
 
-
-
-
       <% if @user.id == session[:user_id] %>
         <form action="/users/edit/<%= @user.id %>" method="GET">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -56,17 +56,16 @@ function CheckboxChecked(b,d)
     <% if @user.agent != nil %> 
       <div class="signins well">
         <h3>Sale Listings</h3>
-        
         <table class="table">
           <tr>
             <th>Address</th>
             <th class="rightrow">Actions</th>
           </tr>
-
           <% if @sale_listings.length > 0 %>
             <% @sale_listings.each do |s| %>
               <tr>
-                <td><a href="/listings/sale/<%= s.id %>"><%= s.address %> <%= s.street %> <%= s.city %></a>
+                <td>
+                  <a href="/listings/sale/<%= s.id %>"><%= s.address %> <%= s.street %> <%= s.city %></a>
                 </td>
                 <td class="rightrow">
                   <form class="garbage_form" action="/listings/sale/<%= s.id %>/delete" method="POST">
@@ -86,12 +85,8 @@ function CheckboxChecked(b,d)
               <td></td>
             </tr>
           <% end %>
-
-
         </table>
-        
         <h3>Rental Listings</h3>
-
         <table class="table">
           <tr>
             <th>Address</th>
@@ -114,20 +109,16 @@ function CheckboxChecked(b,d)
                   </form>
                 </td>
               </tr>
-            
             <% end %>
           <% else %>
             <tr>
               <td>No current listings</td>
               <td></td>
+            </tr>
           <% end %>
-        
-
         </table>
-
       </div>      
     <% end %>
-
     <% if @favorite_rentals != nil or @favorite_sales != nil %>
       <div class="signins well">
         <h3>Favorite Listings</h3>
@@ -136,6 +127,7 @@ function CheckboxChecked(b,d)
               <th>Listings</th>
               <th class="rightrow">Actions</th>
             </tr>
+<<<<<<< HEAD
                 <% if @favorite_rentals.length > 0 %>
                   <tr>
                     <% @favorite_rentals.each do |f| %>
@@ -159,7 +151,33 @@ function CheckboxChecked(b,d)
                     <td>No Rental Listings favorited</td>
                     <td></td>
                   </tr>
+=======
+              <% if @favorite_rentals.length > 0 %>
+                
+                <% @favorite_rentals.each do |f| %>
+                  <tr>  
+                    <td>
+                      <a href="/listings/rent/<%=f.rental_listing_id%>">
+                      <%= f.rental_listing.address %>
+                      <%= f.rental_listing.street %>
+                      <%= f.rental_listing.city %>
+                      </a>
+                    </td>
+                    <td>
+                      <form class="garbage_form" action="/listings/rent/<%= f.id %>/favorite/delete" method="POST">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
+                      </form>
+                    </td>
+                  </tr>  
+>>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
                 <% end %>
+              <% else %>
+                <tr>
+                  <td>No Rental Listings favorited</td>
+                  <td></td>
+                </tr>
+              <% end %>
           </table>
             <h3>For Sale</h3>
               <table class="table">
@@ -168,23 +186,25 @@ function CheckboxChecked(b,d)
                   <th class="rightrow">Actions</th>
                 </tr>
               <% if @favorite_sales.length > 0 %>
-                
-                  <% @favorite_sales.each do |s| %>
+                <% @favorite_sales.each do |s| %>
                   <tr>
                     <td><a href="/listings/sale/<%=s.sale_listing_id%>">
                       <%= s.sale_listing.address %>
                       <%= s.sale_listing.street %>
                       <%= s.sale_listing.city %>
                     </a></td>
+<<<<<<< HEAD
                     <td class="rightrow">
+=======
+                    <td>
+>>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
                       <form class="garbage_form" action="/listings/sale/<%= s.id %>/favorite/delete" method="POST">
                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                         <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
                       </form>
                     </td>
                   </tr>
-                  <% end %>
-                
+                <% end %>
               <% else %>
                 <tr>
                   <td>No Sale Listings favorited</td>
@@ -194,8 +214,6 @@ function CheckboxChecked(b,d)
           </table>
       </div>
     <% end %>
-
-
 
   <% if @user.id == session[:user_id] %>
     <div class="signins">
@@ -219,6 +237,7 @@ function CheckboxChecked(b,d)
                           <% end %>
                           ><%= i.title.truncate(12) %>
                         </button>
+
                       <div class="modal fade" id="myModali<%= i.id %>" role="dialog">
                         <div class="modal-dialog">
                           <div class="modal-content">
@@ -239,8 +258,13 @@ function CheckboxChecked(b,d)
                         </div>
                       </div>
                       </td>
+<<<<<<< HEAD
                       <td class="mobilehide">
                         <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email %></a>
+=======
+                      <td>
+                        <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email.truncate(16) %></a>
+>>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
                       </td>
                       <td class="rightrow">
                         <form class="garbage_form" action="/messages/<%= i.id %>/delete" method="POST">
@@ -250,15 +274,15 @@ function CheckboxChecked(b,d)
                       </td>
                     </tr>
                   <% end %>
-              </table>
-                
+              </table> 
             <% end %>
-
-
           </ul>
     </div>
     </div>
-
   <% end %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
     <div class="signinimage"></div>
 </div>
