@@ -157,7 +157,7 @@
     }
 
     .photoform{
-        width: 400px;
+        width: 100%;
         margin-top: 3em;
     }
     .photoform input{
@@ -236,7 +236,7 @@
         height: 500px;
     }
     .rentalphotos form{
-        width: 30%;
+        width: 100%;
     }
 
     .rentalphotos form input{

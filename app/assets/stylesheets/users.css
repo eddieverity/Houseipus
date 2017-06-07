@@ -1,4 +1,10 @@
 @media only screen and (max-width: 480px) {
+    .rightrow{
+        text-align: right;
+    }
+    .mobilehide{
+        display: none;
+    }
     .signins{
         display: block;
         width: 100%;
@@ -25,18 +31,22 @@
         vertical-align:top;
         margin-top:0px;
     }
-}
-
-.garbage{
+    .garbage{
     width:1em;
 
+    }
+    .garbage_form{
+        display:inline-block;
+    }
 }
-.garbage_form{
-    display:inline-block;
-}
+
+
 
 
 @media only screen and (min-width: 481px) {
+    .rightrow{
+        text-align: right;
+    }
     .signins{
         display: inline-block;
         vertical-align: top;
@@ -68,5 +78,11 @@
     }
     .usershow{
         margin-top: 2em;
+    }
+    .garbage{
+    width:1em;
+    }
+    .garbage_form{
+        display:inline-block;
     }
 }
