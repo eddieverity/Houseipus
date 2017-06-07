@@ -408,7 +408,7 @@ class HousesController < ApplicationController
     def delete_sale_listing
         @listing = SaleListing.find_by('id = ?', params[:sale_id])
         if @listing.destroy
-              redirect_to '/'
+              redirect_back(fallback_location: root_path)
         else
               flash[:errors] = ["error deleting listing"]
               redirect_back(fallback_location: users_signin_path)
@@ -418,7 +418,7 @@ class HousesController < ApplicationController
     def delete_rental_listing
         @listing = RentalListing.find_by('id = ?', params[:rental_id])
         if @listing.destroy
-              redirect_to '/'
+              redirect_back(fallback_location: root_path)
         else
               flash[:errors] = ["error deleting listing"]
               redirect_back(fallback_location: users_signin_path)

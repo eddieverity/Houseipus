@@ -14,6 +14,16 @@
  *= require_self
  */
 
+.footercontents img {
+    width:1.2em;
+    margin-left:5px;
+}
+.footercontents ul {
+    text-align:center;
+}
+.footercontents ul li p {
+    display:inline-block;
+}
 @media only screen and (max-width: 480px) {
     .mobilesignin{
         float:right;
@@ -95,10 +105,15 @@
     .footercontents{
         padding-top: 2em;
         margin: 0 auto;
+
+    }
+    .footercontents ul {
+        margin: 0 auto;
     }
     .footercontents ul li{
         text-decoration: none;
         display: inline-block;
+
     }
      #map{
         height: 500px;
@@ -176,9 +191,8 @@
     .footer{
         background-color: black;
         color: gray;
-        height: 100px;
-        width: 100%;
-        padding-left: 75px;
+        height: 150px;
+        width: 100%;    
         display: block;
     }
 
@@ -186,11 +200,21 @@
         height: 50px;
         padding-top: 2em;
         margin: 0 auto;
+        margin-bottom:2em;
+    }
+    .footercontents ul {
+        margin: 0 auto;
     }
     .footercontents ul li{
         text-decoration: none;
         display: inline-block;
     }
+
+
+
+
+
+
     #floating-panel{
         margin-top: 50px;
     }
@@ -296,13 +320,16 @@
     .footer{
         background-color: black;
         color: gray;
-        height: 100px;
+        height: 150px;
         width: 100%;
-        padding-left: 75px;
+
     }
 
     .footercontents{
         padding-top: 2em;
+        margin: 0 auto;
+    }
+    .footercontents ul {
         margin: 0 auto;
     }
     #floating-panel{
@@ -414,13 +441,16 @@
     .footer{
         background-color: black;
         color: gray;
-        height: 100px;
+        height: 150px;
         width: 100%;
-        padding-left: 75px;
+
     }
 
     .footercontents{
         padding-top: 2em;
+        margin: 0 auto;
+    }
+    .footercontents ul {
         margin: 0 auto;
     }
     #floating-panel{
@@ -531,14 +561,17 @@
     .footer{
         background-color: black;
         color: gray;
-        height: 100px;
+        height: 150px;
         width: 100%;
-        padding-left: 75px;
+
     }
 
     .footercontents{
-        width: 600px;
+
         padding-top: 2em;
+        margin: 0 auto;
+    }
+    .footercontents ul {
         margin: 0 auto;
     }
     #floating-panel{
@@ -649,14 +682,17 @@
     .footer{
         background-color: black;
         color: gray;
-        height: 100px;
+        height: 150px;
         width: 100%;
-        padding-left: 75px;
+
     }
 
     .footercontents{
-        width: 600px;
+
         padding-top: 2em;
+        margin: 0 auto;
+    }
+    .footercontents ul {
         margin: 0 auto;
     }
     #floating-panel{

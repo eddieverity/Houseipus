@@ -26,9 +26,6 @@ class UsersController < ApplicationController
         @user = User.find_by('email = ?', params[:user][:email])
 
         if @user && @user.authenticate(params[:user][:password])
-            ##email tester
-
-
 
             session[:user_id] = @user.id
             session[:user_email] = @user.email

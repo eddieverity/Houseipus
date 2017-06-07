@@ -272,58 +272,6 @@ function CheckboxChecked(b,d)
             <% end %>
 
 
-
-            <% if @outbox.length > 0 %>
-              <h4 class="inoutbox">Outbox</h4>
-                <table class="table table-hover">
-                  <tr>
-                    <th>Title</th>
-                    <th>Sent To</th>
-                    <th>Actions</th>
-                  </tr>
-                  <% @outbox.each do |o| %>
-                  <tr>
-                    <td>
-                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalo<%= o.id %>"
-                        <% if o.viewed == false %>
-                          style="background-color:red;" 
-                        <% end %>
-                        ><%= o.title.truncate(12) %>
-                      </button>
-                      <div class="modal fade" id="myModalo<%= o.id %>" role="dialog">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close"  data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">Title: <%= o.title %></h4>
-                            </div>
-                            <div class="modal-body">
-                              <p>Message: <%= o.content %></p>
-                              <hr>
-                              <p><a href="/messages/contact/<%= o.receiver_id%>/<%= o.sender_id %>">Reply</a></p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                          </div> 
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <a href="/messages/contact/<%= o.receiver.id %>/<%= session[:user_id] %>"><%= o.receiver.email %></a>
-                    </td>
-                    <td>
-             
-                      <form class="garbage_form" action="/messages/<%= o.id %>/delete" method="POST">
-                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
-                      </form>
-                 
-                    </td>
-                  </tr>
-                  <% end %>
-                </table>
-            <% end %>
           </ul>
     </div>
     </div>
