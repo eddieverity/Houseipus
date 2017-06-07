@@ -12,10 +12,6 @@
 <div class="container usershow">
     <div class="signins well">
       <h3>Personal Details</h3>
-<<<<<<< HEAD
-
-=======
->>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
       <table class="table">
         <tr>
           <td>Email:</td>
@@ -127,10 +123,10 @@
               <th>Listings</th>
               <th class="rightrow">Actions</th>
             </tr>
-<<<<<<< HEAD
                 <% if @favorite_rentals.length > 0 %>
-                  <tr>
+
                     <% @favorite_rentals.each do |f| %>
+                    <tr>
                       <td>
                         <a href="/listings/rent/<%=f.rental_listing_id%>">
                         <%= f.rental_listing.address %>
@@ -144,40 +140,14 @@
                           <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
                         </form>
                       </td>
+                      </tr>
                     <% end %>
-                  </tr>
                 <% else %>
                   <tr>
                     <td>No Rental Listings favorited</td>
                     <td></td>
                   </tr>
-=======
-              <% if @favorite_rentals.length > 0 %>
-                
-                <% @favorite_rentals.each do |f| %>
-                  <tr>  
-                    <td>
-                      <a href="/listings/rent/<%=f.rental_listing_id%>">
-                      <%= f.rental_listing.address %>
-                      <%= f.rental_listing.street %>
-                      <%= f.rental_listing.city %>
-                      </a>
-                    </td>
-                    <td>
-                      <form class="garbage_form" action="/listings/rent/<%= f.id %>/favorite/delete" method="POST">
-                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
-                      </form>
-                    </td>
-                  </tr>  
->>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
                 <% end %>
-              <% else %>
-                <tr>
-                  <td>No Rental Listings favorited</td>
-                  <td></td>
-                </tr>
-              <% end %>
           </table>
             <h3>For Sale</h3>
               <table class="table">
@@ -193,11 +163,9 @@
                       <%= s.sale_listing.street %>
                       <%= s.sale_listing.city %>
                     </a></td>
-<<<<<<< HEAD
+
                     <td class="rightrow">
-=======
-                    <td>
->>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
+
                       <form class="garbage_form" action="/listings/sale/<%= s.id %>/favorite/delete" method="POST">
                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                         <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
@@ -258,13 +226,9 @@
                         </div>
                       </div>
                       </td>
-<<<<<<< HEAD
                       <td class="mobilehide">
                         <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email %></a>
-=======
-                      <td>
-                        <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email.truncate(16) %></a>
->>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
+
                       </td>
                       <td class="rightrow">
                         <form class="garbage_form" action="/messages/<%= i.id %>/delete" method="POST">
@@ -280,9 +244,5 @@
     </div>
     </div>
   <% end %>
-<<<<<<< HEAD
-=======
-
->>>>>>> 9d28bd665c8043026794524eae29cb932b2abfcf
     <div class="signinimage"></div>
 </div>
