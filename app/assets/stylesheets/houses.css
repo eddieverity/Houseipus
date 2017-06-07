@@ -100,8 +100,7 @@
     }
 
     .sellform{
-        float:right;
-        margin-right: 3em;
+        display: none;
     }
 
     .sellform label, input{

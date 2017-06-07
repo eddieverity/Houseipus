@@ -24,6 +24,13 @@ class HousesController < ApplicationController
     def house_sell
         locator(params[:location])
 
+        if session[:user_id]
+            @curruser = User.find(session[:user_id])
+
+            @isagent = @curruser.agent
+        end
+        
+
         @url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{@lat},#{@lng}&key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY"
         @uri = URI(@url)
         @response = Net::HTTP.get(@uri)
@@ -379,10 +386,6 @@ class HousesController < ApplicationController
             redirect_back(fallback_location: root_path)
         end      
     end
-
-
-
-
 
     def rentalfavorite
         if session[:user_id]

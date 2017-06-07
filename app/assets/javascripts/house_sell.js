@@ -1,3 +1,4 @@
+
 var url = window.location.pathname
 console.log("URL:", url)
 var split = url.split('/')
@@ -45,10 +46,14 @@ if (split[2] == "house_sell"){
                             map: map,
                             title: 'Add your listing information',
                             icon: img
-                            });
+                        });
+                    
                         }
+                        
             }   
+           
         )}
         fullquery();
+        
     }
 }

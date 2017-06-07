@@ -21,7 +21,7 @@ function initMapRent() {
 
 var fullquery = function(){
 
-     if ((filter && !beds) || (filter && beds == 0)){ //check if there are filters (just price)
+    if ((filter && !beds) || (filter && beds == 0)){ //check if there are filters (just price)
         $.get("/houses/house_rent/" + query + "/filters/" + filter + ".json", function(data){
 
         if (data.length > 0){ //checks if there are results on the map
@@ -31,7 +31,7 @@ var fullquery = function(){
                 center: {lat: data[0].latitude, lng: data[0].longitude}
             });
         }
-         else{
+        else{
             var googleurl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + query + "&key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY"
 
             $.get(googleurl, function(gdata){
@@ -45,7 +45,7 @@ var fullquery = function(){
 
             })
         }
-         //variables to be used in future for loop
+        //variables to be used in future for loop
         var markers = [];
         var infowindows = [];
         //this is the aforementioned for loop that will generate things on map
@@ -86,7 +86,7 @@ var fullquery = function(){
                 }
 
                 //allows infowindow to open on click
-               google.maps.event.addListener(markers[i], 'click', function () {
+            google.maps.event.addListener(markers[i], 'click', function () {
                     infowindows[this.id].open(map, markers[this.id]);
                 });
 
@@ -105,7 +105,7 @@ var fullquery = function(){
                 center: {lat: data[0].latitude, lng: data[0].longitude}
             });
         }
-         else{
+        else{
             var googleurl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + query + "&key=AIzaSyDEIuPwq4UmLFZ-zqDXmqP1NI54lJhXllY"
 
             $.get(googleurl, function(gdata){
@@ -119,7 +119,7 @@ var fullquery = function(){
 
             })
         }
-         //variables to be used in future for loop
+        //variables to be used in future for loop
         var markers = [];
         var infowindows = [];
         //this is the aforementioned for loop that will generate things on map
@@ -160,7 +160,7 @@ var fullquery = function(){
                 }
 
                 //allows infowindow to open on click
-               google.maps.event.addListener(markers[i], 'click', function () {
+            google.maps.event.addListener(markers[i], 'click', function () {
                     infowindows[this.id].open(map, markers[this.id]);
                 });
 
@@ -236,7 +236,7 @@ var fullquery = function(){
                     + "</div>"
                     });
                 }
-               google.maps.event.addListener(markers[i], 'click', function () {
+            google.maps.event.addListener(markers[i], 'click', function () {
                     infowindows[this.id].open(map, markers[this.id]);
                 });
 

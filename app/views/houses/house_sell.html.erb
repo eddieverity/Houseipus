@@ -12,7 +12,7 @@
 </div>
 
 <div class="sellform">
-<% if @listing.data['address_components'][0]['types'][0] == "street_number" %>
+<% if @listing.data['address_components'][0]['types'][0] == "street_number" && @isagent %>
 
   <%-# This form works, but needs to add ability to add sale info (beds, baths, etc) -%>
   <form action="/houses/sell" method="POST">
@@ -46,9 +46,7 @@
 
 
       <input type="submit" value="Add Listing" class="btn btn-primary">
-    </form> 
-    <%else %>
-    <p>Select a specific address to add a listing.</p>
+    </form>
     <% end %>
     <% if flash[:errors] %>
             <% flash[:errors].each do |error| %>

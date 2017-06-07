@@ -5,7 +5,7 @@
             <div class="address well">
                 <%= @listing.address %> <%= @listing.street %><br>
                 <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %><br><br>
-                <a href="/houses/house_buy/<%= @listing.address %> <%= @listing.street %>,<%= @listing.city %>"><span class="glyphicon glyphicon-map-marker"></span> show on map</a>
+                <a href="/houses/house_sell/<%= @listing.address %> <%= @listing.street %>,<%= @listing.city %>" data-turbolinks="false"><span class="glyphicon glyphicon-map-marker"></span> show on map</a>
             </div>
             <h3>Description</h3>
             <div class="address well">

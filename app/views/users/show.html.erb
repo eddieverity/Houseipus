@@ -223,14 +223,20 @@ function CheckboxChecked(b,d)
                   <% @inbox.each do |i| %>
                     <tr>
                       <td>                       
-                      <form class="message_buttons" action="/messages/viewed/<%= i.id %>" method="POST">
-                          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-                          <input type="submit" value="<%= i.title.truncate(12) %>" class="btn btn-info btn-sm" 
+                   
+                     
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModali<%= i.id %>"
+                        <% if i.viewed == false %>
+                          style="background-color:red;" 
+                        <% end %>
+                        ><%= i.title.truncate(12) %>
+                      </button>
+                         <!-- <input type="submit" value="<%= i.title.truncate(12) %>" class="btn btn-info btn-sm" 
                             <% if i.viewed == false %>
                               style="background-color:red;" 
                             <% end %>
-                          data-toggle="modal" data-target="#myModali<%= i.id%>">
-                      </form>
+                          data-toggle="modal" data-target="#myModali<%= i.id%>">-->
+              
                       <div class="modal fade" id="myModali<%= i.id %>" role="dialog">
                         <div class="modal-dialog">
                           <div class="modal-content">

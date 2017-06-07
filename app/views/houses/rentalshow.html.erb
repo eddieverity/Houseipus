@@ -3,8 +3,9 @@
         <div class="listingdata">
             <h3>Address</h3>
             <div class="address well">
-                <%= @listing.address %> <%= @listing.street %><br>
-                <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %>
+                <p><%= @listing.address %> <%= @listing.street %><br>
+                <%= @listing.city %>, <%= @listing.state %> <%= @listing.zip %></p>
+                <a href="/houses/house_sell/<%= @listing.address %> <%= @listing.street %>,<%= @listing.city %>"><span class="glyphicon glyphicon-map-marker"></span> show on map</a>
             </div>
             <h3>Description</h3>
             <div class="address well">

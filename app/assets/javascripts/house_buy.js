@@ -253,12 +253,12 @@ var fullquery = function(){
                google.maps.event.addListener(markers[i], 'click', function () {
                     infowindows[this.id].open(map, markers[this.id]);
                 });
-
+                
         } //close of for loop
         
     }) // end of AJAX get request
 
-    } // end unfiltered search
+} // end unfiltered search
 
 } // end of fullquery function
 
