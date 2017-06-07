@@ -223,7 +223,7 @@
                       </div>
                       </td>
                       <td>
-                        <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email %></a>
+                        <a href="/messages/contact/<%= i.sender.id %>/<%= session[:user_id] %>"><%= i.sender.email.truncate(16) %></a>
                       </td>
                       <td>
                         <form class="garbage_form" action="/messages/<%= i.id %>/delete" method="POST">

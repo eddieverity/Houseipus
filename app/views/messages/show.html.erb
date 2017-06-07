@@ -12,6 +12,7 @@
                       <th>Title</th>
                       <th class="hideformobile">Sender</th>
                       <th>Sent</th>
+                      <th>Actions</th>
                   
                     </tr>
                   <% @inbox.each do |i| %>
@@ -53,6 +54,12 @@
                     <td class="mobiledate">
                       <%=i.created_at.strftime('%x')%>
                     </td>
+                    <td>
+                      <form class="garbage_form" action="/messages/<%= i.id %>/delete" method="POST">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
+                      </form>
+                    </td>
                     </tr>
                   <% end %>
               </table>
@@ -68,6 +75,7 @@
                     <th>Title</th>
                     <th class="hideformobile">Recipient</th>
                     <th>Sent</th>
+                    <th>Actions</th>
                   </tr>
                   <% @outbox.each do |o| %>
                   <tr>
@@ -107,6 +115,12 @@
                     </td>
                     <td class="mobiledate">
                       <%=o.created_at.strftime('%x')%>
+                    </td>
+                    <td>
+                      <form class="garbage_form" action="/messages/<%= o.id %>/delete" method="POST">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input class="garbage" type="image" src="<%= asset_path( 'garbage.png' ) %>" alt="Submit Form" />
+                      </form>
                     </td>
                   </tr>
                   <% end %>
