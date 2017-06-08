@@ -376,14 +376,19 @@ class HousesController < ApplicationController
     
 
     def favorite
-        @favorite = Favorite.new(sale_listing_id: params[:sale_id], user_id: session[:user_id])
+        if session[:user_id]
+            @favorite = Favorite.new(sale_listing_id: params[:sale_id], user_id: session[:user_id])
 
-        if @favorite.save
-            redirect_back(fallback_location: root_path)
+            if @favorite.save
+                redirect_back(fallback_location: root_path)
+            else
+                flash[:errors] = @favorite.errors.full_messages
+                redirect_to '/users/signin'
+            end 
         else
-            flash[:errors] = @favorite.errors.full_messages
+            flash[:errors] = ["You must sign in to add a favorite."]
             redirect_to '/users/signin'
-        end      
+        end
     end
 
     def rentalfavorite
@@ -399,6 +404,7 @@ class HousesController < ApplicationController
                 redirect_back(fallback_location: root_path)
             end  
         else
+            flash[:errors] = ["You must sign in to add a favorite."]
             redirect_to '/users/signin'
         end
         

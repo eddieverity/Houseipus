@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
         if session[:user_id]
             @user = User.find_by('id = ?', params[:to_id])
         else
+            flash[:errors] = ["You must sign in to send a message."]
             redirect_to '/users/signin'
         end
     end
