@@ -4,15 +4,15 @@
         <form action="/houses/routes" method="POST" class="form-inline">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
             <label for="buy">
-            <input type="radio" name="searchtype" value="buy" checked="checked" id="buy">
+            <input type="radio" name="searchtype" value="buy" checked="checked" id="buy" class="bgCollection">
             <span>Buy</span>
             </label>
             <label for="rent">
-            <input type="radio" name="searchtype" value="rent" id="rent">
+            <input type="radio" name="searchtype" value="rent" id="rent" class="bgCollection">
             <span>Rent</span>
             </label>
             <label for="sell">
-            <input type="radio" name="searchtype" value="sell" id="sell">
+            <input type="radio" name="searchtype" value="sell" id="sell" class="bgCollection">
             <span>Sell</span>
             </label><br>
             <input class="form-control hero-search-bar" name="location" required type="text" minlength="1" placeholder="Enter an address, neighborhood, city, or zip code">
