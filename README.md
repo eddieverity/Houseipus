@@ -1,27 +1,9 @@
-# README
+Zillow.com clone for 1 week rails project through CodingDojo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built using agile methodologies
 
-Things you may want to cover:
+Users can search sale listings and rentals, and post new properties
 
-* Ruby version
+Built with emphasis on user messaging, has ActionMailer integration to have the app send email updates if users are opted in to notify if notes are received on the app.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-A Readme update
+Integration of Google Maps API and geocoder gem to show pinned listings based on search parameters
