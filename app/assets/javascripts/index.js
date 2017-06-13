@@ -1,10 +1,24 @@
 $(document).ready(function(){
+
+    $.fn.preload = function() {
+    this.each(function(){
+        $('<img/>')[0].src = this;
+        });
+    }   
+
+
+    $([
+    'assets/hero.jpg',
+    'assets/beachhome.jpg',
+    'assets/pymhouse.png'
+    ]).preload();
+
           if ($("#buy").click(function() {
               $(".hero").css(
-                {'background': 'url("/assets/hero.jpg")',
+                {'background': 'linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)), url("/assets/hero.jpg")',
                 'background-repeat': 'no-repeat',
                 'background-position': 'center',
-                'background-size': 'cover' 
+                'background-size': 'cover',
                 });
           }));
           
@@ -22,7 +36,7 @@ $(document).ready(function(){
                   {'background': 'linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)), url("/assets/pymhouse.png")',
                   'background-repeat': 'no-repeat',
                   'background-position': 'center',
-                  'background-size': 'cover' 
+                  'background-size': 'cover',
                 });
           }));
     });
